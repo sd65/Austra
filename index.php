@@ -45,7 +45,7 @@
 		</div> <!-- Fin Tableau -->
 
 		<aside class="calendar">
-			<h1>lol</h1>
+			<h1>Welcome</h1>
 		</aside>
 		
 	</div> <!-- Fin Page -->
