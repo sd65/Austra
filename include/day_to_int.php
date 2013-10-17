@@ -1,6 +1,6 @@
 <?php
 
-day_to_int($day_name) {
+function day_to_int($day_name) {
 
 	int $day ;
 
