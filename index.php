@@ -8,10 +8,12 @@
 <body>
 	
 <?php
-	include "config/db_connect.php";
-
+	include "include/edt_display.php";
 ?>
-	
+<?php
+	$week = date('W') ;
+?>
+
 	<div id="page">
 		<h1>Austra</h1>
 		<div id="table">
@@ -21,17 +23,22 @@
 						<td class="thead">Jour</td>
 						<?php for ($hour=8;$hour<20;$hour++): ?>
 							<td class="hour"> <?= $hour ?>h</td>
-							<td class="demiHeure"></td>
+							<td class="halfHour">30</td>
 						<?php	endfor ; ?>
 					</tr>
 			</thead>
 			<tbody>
 				<?php $days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]; ?>
 				
-				<?php foreach($days): ?>
-					<tr>
-						<td>Bonjour je suis un TD</td>
-					</tr>
+				<?php foreach($days as $day): ?>
+					
+						<tr>
+							<td class="day"> <?= $day ?> </td>
+							<!-- <?php for($i=1;$i<=24;$i++): <td> X </td>?> <?php endfor ; ?>-->
+								displayBy($tp, $td, $day, $week)
+						</tr>
+				
+
 				<?php endforeach; ?>
 				
 			</tbody>
