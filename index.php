@@ -43,6 +43,11 @@
 			</tbody>
 			</table>
 		</div> <!-- Fin Tableau -->
+
+		<aside class="calendar">
+			<h1>lol</h1>
+		</aside>
+		
 	</div> <!-- Fin Page -->
 </body>
 </html>
