@@ -6,35 +6,37 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	
+<?php
+	include "config/db_connect.php";
+
+?>
+	
 	<div id="page">
-
 		<h1>Austra</h1>
-
-		<div id="tableau">
-
+		<div id="table">
 			<table>        
-
 				<thead>
 					<tr>
 						<td class="thead">Jour</td>
-						<?php for ($heure=8;$heure<20;$heure++): ?>
-						<td class="Heure"> <?= $heure ?>h</td>
-						<td class="demiHeure"></td>
-					<?php	endfor ; ?>
-				</tr>
+						<?php for ($hour=8;$hour<20;$hour++): ?>
+							<td class="hour"> <?= $hour ?>h</td>
+							<td class="demiHeure"></td>
+						<?php	endfor ; ?>
+					</tr>
 			</thead>
-
 			<tbody>
-
+				<?php $days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]; ?>
+				
+				<?php foreach($days): ?>
+					<tr>
+						<td>Bonjour je suis un TD</td>
+					</tr>
+				<?php endforeach; ?>
+				
 			</tbody>
-
-
-		</table>
-
-	</div> <!-- Fin Tableau -->
-
-</div> <!-- Fin Page -->
-
-
+			</table>
+		</div> <!-- Fin Tableau -->
+	</div> <!-- Fin Page -->
 </body>
 </html>
