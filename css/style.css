@@ -5,3 +5,28 @@ table {
 td,th {
 	border: 1px solid #999;
 }
+
+body{
+	font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+}
+
+h1{
+	display: block;
+	background-color: #000;
+	width: 100%;
+	color: #fff;
+}
+
+#tableau{
+	width: 80%;
+	margin: 4% auto;
+}
+
+	table{
+		margin: auto;
+	}
+		thead{
+		}
+			td{
+				padding-right: 4%;
+			}
