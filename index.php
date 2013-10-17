@@ -34,8 +34,10 @@
 					
 						<tr>
 							<td class="day"> <?= $day ?> </td>
-								<?php $todisplay = displayBy($tp, $td, $day, $week); 
+							<td>
+							<?php $todisplay = displayBy($tp, $td, $day, $week); 
 								echo $todisplay ?>
+							</td>
 						</tr>
 				
 
@@ -45,9 +47,9 @@
 			</table>
 		</div> <!-- Fin Tableau -->
 
-		<aside class="calendar">
+		<!-- <aside class="calendar">
 			<h1>Welcome</h1>
-		</aside>
+		</aside> -->
 		
 	</div> <!-- Fin Page -->
 </body>
