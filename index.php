@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Austra</title>
+	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,16 +21,16 @@
 						<?php for ($heure=8;$heure<20;$heure++): ?>
 						<td class="Heure"> <?= $heure ?>h</td>
 						<td class="demiHeure"></td>
-					<?php	endfor ; ?>
-				</tr>
-			</thead>
+						<?php	endfor ; ?>
+					</tr>
+				</thead>
 
-			<tbody>
+				<tbody>
 
-			</tbody>
+				</tbody>
 
 
-		</table>
+			</table>
 
 	</div> <!-- Fin Tableau -->
 
