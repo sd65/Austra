@@ -2,8 +2,6 @@
 
 function day_to_int($day_name) {
 
-	int $day ;
-
 	switch ($day_name) {
 			case 'Lundi':
 			$day = 2 ;
