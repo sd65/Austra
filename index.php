@@ -34,8 +34,7 @@
 					
 						<tr>
 							<td class="day"> <?= $day ?> </td>
-							<!-- <?php for($i=1;$i<=24;$i++): <td> X </td>?> <?php endfor ; ?>-->
-								displayBy($tp, $td, $day, $week)
+								<?php displayBy($tp, $td, $day, $week) ; ?>
 						</tr>
 				
 
