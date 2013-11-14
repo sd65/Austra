@@ -35,8 +35,12 @@
 						<tr>
 							<td class="day"> <?= $day ?> </td>
 							<td>
-							<?php $todisplay = displayBy($tp, $td, $day, $week); 
-								echo $todisplay ?>
+							<?php 
+								for($j=0; $j<24; $j++):
+								$todisplay = displayBy($tp, $td, $day, $week); 
+								echo $todisplay 
+								endfor;
+							?>
 							</td>
 						</tr>
 				
