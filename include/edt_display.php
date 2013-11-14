@@ -9,11 +9,13 @@ function displayBy($hour, $tp, $td, $day_name, $week) {
 	$class_name;
 	$class_teacher;
 	
+	$hour = ($hour*60)+8;
+	
 	for($i=0; $i<5; $i++):
 		$day = day_to_int($day_name);
 	endfor;
 	
-	$sql = 'SELECT matiereedt,enseignantedt FROM edt WHERE jouredt=' . $day . ' AND semaineedt=' . $week . '';
+	$sql = 'SELECT matiereedt,enseignantedt FROM edt WHERE jouredt=' . $day . ' AND semaineedt=' . $week . ' AND debutedt>='. $hour .' AND finedt<=' . hour . ' AND groupeedt=SRC_S3';
 	
 	$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 	
