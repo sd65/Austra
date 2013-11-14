@@ -8,7 +8,7 @@ function displayBy($hour, $tp, $td, $day_name, $week) {
 	$day;
 	$class_name;
 	$class_teacher;
-	$SRC_S3 = "SRC_S3";
+	$SRC_S3 = 'SRC_S3';
 	
 	$hour = ($hour*60)+8;
 	
@@ -16,7 +16,7 @@ function displayBy($hour, $tp, $td, $day_name, $week) {
 		$day = day_to_int($day_name);
 	endfor;
 	
-	$sql = 'SELECT matiereedt,enseignantedt FROM edt WHERE jouredt=' . $day . ' AND semaineedt=' . $week . ' AND debutedt=' . $hour . ' AND groupeedt=' . $SRC_S3 . '';
+	$sql = 'SELECT matiereedt,enseignantedt FROM edt WHERE jouredt=' . $day . ' AND semaineedt=' . $week . ' AND debutedt=' . $hour . ' AND filiereedt=' . $SRC_S3 . '';
 	
 	$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 	
