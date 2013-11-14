@@ -25,5 +25,5 @@ function displayBy($hour, $tp, $td, $day_name, $week) {
 	
 	$result = [$class_name, $class_teacher];
 	
-	return "X";
+	return $result;
 }
