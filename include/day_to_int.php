@@ -3,6 +3,10 @@
 function day_to_int($day_name) {
 
 	switch ($day_name) {
+			case 'Dimanche'
+			$day = 1 ;
+			break;
+			
 			case 'Lundi':
 			$day = 2 ;
 			break;
@@ -21,6 +25,10 @@ function day_to_int($day_name) {
 
 			case 'Vendredi':
 			$day = 6 ;
+			break;
+			
+			case 'Samedi'
+			$day = 7 ;
 			break;
 	}
 return $day ;

@@ -11,9 +11,9 @@
 	include "include/edt_display.php";
 ?>
 <?php
-	$week = date('W') ;
-	$tp = 1;
-	$td = 1;
+	$week = date('W');
+	$tp = 1; //Donnée renseignée pour test
+	$td = 1; //Donnée renseignée pour test
 ?>
 
 	<div id="page">
@@ -23,8 +23,8 @@
 				<thead>
 					<tr>
 						<td class="thead">Jour</td>
-						<?php for ($hour=8;$hour<20;$hour++): ?>
-							<td class="hour"> <?= $hour ?>h</td>
+						<?php for ($hourStatic=8;$hourStatic<20;$hourStatic++): ?>
+							<td class="hour"> <?= $hourStatic ?>h</td>
 							<td class="halfHour">30</td>
 						<?php	endfor ; ?>
 					</tr>
@@ -36,17 +36,16 @@
 					
 						<tr>
 							<td class="day"> <?= $day ?> </td>
-							<?php for($j=0; $j<24; $j++): ?>
+							<?php for($hour=0; $hour<24; $hour++): ?>
 							<td>
 							<?php 
-								$todisplay = displayBy($tp, $td, $day, $week); 
+								$todisplay = displayBy($hour, $tp, $td, $day, $week); 
 								echo $todisplay;
 							?>
 							</td>
 							<?php endfor; ?>
 						</tr>
-				
-
+						
 				<?php endforeach; ?>
 				
 			</tbody>
