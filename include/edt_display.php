@@ -16,7 +16,7 @@ function displayBy($hour, $tp, $td, $day_name, $week) {
 		$day = day_to_int($day_name);
 	endfor;
 	
-	$sql = 'SELECT matiereedt,enseignantedt FROM edt WHERE jouredt=' . $day . ' AND semaineedt=' . $week . ' AND debutedt=' . $hour . '';
+	$sql = 'SELECT matiereedt,enseignantedt FROM edt WHERE jouredt=' . $day . ' AND semaineedt=' . $week . '';
 	
 	$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 	
