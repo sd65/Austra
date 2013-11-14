@@ -12,6 +12,8 @@
 ?>
 <?php
 	$week = date('W') ;
+	$tp = 1;
+	$td = 1;
 ?>
 
 	<div id="page">
@@ -34,14 +36,14 @@
 					
 						<tr>
 							<td class="day"> <?= $day ?> </td>
+							<?php for($j=0; $j<24; $j++): ?>
 							<td>
 							<?php 
-								for($j=0; $j<24; $j++):
 								$todisplay = displayBy($tp, $td, $day, $week); 
-								echo $todisplay 
-								endfor;
+								echo $todisplay;
 							?>
 							</td>
+							<?php endfor; ?>
 						</tr>
 				
 
