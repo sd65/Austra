@@ -40,8 +40,7 @@
 							<td>
 							<?php 
 								$todisplay = displayBy($hour, $tp, $td, $day, $week); 
-								echo $todisplay[1];
-								echo $todisplay[2];
+								echo $todisplay;
 							?>
 							</td>
 							<?php endfor; ?>
