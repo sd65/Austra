@@ -8,7 +8,8 @@ function displayBy($hour, $tp, $td, $day_name, $week) {
 	$day;
 	$class_name;
 	$class_teacher;
-	$SRC_S3 = 'SRC_S3';
+	
+	$dept = 'SRC'; //Attribué pour test
 	
 	$hour = ($hour*60)+8;
 	
