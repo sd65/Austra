@@ -1,0 +1,92 @@
+body{
+	font-family: "Lucida Grande", Tahoma;
+	font-smoothing:antialiased; -webkit-font-smoothing:antialiased;
+}
+
+strong{font-weight: 700;}
+
+#week_number{
+	width: 65%;
+	margin: 0 auto;
+}
+li span.current-week{
+	border-radius: 50%;
+	background-color: #fee676;
+	display: inline-block;
+	width: 40px;
+	height: 25px;
+	text-align: center;
+	/*position: relative;
+	vertical-align: middle;*/
+	padding-top: 10px;
+}
+
+#master-planning{
+	width: 60%;
+	margin: auto;
+}
+table{
+	margin: 0 auto;
+	border-spacing: 0px;
+
+}
+	table#planning thead{
+		padding: 0;
+		/*border-bottom: 1px solid #999;*/
+	}
+
+	table#planning td {
+		font-size: 0.6em;
+		text-align: center;
+
+	}
+
+	table#planning tr {
+		text-align: right;
+		height: 1em;
+	}
+	table#planning .hour.first{
+		border-left-color: white;
+	}
+	table#planning .hour{
+		border-left: 1px solid #999;
+	}
+	table#planning .half-hour{
+		width: 50px;
+		padding-left: 10px;
+		font-size: 0.8em;
+	}
+
+	table#planning td, th {
+		vertical-align: middle;
+	}
+	table#planning th.day{
+		border-bottom: 1px solid #999;
+		vertical-align: bottom;
+		height: 60px;
+		width: 85px;
+		font-size: 0.7em;
+	}	
+
+	table#planning tbody td{
+		height:70px;
+	}
+	table#planning tbody tr td.empty-hour{
+		background-color: white;
+	}
+
+
+
+.hours{background-color: #f4f4f4;}
+
+td p{
+	text-align: left;
+	padding-left: 13px;
+	color: #fff;
+	line-height: 1.2em;}
+
+.TP{background-color: #00C586;}
+.TD{background-color: #4ba8f0;}
+.CM{background-color: #f04c4b;}
+.empty{background-color: #fff; min-height: 60px;}
+.TD, .TP, .CM{border: 1px solid white;}
