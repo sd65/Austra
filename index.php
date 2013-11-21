@@ -11,6 +11,7 @@
 	include "include/edt_display.php";
 ?>
 <?php
+	$year = 2013;
 	$week = date('W');
 	$tp = 1; //Donnée renseignée pour test
 	$td = 1; //Donnée renseignée pour test
@@ -30,24 +31,7 @@
 					</tr>
 			</thead>
 			<tbody>
-				<?php $days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]; ?>
-				
-				<?php foreach($days as $day): ?>
-					
-						<tr>
-							<td class="day"> <?= $day ?> </td>
-							<?php for($hour=0; $hour<24; $hour++): ?>
-							<td>
-							<?php 
-								$todisplay = displayBy($hour, $tp, $td, $day, $week); 
-								echo $todisplay;
-							?>
-							</td>
-							<?php endfor; ?>
-						</tr>
-						
-				<?php endforeach; ?>
-				
+				<?php edt_display($year, $week, $tp, $td); ?>
 			</tbody>
 			</table>
 		</div> <!-- Fin Tableau -->
