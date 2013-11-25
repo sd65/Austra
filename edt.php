@@ -17,9 +17,10 @@
 							$td = $_GET['td']; //Donnée renseignée pour test 
 							$filiere = "SRC" //Donnée renseignée pour test
 				?>
-				<?php include("./inc/menu.php"); ?>
-        <?php include("./inc/nav.php"); ?>
-				<?php include "include/edt_display.php"; ?>
+				<?php include("./include/menu.php"); 
+							include("./include/nav.php"); 
+							include "include/edt_display.php";
+				?>
          <div id="master-planning">
             <table id="planning">
               <thead>
@@ -40,14 +41,12 @@
                   <td class="hour">20h</td><td class="half-hour"></td>
                 </tr>
               </thead>
-							<?php echo "TP : " . $tp ;
-							 echo "TD : " . $td ; ?>
               <tbody>
                 <?php edt_display($year, $week, $filiere, $tp, $td); ?>
               </tbody>
             </table>
           </div>
         </div>
-        <?php include("./inc/calendriers.php"); ?>
+        <?php include("./include/calendriers.php"); ?>
     </body>
 </html>
