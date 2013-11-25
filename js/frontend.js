@@ -1,49 +1,54 @@
 $(document).ready(function() 
-{Â Â Â 
-	var isMenuOpen = false;
+{
 	$('.user').click(function()
-Â Â Â Â {
-		if (isMenuOpen == false){
-Â Â Â Â Â Â Â Â Â Â Â Â $("#menu").clearQueue().animate({
+    {
+		var isMenuOpen = $("#menu").attr('class');
+		if (isMenuOpen == "menuclose"){
+            $("#menu").clearQueue().animate({
 				left : '0'
-Â Â Â Â Â Â Â Â Â Â Â Â })
-Â Â Â Â Â Â Â Â Â Â Â Â $(".user").clearQueue().animate({
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â "margin-left" : '220px'
-Â Â Â Â Â Â Â Â Â Â Â Â })
-			isMenuOpen = true;
+            })
+			$("#menu").removeClass("menuclose").addClass("menuopen")
+            $(".user").clearQueue().animate({
+                "margin-left" : '220px'
+            })
+			$(".user").removeClass("menuclose").addClass("menuopen")
+			$.get("include/changeCookies.php", {ouverturemenu: "menuopen"})
+
 		}else{
-Â Â Â Â Â Â Â Â Â Â Â Â $("#menu").clearQueue().animate({
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â left : '-200px'
-Â Â Â Â Â Â Â Â Â Â Â Â })
-Â Â Â Â Â Â Â Â Â Â Â Â $(".user").clearQueue().animate({
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â "margin-left" : '0px'
-Â Â Â Â Â Â Â Â Â Â Â Â })
-			isMenuOpen = false;
+            $("#menu").clearQueue().animate({
+                left : '-200px'
+            })
+			$("#menu").removeClass("menuopen").addClass("menuclose")
+            $(".user").clearQueue().animate({
+                "margin-left" : '0px'
+            })
+			$(".user").removeClass("menuopen").addClass("menuclose")
+			$.get("include/changeCookies.php", {ouverturemenu: "menuclose"})
 		}
-Â Â Â Â });
+    });
 
 	var isCalOpen = false;
 	$('.closecalendars').click(function()
-Â Â Â Â {
+    {
 		if (isCalOpen == false){
-Â Â Â Â Â Â Â Â Â Â Â Â $("#calendars").fadeIn().clearQueue().animate({
+            $("#calendars").fadeIn().clearQueue().animate({
 				right : '0px'
-Â Â Â Â Â Â Â Â Â Â Â Â })
+            })
 			$(".closecalendars").clearQueue().animate({
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â "margin-right" : '345px',
+                "margin-right" : '345px',
 				"display" : 'block'
-Â Â Â Â Â Â Â Â Â Â Â Â })
+            })
 			isCalOpen = true;
 		}else{
-Â Â Â Â Â Â Â Â Â Â Â Â $("#calendars").fadeOut().clearQueue().animate({
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â right : '-300px'
-Â Â Â Â Â Â Â Â Â Â Â Â })
+            $("#calendars").fadeOut().clearQueue().animate({
+                right : '-300px'
+            })
 			$(".closecalendars").clearQueue().animate({
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â "margin-right" : '45px'
-Â Â Â Â Â Â Â Â Â Â Â Â })
+                "margin-right" : '45px'
+            })
 			isCalOpen = false;
 		}
-Â Â Â Â });
+    });
 	
 	$(".TPChoice").click(function() {
 		var nTP = $(this).text().substr(-1) ;

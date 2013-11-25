@@ -8,3 +8,7 @@ else if ($_GET['td'] == (1 || 2)) {
 	$td = $_GET['td'] ;
 	setcookie('td', $td, time() + 365*24*3600, '/', null,false, true); 
 }
+else if ($_GET['ouverturemenu'] == ('menuopen' || 'menuclose')) {		
+	$ouverturemenu = $_GET['ouverturemenu'] ;
+	setcookie('ouverturemenu', $ouverturemenu, time() + 365*24*3600, '/', null,false, true); 
+}

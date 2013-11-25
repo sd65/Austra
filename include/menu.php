@@ -1,4 +1,4 @@
-        <aside id="menu">
+        <aside id="menu" class="<?php echo $_COOKIE['ouverturemenu'];?>">
             <ul>
                 <li><img src="img/logo_white@2x.png" width="140" /></li>
                 <p>Affichage</p>

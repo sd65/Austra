@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+/*@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
 
 body {
 font-family:Lucida Grande, Tahoma, Arial, sans-serif;
@@ -15,11 +15,15 @@ height:100%;
 position:absolute;
 width:200px;
 bottom:0;
-left:-200px;
 position:fixed;
 top:0;
 z-index:9999;
 }
+
+#menu.menuopen{left:0px;} .user.menuclose{margin-left: 0;}
+#menu.menuclose{left:-200px;} .user.menuopen{margin-left:220px;}
+
+
 
 #menu ul {
 list-style:none;

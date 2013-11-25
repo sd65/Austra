@@ -38,7 +38,7 @@
             </div>
 
             <div class="month">
-               <div>Décembre</div>
+               <div>Decembre</div>
                     <ul>
                        <li class="notinmonth">25</li><li class="notinmonth">26</li><li class="notinmonth">27</li><li class="notinmonth">28</li><li class="notinmonth">29</li><li class="notinmonth">30</li><li>1</li>
                    </ul>
@@ -98,7 +98,7 @@
             </div>
 
             <div class="month">
-               <div>Décembre</div>
+               <div>Decembre</div>
                     <ul>
                        <li class="notinmonth">25</li><li class="notinmonth">26</li><li class="notinmonth">27</li><li class="notinmonth">28</li><li class="notinmonth">29</li><li class="notinmonth">30</li><li>1</li>
                    </ul>
