@@ -1,5 +1,6 @@
         <aside id="menu">
             <ul>
+                <li><img src="img/logo_white@2x.png" width="140" /></li>
                 <p>Affichage</p>
                 <li class="switch">
                     Tous
