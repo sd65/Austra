@@ -99,19 +99,3 @@ if ($td == 2)
 
 return $td_code;
 }
-
-function trad_groupeedt_typeCours($groupeedt) {
-$typeCours="CM";
-
-if ($groupeedt == "SRC_S3") {
-	$typeCours = "CM";
-}
-else if (($groupeedt == "SRC_S3A") || ($groupeedt == "SRC_S3B")) {
-	$typeCours = "TD";
-}
-else if (($groupeedt == "SRC_S3A1") || ($groupeedt == "SRC_S3A2") || ($groupeedt == "SRC_S3B1")) {
-	$typeCours = "TP";
-}
-
-return $typeCours;
-}

@@ -3,7 +3,7 @@
     <head>
         <title>Austra</title>
         <meta name="description" content="" />
-        <meta charset="UTF-8" />
+        <meta charset="ISO-8859-1" />
         <link rel="stylesheet" type="text/css" href="./css/base.css" />
         <link rel="stylesheet" type="text/css" href="./css/table.css" />
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>

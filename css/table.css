@@ -87,6 +87,6 @@ td p{
 
 .TP{background-color: #00C586;}
 .TD{background-color: #4ba8f0;}
-.CM{background-color: #f04c4b;}
+.COURS{background-color: #f04c4b;}
 .empty{background-color: #fff; min-height: 60px;}
-.TD, .TP, .CM{border: 1px solid white;}
+.TD, .TP, .COURS{border: 1px solid white;}

@@ -21,7 +21,14 @@ function edt_display($year, $week, $groupeedt, $tp, $td) {
 		$tp_code = trad_tp($filiere_code, $tp);
 		$td_code = trad_td($filiere_code, $td);	
 		
-    $query_week = "SELECT matiereedt,enseignantedt,typeenseignementedt,groupeedt,jouredt,semaineedt,annee,debutedt,finedt,salleedt FROM edt WHERE annee=" . $year . " AND (groupeedt='" . $filiere_code . "' OR groupeedt='" . $tp_code . "' OR groupeedt='" . $td_code . "')AND semaineedt=" . $week . " ORDER BY jouredt, debutedt";
+    $query_week = "SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt 
+    FROM edt 
+    LEFT JOIN enseignant
+    ON edt.enseignantedt = enseignant.codeenseignant 
+    LEFT JOIN matiere
+    ON edt.matiereedt = matiere.codematiere
+    WHERE edt.annee=" . $year . " AND (groupeedt='" . $filiere_code . "' OR groupeedt='" . $tp_code . "' OR groupeedt='" . $td_code . "')AND semaineedt=" . $week . " ORDER BY jouredt, debutedt";
+    
     $result_query_week = mysql_query($query_week) or die('Erreur SQL !<br>' . $query_week . '<br>' . mysql_error());
     
     while ($data = mysql_fetch_assoc($result_query_week)) {
@@ -95,7 +102,7 @@ function edt_display($year, $week, $groupeedt, $tp, $td) {
 					if(isset($numCoursHeure)) {
 						$duree = ${$day}[$numCoursHeure]['finedt'] - ${$day}[$numCoursHeure]['debutedt'];
 						
-						$typeCours = trad_groupeedt_typeCours(${$day}[$numCoursHeure]['groupeedt']); //A RENSEIGNER DYNAMIQUEMENT
+						$typeCours = ${$day}[$numCoursHeure]['typeenseignementedt']; 
 					}
 					?>
 					
@@ -103,7 +110,7 @@ function edt_display($year, $week, $groupeedt, $tp, $td) {
 						<p>
 							 <?php 
 							if(isset($numCoursHeure)) {
-								echo ${$day}[$numCoursHeure]['matiereedt'] . "<br />" . ${$day}[$numCoursHeure]['enseignantedt'] . "<br />" . ${$day}[$numCoursHeure]['salleedt'];
+								echo ${$day}[$numCoursHeure]['nommatiere'] . "<br />" . ${$day}[$numCoursHeure]['prenomenseignant'] . " " . ${$day}[$numCoursHeure]['nomenseignant'] . "<br />" . ${$day}[$numCoursHeure]['salleedt'];
 							$hour += $duree -1;
 							}
 							 ?>
