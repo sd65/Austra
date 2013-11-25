@@ -44,5 +44,22 @@ $(document).ready(function()
 			isCalOpen = false;
 		}
     });
+	
+	$(".TPChoice").click(function() {
+		var nTP = $(this).text().substr(-1) ;
+		$.get("include/changeCookies.php", {tp: nTP},
+		function(){
+			location.reload();
+		});
+		
+	});
+	
+	$(".TDChoice").click(function() {
+		var nTD = $(this).text().substr(-1) ;
+		$.get("include/changeCookies.php", {td: nTD},
+		function(){
+			location.reload();
+		});
+	});
 
 });

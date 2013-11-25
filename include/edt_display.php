@@ -100,12 +100,14 @@ function edt_display($year, $week, $groupeedt, $tp, $td) {
 					?>
 					
 					<td colspan=<?php echo $duree ?> class=<?php echo $typeCours ?>>
-						 <?php 
-						if(isset($numCoursHeure)) {
-							echo ${$day}[$numCoursHeure]['matiereedt'] . "<br />" . ${$day}[$numCoursHeure]['enseignantedt'] . "<br />" . ${$day}[$numCoursHeure]['salleedt'];
-						$hour += $duree -1;
-						}
-						 ?>
+						<p>
+							 <?php 
+							if(isset($numCoursHeure)) {
+								echo ${$day}[$numCoursHeure]['matiereedt'] . "<br />" . ${$day}[$numCoursHeure]['enseignantedt'] . "<br />" . ${$day}[$numCoursHeure]['salleedt'];
+							$hour += $duree -1;
+							}
+							 ?>
+						 </p>
 					</td>
 					
 			<?php endfor; ?>

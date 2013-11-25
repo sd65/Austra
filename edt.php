@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <title>Austra _ Inte _ Vue éleve</title>
+        <title>Austra</title>
         <meta name="description" content="" />
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="./css/base.css" />
@@ -11,15 +11,16 @@
     </head>
     <body>
         
-				<?php $year = 2013;
-							$week = date('W');
-							$tp = $_GET['tp']; //Donnée renseignée pour test
-							$td = $_GET['td']; //Donnée renseignée pour test 
-							$filiere = "SRC" //Donnée renseignée pour test
+				<?php 
+					$year = 2013;
+					$week = date('W');
+					$filiere = "SRC" //Donnée renseignée pour test
 				?>
-				<?php include("./include/menu.php"); 
-							include("./include/nav.php"); 
-							include "include/edt_display.php";
+				<?php 
+					include("./include/checkCookies.php");
+					include("./include/menu.php"); 
+					include("./include/nav.php"); 
+					include "include/edt_display.php";
 				?>
          <div id="master-planning">
             <table id="planning">

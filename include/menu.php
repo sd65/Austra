@@ -14,13 +14,13 @@
                     Moi
                 </li>
                 <li>
-									<a href="?tp=1&td=<?php echo $td?>" <?php if($tp==1){ echo 'class="current"';} ?> >TP1</a>
-									<a href="?tp=2&td=<?php echo $td?>" <?php if($tp==2){ echo 'class="current"';} ?> >TP2</a>
-									<a href="?tp=3&td=<?php echo $td?>" <?php if($tp==3){ echo 'class="current"';} ?> >TP3</a>
+									<a class="TPChoice<?php if($tp==1){ echo ' current';} ?>" >TP1</a>
+									<a class="TPChoice<?php if($tp==2){ echo ' current';} ?>" >TP2</a>
+									<a class="TPChoice<?php if($tp==3){ echo ' current';} ?>" >TP3</a>
 								</li>
                 <li>
-									<a href="?td=1&tp=<?php echo $tp?>" <?php if($td==1){ echo 'class="current"';} ?> >TD1</a>
-									<a href="?td=2&tp=<?php echo $tp?>" <?php if($td==2){ echo 'class="current"';} ?>>TD2</a>
+									<a class="TDChoice<?php if($td==1){ echo ' current';} ?>" >TD1</a>
+									<a class="TDChoice<?php if($td==2){ echo ' current';} ?>" >TD2</a>
 								</li>
                 
 								<p>Paramètres</p>
