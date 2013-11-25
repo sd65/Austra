@@ -17,26 +17,12 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="./css/base.css" />
         <link rel="stylesheet" type="text/css" href="./css/table.css" />
+				<link rel="stylesheet" type="text/css" href="./css/array.css" />
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
         <script type="text/javascript" src="./js/frontend.js"></script>
     </head>
     <body>
-		<div id="table">
-			<table>        
-				<thead>
-					<tr>
-						<td class="thead">Jour</td>
-						<?php for ($hourStatic=8;$hourStatic<20;$hourStatic++): ?>
-							<td class="hour"> <?= $hourStatic ?>h</td>
-							<td class="halfHour">30</td>
-						<?php	endfor ; ?>
-					</tr>
-			</thead>
-			<tbody>
-				<?php edt_display($year, $week, $tp, $td); ?>
-			</tbody>
-			</table>
-		</div> <!-- Fin Tableau -->
+		
         <aside id="menu">
             <ul>
                 <p>Affichage</p>
@@ -200,5 +186,21 @@
             </ul>
             </div>
         </aside>
+				<div id="table">
+			<table>        
+				<thead>
+					<tr>
+						<td class="thead">Jour</td>
+						<?php for ($hourStatic=8;$hourStatic<20;$hourStatic++): ?>
+							<td class="hour"> <?= $hourStatic ?>h</td>
+							<td class="halfHour">30</td>
+						<?php	endfor ; ?>
+					</tr>
+			</thead>
+			<tbody>
+				<?php edt_display($year, $week, $tp, $td); ?>
+			</tbody>
+			</table>
+		</div> <!-- Fin Tableau -->
     </body>
 </html>
