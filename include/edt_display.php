@@ -79,10 +79,27 @@ function edt_display($year, $week, $tp, $td) {
 			<td><?php echo $day; ?></td>
 			
 			<?php for ($hour = 0; $hour < 24; $hour++): ?>
-					<td>
-             <?php echo ${$day . "_affichage"}[$hour]; ?> 
+					
+					<?php
+					$duree = 1;
+					$numCoursHeure = ${$day . "_affichage"}[$hour];	
+					
+					if(isset($numCoursHeure)) {
+						$duree = ${$day}[$numCoursHeure]['finedt'] - ${$day}[$numCoursHeure]['debutedt'];
+					}
+					?>
+					
+					<td colspan=<?php echo $duree ?>>
+						 <?php 
+						if(isset($numCoursHeure)) {
+							echo ${$day}[$numCoursHeure]['matiereedt'] . "\n" . ${$day}[$numCoursHeure]['enseignantedt'] . "\n" . ${$day}[$numCoursHeure]['salleedt'];
+						$hour += $duree -1;
+						}
+						 ?>
 					</td>
+					
 			<?php endfor; ?>
+			
 		</tr>
 	<?php
     }
