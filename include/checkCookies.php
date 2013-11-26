@@ -12,5 +12,5 @@ if (empty($_COOKIE)) // Si on arrive pour la première fois
 else {
 	$tp = $_COOKIE['tp'] ;
 	$td = $_COOKIE['td'] ;
-	$ouverturemenu = $_GET['ouverturemenu'] ;
+	$ouverturemenu = $_COOKIE['ouverturemenu'] ;
 }
