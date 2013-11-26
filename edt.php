@@ -15,7 +15,11 @@
         
 				<?php 
 					$year = 2013;
-					$week = date('W');
+					if(isset($_GET['semaine'])) {
+						$week = $_GET['semaine'] ;
+					} else {
+						$week = date('W');
+					}
 					$filiere = "SRC_S3" //Donnée renseignée pour test
 				?>
 				<?php 

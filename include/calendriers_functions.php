@@ -36,10 +36,11 @@
 		while ($pas < $nb_jour) {
 			if ($indexe == 1){
 				$testsemaine = Date("W-m", mktime(0, 0, 0, getMonth($periode), 1 + $pas, getYear($periode)));
+				$numSemaine = Date("W", mktime(0, 0, 0, getMonth($periode), 1 + $pas, getYear($periode)));
 				if($testsemaine==date("W-m")){
- 					$leCalendrier .= "\n\t<ul class=\"active\">";
+ 					$leCalendrier .= "\n\t<ul class=\"active\" data-semaine=\"" . $numSemaine . "\"><a href=\"?semaine=". $numSemaine ."\">";
 				}else{
-					$leCalendrier .= "\n\t<ul>";
+					$leCalendrier .= "\n\t<ul data-semaine=\"" . $numSemaine . "\"><a href=\"?semaine=". $numSemaine ."\">";
 				}
 			}
 			// Si le jour calendrier == jour de la semaine en cours
@@ -64,6 +65,7 @@
 
 	// Fonction pour afficher les semaines
 	function showWeek($a) {
+		$laSemaine = "" ;
 		for ($i=0; $i < $a; $i++) { 
 			$nombreSemaine = getWeeksPerMonth(date("Y-m", strtotime("+".$i." month")));	
 			$laSemaine .= "<ul>";
@@ -72,7 +74,7 @@
 				$numSemaineTraite=date("W",strtotime("+".$y." week",strtotime($numSemaineTraite)));
 				$laSemaine .= "<li>".$numSemaineTraite."</li>";
 			}
-			$laSemaine .= "</ul>";
+			$laSemaine .= "</a></ul>";
 		}
 		return $laSemaine;
 	}

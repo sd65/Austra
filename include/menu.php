@@ -20,6 +20,7 @@
       </div>
       <span <?php if($vue_globale == 0){ echo 'class=currentView';} ?>>Moi</span>
     </li>
+    <?php if($vue_globale == 0){ ?>
      <li>
       <a class="TPChoice<?php if($tp==1){ echo ' current';} ?>" >TP1</a>
       <a class="TPChoice<?php if($tp==2){ echo ' current';} ?>" >TP2</a>
@@ -29,6 +30,7 @@
       <a class="TDChoice<?php if($td==1){ echo ' current';} ?>" >TD1</a>
       <a class="TDChoice<?php if($td==2){ echo ' current';} ?>" >TD2</a>
     </li>
+    <?php } ?>
     <p>Légende</p>
     <li>
       <a>Cours</a>
