@@ -35,13 +35,13 @@ $(document).ready(function()
 				right : '0px'
             })
 			$(".closecalendars").clearQueue().animate({
-                "margin-right" : '345px',
+                "margin-right" : '305px',
 				"display" : 'block'
             })
 			isCalOpen = true;
 		}else{
             $("#calendars").fadeOut().clearQueue().animate({
-                right : '-300px'
+                right : '-260px'
             })
 			$(".closecalendars").clearQueue().animate({
                 "margin-right" : '45px'

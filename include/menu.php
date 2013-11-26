@@ -3,8 +3,8 @@
     <li><img src="img/logo_white@2x.png" width="140" /></li>
     <p>Affichage</p>
     <li><div class="select"><select>
-	<option value="">MMI</option>
 	  <option value="">SRC</option>
+	  <option value="">MMI</option>
 	  <option value="">PUB 1A</option>
 	  <option value="">PUB 2A</option>
 	  <option value="">LP</option>
