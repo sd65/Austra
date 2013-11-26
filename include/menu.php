@@ -22,8 +22,8 @@
       <a class="TDChoice<?php if($td==1){ echo ' current';} ?>" >TD1</a>
       <a class="TDChoice<?php if($td==2){ echo ' current';} ?>" >TD2</a>
     </li>
-    <p>ParamÃ¨tres</p>
+    <p>Paramètres</p>
     <li><a href="">Modifier mon profil</a></li>
-    <li class="logout"><a href="">DÃ©connexion</a></li>
+    <li class="logout"><a href="">Déconnexion</a></li>
   </ul>
 </aside>
