@@ -7,7 +7,8 @@
         <link rel="icon" type="image/png" href="img/favicon.png" />
         <link rel="stylesheet" type="text/css" href="./css/base.css" />
         <link rel="stylesheet" type="text/css" href="./css/edt.css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script> -->
+        <script type="text/javascript" src="./js/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="./js/frontend.js"></script>
     </head>
     <body>
@@ -15,7 +16,7 @@
 				<?php 
 					$year = 2013;
 					$week = date('W');
-					$filiere = "SRC" //Donnée renseignée pour test
+					$filiere = "SRC_S3" //Donnée renseignée pour test
 				?>
 				<?php 
 					include("./include/checkCookies.php");

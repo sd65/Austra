@@ -43,7 +43,7 @@ text-decoration:none;
 }
 
 #menu .current {
-color:#FFF;
+color:#fff;
 opacity:1;
 padding:0 30px 0 0;
 text-decoration:none;
@@ -65,12 +65,20 @@ background:url(../img/logout.png) no-repeat;
 padding-left:20px;
 }
 
+#menu .switch span {
+opacity:0.5;
+}
+
+#menu .switch .currentView {
+opacity:1;
+}
+
 #menu .onoffswitch {
 -moz-user-select:none;
 -ms-user-select:none;
 -webkit-user-select:none;
 display:inline-block;
-margin:0 20px;
+margin:0 26px;
 position:relative;
 width:29px;
 }
@@ -157,7 +165,7 @@ background : #333 ;
 #menu .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {margin-left:0;}
 #menu .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {right:0;}
 
-a.user, a.closecalendars{color: #ccc; text-decoration: none;}
+a.user, a.closecalendars{color: #808080; text-decoration: none;}
 a:hover.user, a:hover.closecalendars {color:#70cfe7;}
 
 a.user {

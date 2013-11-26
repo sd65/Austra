@@ -10,7 +10,7 @@
 	  <option value="">LP</option>
 	</select></div></li>
     <li class="switch">
-      Tous
+      <span <?php if($vue_globale == 1){ echo 'class=currentView';} ?>>Tout</span>
       <div class="onoffswitch">
         <input type="checkbox" <?php if($vue_globale == 0) {echo "checked";} ?> name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
         <label class="onoffswitch-label" for="myonoffswitch">
@@ -18,9 +18,9 @@
           <div class="onoffswitch-switch"></div>
         </label>
       </div>
-      Moi
+      <span <?php if($vue_globale == 0){ echo 'class=currentView';} ?>>Moi</span>
     </li>
-    <li>
+     <li>
       <a class="TPChoice<?php if($tp==1){ echo ' current';} ?>" >TP1</a>
       <a class="TPChoice<?php if($tp==2){ echo ' current';} ?>" >TP2</a>
       <a class="TPChoice<?php if($tp==3){ echo ' current';} ?>" >TP3</a>
@@ -28,6 +28,20 @@
     <li>
       <a class="TDChoice<?php if($td==1){ echo ' current';} ?>" >TD1</a>
       <a class="TDChoice<?php if($td==2){ echo ' current';} ?>" >TD2</a>
+    </li>
+    <p>Légende</p>
+    <li>
+      <a>Cours</a>
+      <a>Exam</a>
+    </li>
+    <li>
+      <a>TP1</a>
+      <a>TP2</a>
+      <a>TP3</a>
+    </li>
+    <li>
+      <a>TD1</a>
+      <a>TD2</a>
     </li>
     <p>Paramètres</p>
     <li><a href="">Modifier mon profil</a></li>
