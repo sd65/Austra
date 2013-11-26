@@ -4,8 +4,9 @@
         <title>Austra</title>
         <meta name="description" content="" />
         <meta charset="ISO-8859-1" />
+        <link rel="icon" type="image/png" href="img/favicon.png" />
         <link rel="stylesheet" type="text/css" href="./css/base.css" />
-        <link rel="stylesheet" type="text/css" href="./css/table.css" />
+        <link rel="stylesheet" type="text/css" href="./css/edt.css" />
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
         <script type="text/javascript" src="./js/frontend.js"></script>
     </head>
@@ -43,7 +44,13 @@
                 </tr>
               </thead>
               <tbody>
-                <?php edt_display($year, $week, $filiere, $tp, $td); ?>
+                <?php 
+                if($vue_globale == 1) {
+					edt_display_all($year, $week, $filiere, $tp, $td); 
+                } else {
+					edt_display($year, $week, $filiere, $tp, $td);
+				}
+                ?>
               </tbody>
             </table>
           </div>

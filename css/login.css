@@ -1,0 +1,111 @@
+body{
+	background: center fixed no-repeat;
+	background-size: 100%;
+	font-size: 20px;
+}
+
+*:focus{
+	outline: none;
+}
+
+section{
+	position: absolute;
+	width:300px;
+	max-width: 90%;
+	height: 300px;
+	left:50%;
+	margin-left:-150px;
+	top:50%;
+	margin-top: -150px;
+}
+
+h1 img{
+	width: 100%;
+	opacity: .9;
+}
+form{opacity: .8;}
+h1{
+	margin: 0;
+}
+
+fieldset{
+	border: none;
+	margin: 0;
+	padding: 0;
+	border-radius: 5px;
+
+}
+input{
+	display: block;
+	width: 280px;
+	max-width: 100%;
+	margin: 0 auto;
+	height: 30px;
+	margin: 15px 0;
+	border-radius: 3px;
+	border: none;
+	font-size: 13px;
+	padding: 0 10px;
+	background: rgba(0,0,0,0);
+	border: 1px solid #fff;
+	color: #fff;
+	text-align: center;
+}
+
+.submit input{
+	border: none;
+	margin: 0;
+	text-transform: uppercase;
+	font-weight: 700;
+	width: 80px;
+	color: rgba(255,255,255,1);
+	cursor: pointer;
+	background: transparent;
+	padding: 0;
+	text-align: left;
+}
+
+label{font-size: .6em; color: #fff; text-align: right; font-weight: 700;}
+input[type="checkbox"]{
+	width: initial;
+	padding: 0;
+	margin: 0;
+	float: left;
+	height: initial;
+	margin-right: 5px;
+	margin-top: 12px;
+}
+
+.rememberme{float: right; margin-top: -35px;}
+
+input[type="password"]
+{
+  -webkit-text-security: disc;
+}
+
+input[type=checkbox]#remember {
+display:none;
+}
+ 
+input[type=checkbox]#remember + label#label {
+padding-left:18px;
+height:12px;
+display:inline-block;
+line-height:12px;
+background-repeat:no-repeat;
+background-position: 0 0;
+vertical-align:middle;
+cursor:pointer;
+}
+ 
+input[type=checkbox]#remember:checked + label#label {
+background-position: 0 -12px;
+}
+ 
+#label{
+background-image:url('../img/checkbox.png');
+}
+
+@media screen and (max-width: 768px){
+	body{background-size: auto;}
+}

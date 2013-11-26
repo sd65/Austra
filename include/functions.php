@@ -99,3 +99,27 @@ if ($td == 2)
 
 return $td_code;
 }
+
+function trad_filiere_all($filiere) {
+
+	$all_code_filiere = array();
+
+	if ($filiere == "SRC") {
+		$all_code_filiere[0] = "SRC_S3";
+		$all_code_filiere[1] = "SRC_S3A";
+		$all_code_filiere[2] = "SRC_S3B";
+		$all_code_filiere[3] = "SRC_S3A1";
+		$all_code_filiere[4] = "SRC_S3A2";
+		$all_code_filiere[5] = "SRC_S3B1";
+	}
+	else if ($filiere == "MMI") {
+		$all_code_filiere[0] = "MMI_S1";
+		$all_code_filiere[1] = "MMI_S1A";
+		$all_code_filiere[2] = "MMI_S1B";
+		$all_code_filiere[3] = "MMI_S1A1";
+		$all_code_filiere[4] = "MMI_S1A2";
+		$all_code_filiere[5] = "MMI_S1B1";
+	}
+
+	return $all_code_filiere;
+}

@@ -1,14 +1,13 @@
 <?php
-
-if ($_GET['tp'] == (1 || 2 || 3)) {	
+if (isset($_GET['tp']) && $_GET['tp'] == (1 || 2 || 3)) {	
 	$tp = $_GET['tp'] ;
 	setcookie('tp', $tp, time() + 365*24*3600, '/', null,false, true); 
 }
-else if ($_GET['td'] == (1 || 2)) {		
+else if (isset($_GET['td']) && $_GET['td'] == (1 || 2)) {		
 	$td = $_GET['td'] ;
 	setcookie('td', $td, time() + 365*24*3600, '/', null,false, true); 
 }
-else if ($_GET['ouverturemenu'] == ('menuopen' || 'menuclose')) {		
+else if (isset($_GET['ouverturemenu']) && $_GET['ouverturemenu'] == ('menuopen' || 'menuclose')) {		
 	$ouverturemenu = $_GET['ouverturemenu'] ;
 	setcookie('ouverturemenu', $ouverturemenu, time() + 365*24*3600, '/', null,false, true); 
 }
