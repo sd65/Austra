@@ -66,5 +66,19 @@ $(document).ready(function()
 			location.reload();
 		});
 	});
-
+	
+	$(".onoffswitch-checkbox").click(function() {
+		if ($(this).is(':checked')) { // Vue "moi"
+			$.get("include/changeCookies.php", {"vue_globale":0},
+			function(){
+				location.reload();
+			});
+		} else {
+			$.get("include/changeCookies.php", {"vue_globale":1},
+			function(){
+				location.reload();
+			});
+		}
+	});
+	
 });
