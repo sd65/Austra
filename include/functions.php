@@ -89,7 +89,7 @@ function trad_td_to_code($filiere, $td) {
 	if ($td == 2)
 	    $td_code = "SRC_S3B" ;
 
-	} else if ($filiere == "MMI") {
+	} else if ($filiere == "MMI_S1") {
 
 	if ($td == 1)
 	    $td_code = "MMI_S1A" ;
