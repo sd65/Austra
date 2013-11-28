@@ -8,7 +8,7 @@ include "db_connect.php";
     <p>Affichage</p>
     <li>
       <div class="select">
-        <select>
+        <select id="selectFiliere">
           <?php
             $currentYearLikeRequest= "%" . date('Y') . "%" ;
             $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
@@ -21,7 +21,7 @@ include "db_connect.php";
                   $currentFiliereOrNot = "selected" ;
                 }
                 
-                echo "<option ". $currentFiliereOrNot ." value=''>" . $donnees['filiere']  . "</option>";
+                echo "<option ". $currentFiliereOrNot ." value='" . $donnees['filiere'] ."'>" . $donnees['filiere']  . "</option>";
             }
       	   
       	  ?>

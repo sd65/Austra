@@ -80,5 +80,14 @@ $(document).ready(function()
 			});
 		}
 	});
+
+	$("#selectFiliere").click(function() {
+		var filiere = $(this).val();
+		$.get("include/changePHPSession.php", {filiere: filiere},
+		function(){
+			location.reload();
+		});
+		
+	});
 	
 });

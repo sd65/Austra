@@ -64,8 +64,8 @@ if(!empty($_POST)){
                 <label for="name"></label><input type="text" id="name" name="name" value="" tabindex="1" placeholder="Nom d'utilisateur"/>
                 <label for="password"></label><input type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
             </fieldset>
+            <div class="forgottenpassword"><a>Mot de passe oublié ?</a></div>
             <div class="submit"><input type="submit" name="submit" value="Valider" /></div>
-            <span class="rememberme"><input type="checkbox" name="remember" value="remember" id="remember"/><label id="label" for="remember">Se souvenir de moi</label></span>
         </form>
     </section>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
