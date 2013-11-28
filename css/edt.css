@@ -157,8 +157,9 @@ text-overflow: '';
 
 #menu .select{
 margin: -5px 0 -5px 0;
-background: url(../img/bottom-arrow.png) no-repeat right #333333;
 width: 130px;
+background: url(../img/arrow_white.png) no-repeat right #333333; 
+background: -webkit-image-set(url(../img/arrow_white@2x.png) 2x, url(../img/arrow_white.png) 1x) no-repeat right #333;
 }
 
 
