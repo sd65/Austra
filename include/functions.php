@@ -127,51 +127,51 @@ function trad_filiere_to_code_all($filiere) {
 
 function trad_codetp_affichage($filiere, $tp) {
 
-if ($filiere == "SRC_S3") {
+	if ($filiere == "SRC_S3") {
 
-if ($tp == "SRC_S3A1" )
-    $tp_affichage = "TP1" ;
+	if ($tp == "SRC_S3A1" )
+	    $tp_affichage = "TP1" ;
 
-if ($tp == "SRC_S3A2")
-    $tp_affichage = "TP2" ;
+	if ($tp == "SRC_S3A2")
+	    $tp_affichage = "TP2" ;
 
-if ($tp == "SRC_S3B1")
-    $tp_affichage = "TP3" ;
+	if ($tp == "SRC_S3B1")
+	    $tp_affichage = "TP3" ;
 
-} else if ($filiere == "MMI") {
+	} else if ($filiere == "MMI") {
 
-if ($tp == "MMI_S1A1")
-    $tp_affichage = "TP1" ;
+	if ($tp == "MMI_S1A1")
+	    $tp_affichage = "TP1" ;
 
-if ($tp == "MMI_S1A2")
-    $tp_affichage = "TP2" ;
+	if ($tp == "MMI_S1A2")
+	    $tp_affichage = "TP2" ;
 
-if ($tp == "MMI_S1B1")
-    $tp_affichage = "TP3" ;
+	if ($tp == "MMI_S1B1")
+	    $tp_affichage = "TP3" ;
 
-}
+	}
 
-return $tp_affichage;
+	return $tp_affichage;
 }
 
 function trad_codetd_affichage($filiere, $td) {
 
-if ($filiere == "SRC_S3") {
+	if ($filiere == "SRC_S3") {
 
-if ($td == "SRC_S3A")
-    $td_affichage =  "TD1";
+	if ($td == "SRC_S3A")
+	    $td_affichage =  "TD1";
 
-if ($td == "SRC_S3B")
-    $td_affichage =  "TD2";
-    
-} else if ($filiere == "MMI") {
+	if ($td == "SRC_S3B")
+	    $td_affichage =  "TD2";
+	    
+	} else if ($filiere == "MMI") {
 
-if ($td == "MMI_S1A")
-    $td_affichage =  "TD1";
+	if ($td == "MMI_S1A")
+	    $td_affichage =  "TD1";
 
-if ($td == "MMI_S1B")
-    $td_affichage =  "TD2";
-}
+	if ($td == "MMI_S1B")
+	    $td_affichage =  "TD2";
+	}
 
-return $td_affichage;
+	return $td_affichage;
 }

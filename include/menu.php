@@ -1,14 +1,33 @@
+<?php
+include "db_connect.php";
+?>
+
 <aside id="menu" class="<?php echo $ouverturemenu;?>">
   <ul>
     <li><img src="img/logo_white@2x.png" width="140" /></li>
     <p>Affichage</p>
-    <li><div class="select"><select>
-	  <option value="">SRC</option>
-	  <option value="">MMI</option>
-	  <option value="">PUB 1A</option>
-	  <option value="">PUB 2A</option>
-	  <option value="">LP</option>
-	</select></div></li>
+    <li>
+      <div class="select">
+        <select>
+          <?php
+            $currentYearLikeRequest= "%" . date('Y') . "%" ;
+            $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
+            $req->execute(array('annee' => $currentYearLikeRequest));
+
+            while ($donnees = $req->fetch())
+            { 
+                $currentFiliereOrNot = null ;
+                if($donnees['filiere'] == $filiere) {
+                  $currentFiliereOrNot = "selected" ;
+                }
+                
+                echo "<option ". $currentFiliereOrNot ." value=''>" . $donnees['filiere']  . "</option>";
+            }
+      	   
+      	  ?>
+	     </select>
+      </div>
+    </li>
     <li class="switch">
       <span <?php if($vue_globale == 1){ echo 'class=currentView';} ?>>Tout</span>
       <div class="onoffswitch">
@@ -37,13 +56,8 @@
       <a>Exam</a>
     </li>
     <li>
-      <a>TP1</a>
-      <a>TP2</a>
-      <a>TP3</a>
-    </li>
-    <li>
-      <a>TD1</a>
-      <a>TD2</a>
+      <a>TP</a>
+      <a>TD</a>
     </li>
     <p>Paramètres</p>
     <li><a href="">Modifier mon profil</a></li>

@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION['filiere']) ) {
+    $prenom = $_SESSION['prenom'];
+    $nom = $_SESSION['nom'] ;
+    $filiere = $_SESSION['filiere'] ;
+} else {
+  header('Location: index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -20,13 +33,12 @@
 					} else {
 						$week = date('W');
 					}
-					$filiere = "MMI_S1" //Donnée renseignée pour test
 				?>
 				<?php 
-					include("./include/checkCookies.php");
-					include("./include/menu.php"); 
-					include("./include/nav.php"); 
-					include "include/edt_display.php";
+					include "./include/checkCookies.php";
+					include "./include/menu.php"; 
+					include "./include/nav.php"; 
+					include "./include/edt_display.php";
 				?>
          <div id="master-planning">
             <table id="planning">
