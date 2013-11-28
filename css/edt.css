@@ -301,3 +301,40 @@ td p{
 #legendeDevoir{width: 10px;height: 10px;display: inline-block;background: #f04c4b;margin-left: -10px;}
 #legendeTP{width: 10px;height: 10px;display: inline-block;background: #00C586;}
 #legendeTD{width: 10px;height: 10px;display: inline-block;background: #4ba8f0;margin-left: 10px;}
+
+/****** Modifier profil ******/ 
+aside#modifierprofil{
+	width: 170px;
+	margin: 0;
+	top: 0;
+	background: #eee;
+	height: 100%;
+	left: -170px;
+	display: none;
+	position: fixed;
+	padding: 20px;
+	color: #333;
+	z-index:8888;
+}
+aside#modifierprofil h1{font-size: 1em;}
+aside#modifierprofil label{font-size: .8em;}
+aside#modifierprofil fieldset{
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+aside#modifierprofil input{margin-right: 20px; width: 160px;}
+aside#modifierprofil fieldset{margin-bottom: 20px;}
+aside#modifierprofil .submit input{width: 80px;margin-left: 42px;}
+
+
+
+
+
+
+
+
+
+
+
+

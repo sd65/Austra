@@ -50,6 +50,30 @@ $(document).ready(function()
 		}
     });
 	
+	var isProfilOpen = false;
+	$('.modifprofil').click(function()
+    {
+		if (isProfilOpen == false){
+            $("#modifierprofil").fadeIn().clearQueue().animate({
+				left : '200px',
+				display : 'block'
+            })
+			$(".user").css({
+				visibility : 'hidden'
+			})
+			isProfilOpen = true;
+		}else{
+            $("#modifierprofil").fadeOut().clearQueue().animate({
+				left : '-170px',
+				display : 'none'
+            })
+			$(".user").css({
+				visibility : 'visible'
+			})
+			isProfilOpen = false;
+		}
+    });
+	
 	$(".TPChoice").click(function() {
 		var nTP = $(this).text().substr(-1) ;
 		$.get("include/changeCookies.php", {tp: nTP},

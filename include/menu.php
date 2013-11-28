@@ -60,7 +60,9 @@ include "db_connect.php";
       <a><span id="legendeTD"></span> TD</a>
     </li>
     <p>Paramètres</p>
-    <li><a href="">Modifier mon profil</a></li>
+    <li><a class="modifprofil" href="javascript:;">Modifier mon profil</a></li>
     <li class="logout"><a href="include/logout.php">Déconnexion</a></li>
   </ul>
 </aside>
+<?php include "include/modifier_profil.php"; ?>
+
