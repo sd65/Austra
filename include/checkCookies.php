@@ -1,6 +1,6 @@
 <?php
 
-if (empty($_COOKIE)) // Si on arrive pour la première fois
+if (!isset($_COOKIE['tp']) || !isset($_COOKIE['td']) || !isset($_COOKIE['vue_globale']) || !isset($_COOKIE['ouverturemenu'])) // Si on arrive pour la première fois
 {
 	setcookie('tp', "1", time() + 365*24*3600, '/', null,false, true);
 	setcookie('td', "1", time() + 365*24*3600, '/', null,false, true);

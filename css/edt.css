@@ -150,6 +150,9 @@ width:15px;
  color: #fff;
  padding: 0;
  margin: 0;
+ -moz-appearance: none;
+text-indent: 0.01px;
+text-overflow: '';
 }
 
 #menu .select{
@@ -157,6 +160,7 @@ margin: -5px 0 -5px 0;
 background: url(../img/bottom-arrow.png) no-repeat right #333333;
 width: 130px;
 }
+
 
 #menu option {
 background : #333 ;

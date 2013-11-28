@@ -27,7 +27,7 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
     <body>
           
 				<?php 
-					$year = 2013;
+					$year = date('Y');
 					if(isset($_GET['semaine'])) {
 						$week = $_GET['semaine'] ;
 					} else {
