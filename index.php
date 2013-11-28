@@ -1,6 +1,11 @@
 <?php
+session_start();
 
 include "include/db_connect.php";
+
+if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION['filiere']) ) {
+  header('Location: edt.php');
+}
 
 if(!empty($_POST)){
     if(!empty($_POST['name']) && !empty($_POST['password'])) {
@@ -17,7 +22,6 @@ if(!empty($_POST)){
 
 
         if(!empty($resultat)) {
-            session_start();
             $_SESSION['prenom'] = $resultat['prenom'];
             $_SESSION['nom'] = $resultat['nometudiant'];
             $_SESSION['filiere'] = $resultat['filiere'];

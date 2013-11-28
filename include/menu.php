@@ -61,6 +61,6 @@ include "db_connect.php";
     </li>
     <p>Paramètres</p>
     <li><a href="">Modifier mon profil</a></li>
-    <li class="logout"><a href="">Déconnexion</a></li>
+    <li class="logout"><a href="include/logout.php">Déconnexion</a></li>
   </ul>
 </aside>
