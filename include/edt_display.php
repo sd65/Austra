@@ -6,7 +6,6 @@ include "functions.php";
 function edt_display($year, $week, $filiere, $tp, $td) {
 
 		$days = array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
-		
 		$tp_code;
 		$td_code;
 		
@@ -15,7 +14,7 @@ function edt_display($year, $week, $filiere, $tp, $td) {
 			 ${"NbCours" . $day} = 0;
 			 ${$day . "_affichage"} = array();
 			 ${$day . "_affichage"} = array_fill(0, 24, NULL);
-    }
+    	}
 		
 		$filiere_code = trad_filiere_to_code($filiere);
 		$tp_code = trad_tp_to_code($filiere_code, $tp);

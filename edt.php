@@ -12,7 +12,7 @@
         <script type="text/javascript" src="./js/frontend.js"></script>
     </head>
     <body>
-        
+          
 				<?php 
 					$year = 2013;
 					if(isset($_GET['semaine'])) {
@@ -20,7 +20,7 @@
 					} else {
 						$week = date('W');
 					}
-					$filiere = "SRC_S3" //Donnée renseignée pour test
+					$filiere = "MMI_S1" //Donnée renseignée pour test
 				?>
 				<?php 
 					include("./include/checkCookies.php");
@@ -51,9 +51,9 @@
               <tbody>
                 <?php 
                 if($vue_globale == 1) {
-					edt_display_all($year, $week, $filiere, $tp, $td); 
+					       edt_display_all($year, $week, $filiere, $tp, $td); 
                 } else {
-					edt_display($year, $week, $filiere, $tp, $td);
+					       edt_display($year, $week, $filiere, $tp, $td);
 				}
                 ?>
               </tbody>
