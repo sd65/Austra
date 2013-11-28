@@ -10,7 +10,7 @@ include "db_connect.php";
       <div class="select">
         <select id="selectFiliere">
           <?php
-            $currentYearLikeRequest= "%" . date('Y') . "%" ;
+            $currentYearLikeRequest= "%" . $year . "%" ;
             $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
             $req->execute(array('annee' => $currentYearLikeRequest));
 
