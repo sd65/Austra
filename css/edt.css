@@ -295,3 +295,9 @@ td p{
 .COURS{background-color: #f04c4b;}
 .empty{background-color: #fff; min-height: 60px;}
 .TD, .TP, .COURS{border: 1px solid white;}
+
+.legende a{opacity: 1 !important;color:#999999!important;}
+#legendeCours{width: 10px;height: 10px;display: inline-block;background: #f04c4b;}
+#legendeDevoir{width: 10px;height: 10px;display: inline-block;background: #f04c4b;margin-left: -10px;}
+#legendeTP{width: 10px;height: 10px;display: inline-block;background: #00C586;}
+#legendeTD{width: 10px;height: 10px;display: inline-block;background: #4ba8f0;margin-left: 10px;}

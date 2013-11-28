@@ -51,13 +51,13 @@ include "db_connect.php";
     </li>
     <?php } ?>
     <p>Légende</p>
-    <li>
-      <a>Cours</a>
-      <a>Exam</a>
+    <li class="legende">
+      <a><span id="legendeCours"></span> Cours</a>
+      <a><span id="legendeDevoir"></span> Exam</a>
     </li>
-    <li>
-      <a>TP</a>
-      <a>TD</a>
+    <li class="legende">
+      <a><span id="legendeTP"></span> TP</a>
+      <a><span id="legendeTD"></span> TD</a>
     </li>
     <p>Paramètres</p>
     <li><a href="">Modifier mon profil</a></li>
