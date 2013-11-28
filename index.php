@@ -22,6 +22,7 @@ if(!empty($_POST)){
 
 
         if(!empty($resultat)) {
+            setcookie('codeetudiant', $name, time() + 365*24*3600, '/', null,false, true);
             $_SESSION['prenom'] = $resultat['prenom'];
             $_SESSION['nom'] = $resultat['nometudiant'];
             $_SESSION['filiere'] = $resultat['filiere'];
@@ -34,8 +35,8 @@ if(!empty($_POST)){
     else {
         $errorMessage = "Veuillez remplir tous les champs." ;
     }
+    
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +62,18 @@ if(!empty($_POST)){
         ?>
         <form method="post" action="index.php">
             <fieldset>
-                <label for="name"></label><input type="text" id="name" name="name" value="" tabindex="1" placeholder="Nom d'utilisateur"/>
-                <label for="password"></label><input type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
+                <?php if (empty($_COOKIE['codeetudiant'])) {  ?>
+                    <label for="name"></label>
+                    <input autofocus type="text" id="name" name="name" value="" tabindex="1" placeholder="Nom d'utilisateur"/>
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
+                <?php } else { ?>
+                    <label for="name"></label>
+                    <input type="text" id="name" name="name" tabindex="1" value="<?php echo $_COOKIE['codeetudiant'] ?>" placeholder="<?php echo $_COOKIE['codeetudiant'] ?>"/>
+                    <label for="password"></label>
+                    <input autofocus type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
+                <?php } ?>
+                
             </fieldset>
             <div class="forgottenpassword"><a>Mot de passe oublié ?</a></div>
             <div class="submit"><input type="submit" name="submit" value="Valider" /></div>
