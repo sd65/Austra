@@ -50,7 +50,7 @@ include "db_connect.php";
       <a class="TDChoice<?php if($td==2){ echo ' current';} ?>" >TD2</a>
     </li>
     <?php } ?>
-    <p>Légende</p>
+    <p>LÃ©gende</p>
     <li class="legende">
       <a><span id="legendeCours"></span> Cours</a>
       <a><span id="legendeDevoir"></span> Exam</a>
@@ -59,10 +59,9 @@ include "db_connect.php";
       <a><span id="legendeTP"></span> TP</a>
       <a><span id="legendeTD"></span> TD</a>
     </li>
-    <p>Paramètres</p>
+    <p>ParamÃ¨tres</p>
     <li><a class="modifprofil" href="javascript:;">Modifier mon profil</a></li>
-    <li class="logout"><a href="include/logout.php">Déconnexion</a></li>
+    <li class="logout"><a href="include/logout.php">DÃ©connexion</a></li>
   </ul>
 </aside>
 <?php include "include/modifier_profil.php"; ?>
-

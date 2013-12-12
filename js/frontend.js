@@ -1,58 +1,58 @@
 $(document).ready(function() 
 {
 	$('.user').click(function()
-    {
+    {
 		var isMenuOpen = $("#menu").attr('class');
 		if (isMenuOpen == "menuclose"){
-            $("#menu").clearQueue().animate({left : '0'})
+            $("#menu").clearQueue().animate({left : '0'})
 			$("#menu").removeClass("menuclose").addClass("menuopen")
-            $(".user").clearQueue().animate({"margin-left" : '220px'})
+            $(".user").clearQueue().animate({"margin-left" : '220px'})
 			$(".user").removeClass("menuclose").addClass("menuopen")
 			$.get("include/changeCookies.php", {ouverturemenu: "menuopen"})
 
 		}else{
-            $("#menu").clearQueue().animate({left : '-200px'})
+            $("#menu").clearQueue().animate({left : '-200px'})
 			$("#menu").removeClass("menuopen").addClass("menuclose")
-            $(".user").clearQueue().animate({"margin-left" : '0px'})
+            $(".user").clearQueue().animate({"margin-left" : '0px'})
 			$(".user").removeClass("menuopen").addClass("menuclose")
 			$.get("include/changeCookies.php", {ouverturemenu: "menuclose"})
 		}
-    });
+    });
 
 	var isCalOpen = false;
 	$('.closecalendars').click(function()
-    {
+    {
 		if (isCalOpen == false){
-            $("#calendars").fadeIn().clearQueue().animate({
+            $("#calendars").fadeIn().clearQueue().animate({
 				right : '0px'
-            })
+            })
 			$(".closecalendars").clearQueue().animate({
-                "margin-right" : '305px',
+                "margin-right" : '305px',
 				"display" : 'block'
-            })
+            })
 			isCalOpen = true;
 		}else{
-            $("#calendars").fadeOut().clearQueue().animate({
-                right : '-260px'
-            })
+            $("#calendars").fadeOut().clearQueue().animate({
+                right : '-260px'
+            })
 			$(".closecalendars").clearQueue().animate({
-                "margin-right" : '45px'
-            })
+                "margin-right" : '45px'
+            })
 			isCalOpen = false;
 		}
-    });
+    });
 	
 	$('.modifprofil').click(function()
-    {
+    {
 		var isMenuOpen = $("#modifierprofil").attr('class');
 		if (isMenuOpen == "closeprofil"){
-            $("#modifierprofil").clearQueue().animate({left : '200px'})
+            $("#modifierprofil").clearQueue().animate({left : '200px'})
 			$("#modifierprofil").removeClass("closeprofil").addClass("openprofil")
 		}else{
-            $("#modifierprofil").clearQueue().animate({left : '-200px'})
+            $("#modifierprofil").clearQueue().animate({left : '-200px'})
 			$("#modifierprofil").removeClass("openprofil").addClass("closeprofil")
 		}
-    });
+    });
 	$(".btn_pass").click(function(){
 		if($(this).text()=="Annuler changement"){
 			$("#hidepwd").hide();
@@ -104,3 +104,4 @@ $(document).ready(function()
 	});
 	
 });
+

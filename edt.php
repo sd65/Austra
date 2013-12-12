@@ -17,7 +17,7 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
     <head>
         <title>Austra</title>
         <meta name="description" content="" />
-        <meta charset="ISO-8859-1" />
+        <meta charset="UTF-8" />
         <link rel="icon" type="image/png" href="img/favicon.png" />
         <link rel="stylesheet" type="text/css" href="./css/base.css" />
         <link rel="stylesheet" type="text/css" href="./css/edt.css" />
