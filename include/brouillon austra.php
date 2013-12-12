@@ -46,7 +46,7 @@ $result_query_week = mysql_query($query_week) or die('Erreur SQL !<br>' . $query
 
 while ($data = mysql_fetch_assoc($result_query_week)) {
 
-//PROBLEME LORSQUE DEUX COURS (Tp/Td) EN MÊME TEMPS ???
+//PROBLEME LORSQUE DEUX COURS (Tp/Td) EN MÃŠME TEMPS ???
 
 }
 

@@ -1,5 +1,5 @@
 <?php 
-	// fonctions utiles, $valeur représente une date au format AAAA-MM-JJ
+	// fonctions utiles, $valeur reprÃ©sente une date au format AAAA-MM-JJ
 	function getMonth($valeur)	{
 		return substr($valeur, 5, 2); }
  
@@ -17,22 +17,22 @@
 		return $n;
 	}
 	function monthNumToName($mois) {
-		$tableau = Array("", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aôut", "Septembre", "Octobre", "Novembre", "Décembre");
-		return (intval($mois) > 0 && intval($mois) < 13) ? $tableau[intval($mois)] : "Indéfini";
+		$tableau = Array("", "Janvier", "FÃ©vrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "AÃ´ut", "Septembre", "Octobre", "Novembre", "DÃ©cembre");
+		return (intval($mois) > 0 && intval($mois) < 13) ? $tableau[intval($mois)] : "IndÃ©fini";
 	}
 
 	// Fonction pour afficher le calendrier
 	function showCalendar($periode) {
 		$leCalendrier = "";
-		// Tableau des valeurs possibles pour un numéro de jour dans la semaine
+		// Tableau des valeurs possibles pour un numÃ©ro de jour dans la semaine
 		$tableau = Array("0", "1", "2", "3", "4", "5", "6", "0");
 		$nb_jour = Date("t", mktime(0, 0, 0, getMonth($periode), 1, getYear($periode)));
 		$pas = 0;
 		$indexe = 1;
  
-		// Affichage du mois et de l'année
+		// Affichage du mois et de l'annÃ©e
 		$leCalendrier .= "\n\t<div>" . monthNumToName(getMonth($periode)) . " " . getYear($periode) . "</div>";
-		// Tant que l'on n'a pas affecté tous les jours du mois traité
+		// Tant que l'on n'a pas affectÃ© tous les jours du mois traitÃ©
 		while ($pas < $nb_jour) {
 			if ($indexe == 1){
 				$testsemaine = Date("W-m", mktime(0, 0, 0, getMonth($periode), 1 + $pas, getYear($periode)));
