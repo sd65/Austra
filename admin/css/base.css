@@ -1,0 +1,27 @@
+body{
+	width: 100%;
+	margin: 0 auto ;
+	padding: 0;
+	font-family: lucida Grande, Tahoma, Arial, sans-serif;
+	font-smoothing:antialiased;
+	-webkit-font-smoothing:antialiased;
+}
+
+a{text-decoration:none;}
+a:hover{text-decoration: none;}
+li,ul {list-style:none;margin:0;padding:0;}
+select:focus{outline: none;border: none;}
+
+#ressources {background: grey;width: 400px;position: absolute;height: 100%;}
+
+#edt{margin-left: 420px;}
+#edt td, #edt div {width: 130px; height : 50px; padding: 0;margin: 0;}
+#edt div{background: grey;}
+#edt th {text-align: left; font-size: .8em; background: #f4f4f4; width: 75px;}
+#edt td {background: #bababa;}
+#edt p{margin: 0;}
+
+.moinsun, .plusun{opacity: 0; -webkit-transition: all ease-in-out .2s; position: relative; display: inline-block; margin-top: -29px;}
+.plusun{float: right;}
+.moinsun{float: left;}
+.lesson:hover .moinsun, .lesson:hover .plusun{opacity: 1;}
