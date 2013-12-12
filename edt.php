@@ -1,5 +1,7 @@
 <?php
 require_once "./include/functions.php";
+require_once "./include/db_connect.php";
+
 session_start();
 
 if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION['filiere']) ) {
@@ -64,9 +66,9 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
               <tbody>
                 <?php 
                 if($vue_globale == 1) {
-					       edt_display_all($year, $week, $filiere, $tp, $td); 
+					       edt_display_all($year, $week, $filiere, $bdd); 
                 } else {
-					       edt_display($year, $week, $filiere, $tp, $td);
+					       edt_display($year, $week, $filiere, $tp, $td, $bdd);
 				        }
                 ?>
               </tbody>

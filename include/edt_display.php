@@ -1,8 +1,5 @@
 <?php
-
-include "db_connect.php";
-
-function edt_display($year, $week, $filiere, $tp, $td) {
+function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
 
 		$days = array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
 		$tp_code;
@@ -18,23 +15,25 @@ function edt_display($year, $week, $filiere, $tp, $td) {
 		$filiere_code = trad_filiere_to_code($filiere);
 		$tp_code = trad_tp_to_code($filiere_code, $tp);
 		$td_code = trad_td_to_code($filiere_code, $td);	
-		
-    $query_week = "SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt 
-    FROM edt 
-    LEFT JOIN enseignant
-    ON edt.enseignantedt = enseignant.codeenseignant 
-    LEFT JOIN matiere
-    ON edt.matiereedt = matiere.codematiere
-    WHERE edt.annee=" . $year . " AND (groupeedt='" . $filiere_code . "' OR groupeedt='" . $tp_code . "' OR groupeedt='" . $td_code . "')AND semaineedt=" . $week . " ORDER BY jouredt, debutedt";
-    
-    $result_query_week = mysql_query($query_week) or die('Erreur SQL !<br>' . $query_week . '<br>' . mysql_error());
-    
-    while ($data = mysql_fetch_assoc($result_query_week)) {
-		
+
+	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt
+		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
+		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
+		WHERE edt.annee= :year 
+		AND (groupeedt= :filiere_code OR groupeedt= :tp_code OR groupeedt= :td_code)
+		AND semaineedt= :week ORDER BY jouredt, debutedt');
+	$req->execute(array(
+		'year' => $year,
+		'week' => $week,
+		'filiere_code' => $filiere_code,
+		'tp_code' => $tp_code,
+		'td_code' => $td_code
+		));
+   
+    while ($data = $req->fetch()) {		
         $current_day = $data['jouredt'];
-				
         switch ($current_day) {
-						case 0:
+			case 0:
                 $Samedi[$NbCoursSamedi] = $data;
                 $NbCoursSamedi++;
                 break;
@@ -65,34 +64,26 @@ function edt_display($year, $week, $filiere, $tp, $td) {
             default:
                 break;	
         }
-
     }
     
     foreach ($days as $day) {
-   
         for ($numCoursDuJour = 0; $numCoursDuJour < ${"NbCours" . $day}; $numCoursDuJour++) { // Pour chaque cours
-            
             ${$day}[$numCoursDuJour]['debutedt'] = timeedt_to_hour(${$day}[$numCoursDuJour]['debutedt']);
             ${$day}[$numCoursDuJour]['finedt']   = timeedt_to_hour(${$day}[$numCoursDuJour]['finedt']);
             
             for ($curseur = ${$day}[$numCoursDuJour]['debutedt']; $curseur < ${$day}[$numCoursDuJour]['finedt']; $curseur++) { //Pour chaque demi heure de cours
                 ${$day . "_affichage"}[$curseur] = $numCoursDuJour;
             }
-            
         }
-        
     }
     
     $daysToProceed = array("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi",);
     
     foreach ($daysToProceed as $day) { ?>
-
 		<tr>
 			<th class="day"><?php echo $day; ?></td>
 			
-			<?php for ($hour = 0; $hour < 24; $hour++): ?>
-					
-					<?php
+			<?php for ($hour = 0; $hour < 24; $hour++): 
 					$typeCours = "empty-hour";
 					$duree = 1;
 					$numCoursHeure = ${$day . "_affichage"}[$hour];	
@@ -106,7 +97,7 @@ function edt_display($year, $week, $filiere, $tp, $td) {
 					
 					<td colspan=<?php echo $duree ?> class=<?php echo $typeCours ?>>
 						<p>
-							 <?php 
+							<?php 
 							if(isset($numCoursHeure)) {
 								echo ${$day}[$numCoursHeure]['nommatiere'] . "<br />" . ${$day}[$numCoursHeure]['prenomenseignant'] . " " . ${$day}[$numCoursHeure]['nomenseignant'] . "<br />" . ${$day}[$numCoursHeure]['salleedt'];
 							$hour += $duree -1;
@@ -114,25 +105,18 @@ function edt_display($year, $week, $filiere, $tp, $td) {
 							 ?>
 						 </p>
 					</td>
-					
 			<?php endfor; ?>
-			
 		</tr>
 	<?php
     }
-    
-    
-    
-    
-    
-    
 }
 
+function edt_display_all($year, $week, $filiere, $bdd) {
 
-function edt_display_all($year, $week, $filiere) {
+error_reporting(-1);
+ini_set('display_errors', 1);
 
 	$days = array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
-
 	foreach ($days as $day) {
 		$$day = array();
 		${"NbCours". $day} = 0;
@@ -141,24 +125,24 @@ function edt_display_all($year, $week, $filiere) {
 	}
 
 	$filiere_codes = trad_filiere_to_code_all($filiere); //RETOURNER TABLEAU AVEC LES VALEURS DES TP/TD
-	$query_filiere_codes = "" ;
+	$query_filiere_codes = "";
 	foreach ($filiere_codes as $code) {
-		 $query_filiere_codes = $query_filiere_codes . " groupeedt='" . $code  . "' OR "; 
+		 $query_filiere_codes = $query_filiere_codes.' groupeedt="'.$code.'" OR'; 
 	} 
 	$query_filiere_codes = substr($query_filiere_codes, 0, -4); // Le dernier OR est enlevé
 
-	$query_week = "SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt 
-		FROM edt 
-		LEFT JOIN enseignant
-		ON edt.enseignantedt = enseignant.codeenseignant 
-		LEFT JOIN matiere
-		ON edt.matiereedt = matiere.codematiere
-		WHERE edt.annee=" . $year . " AND (" . $query_filiere_codes .") AND semaineedt=" . $week . " ORDER BY jouredt, debutedt";
-		
-	$result_query_week = mysql_query($query_week) or die('Erreur SQL !<br>' . $query_week . '<br>' . mysql_error());
-
-	while ($data = mysql_fetch_assoc($result_query_week)) {
-		
+	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt
+		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
+		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
+		WHERE edt.annee= :year 
+		#AND ('. $query_filiere_codes .')
+		AND semaineedt= :week ORDER BY jouredt, debutedt');
+	$req->execute(array(
+		'year' => $year,
+		'week' => $week
+		));
+   
+    while ($data = $req->fetch()){		
 		$current_day = $data['jouredt'];
 				
 		switch ($current_day) {
@@ -193,11 +177,9 @@ function edt_display_all($year, $week, $filiere) {
 			default:
 				break;	
 		}
-
 	}
 
 	foreach ($days as $day) {
-
 		for ($numCoursDuJour = 0; $numCoursDuJour < ${"NbCours" . $day}; $numCoursDuJour++) { // Pour chaque cours
 			
 			${$day}[$numCoursDuJour]['debutedt'] = timeedt_to_hour(${$day}[$numCoursDuJour]['debutedt']);
@@ -207,37 +189,28 @@ function edt_display_all($year, $week, $filiere) {
 			if(${$day}[$numCoursDuJour]['typeenseignementedt'] == "TP") {
 				${$day}[$numCoursDuJour]['groupeedt'] = trad_codetp_affichage($filiere, ${$day}[$numCoursDuJour]['groupeedt']) ;
 			}
-			
 			if(${$day}[$numCoursDuJour]['typeenseignementedt'] == "TD") {
 				${$day}[$numCoursDuJour]['groupeedt'] = trad_codetd_affichage($filiere, ${$day}[$numCoursDuJour]['groupeedt']) ;
 			}
-			
 			if(${$day}[$numCoursDuJour]['typeenseignementedt'] == "EXAM") {
 				${$day}[$numCoursDuJour]['groupeedt'] = "EXAM" ;
 			}
-			
 			if(${$day}[$numCoursDuJour]['typeenseignementedt'] == "COURS") {
 				${$day}[$numCoursDuJour]['groupeedt'] = null ;
 			}
-			
 			for ($curseur = ${$day}[$numCoursDuJour]['debutedt']; $curseur < ${$day}[$numCoursDuJour]['finedt']; $curseur++) { //Pour chaque demi heure de cours
 					${$day . "_affichage"}[$curseur] = $numCoursDuJour;
 			}
-			
 		}
-		
 	}
 
-	$daysToProceed = array("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi",);
-
+	$daysToProceed = array("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi");
 	foreach ($daysToProceed as $day) { ?>
 
 		<tr>
 			<th class="day"><?php echo $day; ?></td>
 			
-			<?php for ($hour = 0; $hour < 24; $hour++): ?>
-					
-					<?php
+			<?php for ($hour = 0; $hour < 24; $hour++): 
 					$typeCours = "empty-hour";
 					$duree = 1;
 					$numCoursHeure = ${$day . "_affichage"}[$hour];	
@@ -250,12 +223,12 @@ function edt_display_all($year, $week, $filiere) {
 					
 					<td colspan=<?php echo $duree ?> class=<?php echo $typeCours ?>>
 						<p>
-							 <?php 
+							<?php 
 							if(isset($numCoursHeure)) {
 								echo ${$day}[$numCoursHeure]['nommatiere'] . "<br />" . ${$day}[$numCoursHeure]['prenomenseignant'] . " " . ${$day}[$numCoursHeure]['nomenseignant'] . "<br />" . ${$day}[$numCoursHeure]['salleedt'] . "<br />" . ${$day}[$numCoursHeure]['groupeedt'];
 							$hour += $duree -1;
 							}
-							 ?>
+							?>
 						 </p>
 					</td>
 					
@@ -264,5 +237,4 @@ function edt_display_all($year, $week, $filiere) {
 		</tr>
 	<?php
     }
-
 }
