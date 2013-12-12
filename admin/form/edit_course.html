@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Austra - Administration</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<link rel="shortcut icon" href="./img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/admin.css">
+	<link rel="stylesheet" type="text/css" href="../css/form.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+	<header>
+		<a href=""><img src="../img/logo@2x.png" alt="Austra" width="140" height"48"/></a>
+		<ul>
+			<li><a href="">MMI 1A</a></li>
+			<li><a class="pageactive" href="">SRC 2A</a></li>
+			<li><a href="">PUB 1A</a></li>
+			<li><a href="">PUB 2A</a></li>
+			<li><a href="">LP</a></li>
+		</ul>
+		<input type="search" name="cours" placeholder="Rechercher un cours">
+		<a class="boutonright" href="">Ajouter</a> 
+	</header>
+	<aside>
+		<ul>
+			<li><a class="pageactive" href="">Cours</a></li>  
+			<li><a href="">Élèves</a></li>  
+			<li><a href="">Enseignants</a></li>  
+			<li><a href="">Salles</a></li>  
+		</ul>
+	</aside>
+
+	<form action="">
+
+		<legende>Nouveau cours</legende>	
+		<fieldset>
+			<fieldset>
+			<label for="">Filière</label>
+			<span class="select">
+			<select name="choice_department" id="">
+				<option value="mmi">MMI</option>
+				<option value="pub">PUB</option>
+				<option value="lp">LP</option>
+			</select>
+			</span>
+
+			<label for="">Promotion</label>
+			<span class="select">
+			<select name="choice-promotion" id="">
+				<option value="mmi-1a">MMI 1A</option>
+				<option value="mmi-2a">MMI 2A</option>
+				<option value="pub-1a">PUB 1A</option>
+				<option value="pub-2a">PUB 2A</option>
+				<option value="lp">LP</option>
+			</select>
+			</span>
+
+			<label for="">Groupe</label>
+			<select name="choice-group" id="">
+				<option value="">CM</option>
+				<option value="">TD 1</option>
+				<option value="">TD 2</option>
+				<option value="">TP 1</option>
+				<option value="">TP 2</option>
+				<option value="">TP 3</option>
+				<option value="">Langues</option>
+			</select>
+
+			<label for="">Langues</label>
+			<span class="select">
+			<select name="choice-language" id="">
+				<option value="">Chinois</option>
+				<option value="">Espagnol Débutant</option>
+				<option value="">Espagnol Expert</option>
+				<option value="">Allemand</option>
+			</select>
+			</span>
+			</fieldset>
+
+			<fieldset>
+				<label for="">UE</label>
+				<span class="select">
+				<select name="choice_course-unit" id="">
+					<option value="UE1">UE 1</option>
+					<option value="UE2">UE 2</option>
+					<option value="UE3">UE 3</option>
+				</select>
+				</span>
+
+				<label for="">Module</label>
+				<span class="select">
+				<select name="choice_module" id="">
+					<option value="">M 11</option>
+					<option value="">M 12</option>
+					<option value="">M 13</option>
+					<option value="">M 14</option>
+					<option value="">M 20</option>
+					<option value="">M 21</option>
+					<option value="">M 23</option>
+					<option value="">M 24</option>
+					<option value="">M 31</option>
+				</select>
+				</span>
+
+				<label for="">Matière</label>
+				<span class="select">
+				<select name="choice_discipline" id="">
+					<option value="">Gestion de Projet</option>
+					<option value="">Numérisation compression stockage</option>
+					<option value="">Système d'information</option>
+					<option value="">TP Multimédia</option>
+					<option value="">PPP</option>
+					<option value="">Communication expression écrite et orale</option>
+					<option value="">Ecriture pour les médias numériques</option>
+					<option value="">Eco-gestion</option>
+					<option value="">Droit</option>
+				</select>
+				</span>
+			</fieldset>
+
+			<fieldset>
+					<label for="">Enseignant</label>
+				<span class="select">
+				<select name="choice_teacher" id="">
+					<option value="">Hélène Millaret</option>
+					<option value="">Delphine Reyss</option>
+					<option value="">Arnaud Lévy</option>
+					<option value="">Jean-Pierre Salmon</option>
+					<option value="">Philippe Métayer</option>
+					<option value="">Jacques Lapergue</option>
+				</select>
+				</span>
+			</fieldset>
+			<fieldset>
+			<label for="">Mémo</label>
+			<textarea name="memo" id="" cols="80" rows="5"></textarea>
+			</fieldset>
+
+		</fieldset>
+
+		<button type="button" class="delete">Supprimer</button>
+		<button type="button" class="submit">Valider</button>
+	</form>
+</body>
+</html>

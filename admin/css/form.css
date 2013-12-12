@@ -1,0 +1,78 @@
+input, textarea{
+	border: 1px solid #808080;
+	resize: none;
+	box-shadow: none;
+	padding: 5px;
+	margin: 1%;
+}
+
+form{
+	margin-left:174px;
+	margin-top:20px;
+	width:960px;
+	max-width: calc(90% - 174px)
+}
+
+fieldset{
+	border: none;
+	padding: 0;
+}
+
+select{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	background: transparent;
+	border-radius: 0;
+	padding-right: 30px;
+}
+
+legend{margin: 0 0 20px 0; padding: 0;}
+label{font-size: .7em; margin-left: 1%; border: 1px solid white; padding: 5px;}
+input[type="radio"]{display: none;}
+input[type="radio"]+label{cursor:pointer; display: inline-block; text-align: right; float: right; margin: 5px; text-decoration: underline; margin: 10px 15px 0 0;}
+input[type="radio"]:checked+label{border: 1px solid #808080; background: #808080; color: white; text-decoration: none;}
+
+
+.smaller{width: 12.3%}
+.small{width: 30%}
+.middle{width: 41.4%;}
+.medium{width: 62%;}
+.large{width: 86%}
+.largeer{width: 100%;}
+
+.pro{display: none;}
+
+
+select{
+ background: transparent;
+ border-radius: 0;
+ -webkit-appearance: none;
+ appearance: none;
+ font-family:Lucida Grande, Tahoma, Arial, sans-serif;
+border: 0;
+-moz-appearance: none;
+text-indent: 0.01px;
+text-overflow: '';
+margin: 0 0 0 5px;
+}
+
+.select{
+margin: 0px 0 0px 12px;
+background: url(../img/arrow.png) no-repeat  90% 50%  #fff;
+background: -webkit-image-set(url(../img/arrow.png) 1x, url(../img/arrow@2x.png) 2x) no-repeat  90% 50%  #fff;
+border: 1px solid #808080;
+padding: 3px 0;
+margin-top: 4px;
+padding-top: 0;
+}
+
+button{
+	border: none;
+	color: white;
+	padding: 7px;
+}
+button.delete{background: #f04c4b; float: right;}
+button.submit{background: #00C586; float: right;}
