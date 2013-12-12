@@ -129,13 +129,13 @@ ini_set('display_errors', 1);
 	foreach ($filiere_codes as $code) {
 		 $query_filiere_codes = $query_filiere_codes.' groupeedt="'.$code.'" OR'; 
 	} 
-	$query_filiere_codes = substr($query_filiere_codes, 0, -4); // Le dernier OR est enlevé
+	$query_filiere_codes = substr($query_filiere_codes, 0, -3); // Le dernier OR est enlevé
 
 	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
 		WHERE edt.annee= :year 
-		#AND ('. $query_filiere_codes .')
+		AND ('. $query_filiere_codes .')
 		AND semaineedt= :week ORDER BY jouredt, debutedt');
 	$req->execute(array(
 		'year' => $year,
