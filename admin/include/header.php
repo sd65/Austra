@@ -7,8 +7,45 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="./img/favicon.png">
-    <link rel="stylesheet" type="text/css" href="./css/base.css">
-    <link rel="stylesheet" type="text/css" href="./css/admin.css">
+    <link rel="shortcut icon" href="../img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 </head>
+<body>
+    <header>
+        <a href=""><img src="../../img/logo_black@2x.png" alt="Austra" width="140" height"48"/></a>
+        <?php 
+        $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
+        $currentYearLikeRequest= "%" . date('Y') . "%" ;
+        $req->execute(array('annee' => $currentYearLikeRequest));
+        ?>
+        <ul>
+            <?php 
+            while ($menuListeFilieres = $req->fetch()):
+                $filiereActuelle = $menuListeFilieres['filiere'];
+                $filiereClass = "";
+                if($filiereActuelle == $_GET['filiere']) {
+                    $filiereClass = "pageactive";
+                }
+                echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
+            endwhile ;
+            ?>
+        </ul>
+        <input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
+        <a class="boutonright" href="">Ajouter un élève</a> 
+    </header>
+
+    <aside>
+      <ul>
+        <?php 
+            if($metier==""){
+
+            }
+        ?>
+        <li><a <?php if($metier == "cours"){echo 'class="pageactive"';} ?> href="courses.php">Cours</a></li>  
+        <li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="students.php">Élèves</a></li>  
+        <li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="teachers.php">Enseignants</a></li>  
+        <li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="rooms.php">Salles</a></li>  
+      </ul>
+    </aside>

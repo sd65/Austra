@@ -68,10 +68,10 @@ margin:0 5px;
 width:14px;
 text-align: center;
 }
-table a.edit {background:url(../img/icones.png) top left; text-align: center;}
-table a.delete {background:url(../img/icones.png) top right;}
-table a.settings {background:url(../img/icones.png) bottom left;}
-table a.show {background:url(../img/icones.png) bottom right;}
+table a.edit {background:url(../../img/icones.png) top left; text-align: center;}
+table a.delete {background:url(../../img/icones.png) top right;}
+table a.settings {background:url(../../img/icones.png) bottom left;}
+table a.show {background:url(../../img/icones.png) bottom right;}
 table tr a.hover {opacity:0;}
 table tr:hover a.hover {opacity:0.8;}
 

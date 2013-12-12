@@ -1,34 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<title>Austra _ Inte _ Vue admin</title>
-	<meta name="description" content="" />
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="./css/base.css" />
-	<link rel="stylesheet" type="text/css" href="./css/admin.css" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-	<script type="text/javascript" src="./js/admin.js"></script>
-</head>
-<body>
-	<header>
-		<a href=""><img src="./img/logo@2x.png" alt="Austra" width="140" height"48"/></a>
-		<ul>
-			<li><a class="pageactive" href="">MMI</a></li>
-			<li><a href="">PUB</a></li>
-			<li><a href="">MP</a></li>
-		</ul>
-		<input type="search" name="cours" placeholder="Rechercher une salle">
-		<a class="boutonright" href="">Ajouter</a> 
-	</header>
-	<aside>
-		<ul>
-			<li><a href="">Cours</a></li>  
-			<li><a href="">Élèves</a></li>  
-			<li><a href="">Enseignants</a></li>  
-			<li><a class="pageactive">Salles</a></li>  
-		</ul>
-	</aside>
-
+<?php
+$metier = "salle";
+include_once "../../include/db_connect.php";
+include "../include/header.php" ;
+?>
 	<table>
 		<thead>
 			<tr>
