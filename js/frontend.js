@@ -4,24 +4,16 @@ $(document).ready(function()
     {
 		var isMenuOpen = $("#menu").attr('class');
 		if (isMenuOpen == "menuclose"){
-            $("#menu").clearQueue().animate({
-				left : '0'
-            })
+            $("#menu").clearQueue().animate({left : '0'})
 			$("#menu").removeClass("menuclose").addClass("menuopen")
-            $(".user").clearQueue().animate({
-                "margin-left" : '220px'
-            })
+            $(".user").clearQueue().animate({"margin-left" : '220px'})
 			$(".user").removeClass("menuclose").addClass("menuopen")
 			$.get("include/changeCookies.php", {ouverturemenu: "menuopen"})
 
 		}else{
-            $("#menu").clearQueue().animate({
-                left : '-200px'
-            })
+            $("#menu").clearQueue().animate({left : '-200px'})
 			$("#menu").removeClass("menuopen").addClass("menuclose")
-            $(".user").clearQueue().animate({
-                "margin-left" : '0px'
-            })
+            $(".user").clearQueue().animate({"margin-left" : '0px'})
 			$(".user").removeClass("menuopen").addClass("menuclose")
 			$.get("include/changeCookies.php", {ouverturemenu: "menuclose"})
 		}
@@ -50,29 +42,26 @@ $(document).ready(function()
 		}
     });
 	
-	var isProfilOpen = false;
 	$('.modifprofil').click(function()
     {
-		if (isProfilOpen == false){
-            $("#modifierprofil").fadeIn().clearQueue().animate({
-				left : '200px',
-				display : 'block'
-            })
-			$(".user").css({
-				visibility : 'hidden'
-			})
-			isProfilOpen = true;
+		var isMenuOpen = $("#modifierprofil").attr('class');
+		if (isMenuOpen == "closeprofil"){
+            $("#modifierprofil").clearQueue().animate({left : '200px'})
+			$("#modifierprofil").removeClass("closeprofil").addClass("openprofil")
 		}else{
-            $("#modifierprofil").fadeOut().clearQueue().animate({
-				left : '-170px',
-				display : 'none'
-            })
-			$(".user").css({
-				visibility : 'visible'
-			})
-			isProfilOpen = false;
+            $("#modifierprofil").clearQueue().animate({left : '-200px'})
+			$("#modifierprofil").removeClass("openprofil").addClass("closeprofil")
 		}
     });
+	$(".btn_pass").click(function(){
+		if($(this).text()=="Annuler changement"){
+			$("#hidepwd").hide();
+			$(this).text("Changer de mot de passe");
+		}else{
+			$("#hidepwd").show();
+			$(this).text("Annuler changement");
+		}
+	});
 	
 	$(".TPChoice").click(function() {
 		var nTP = $(this).text().substr(-1) ;

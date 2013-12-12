@@ -1,7 +1,6 @@
 <?php
 
 include "db_connect.php";
-include "functions.php";
 
 function edt_display($year, $week, $filiere, $tp, $td) {
 

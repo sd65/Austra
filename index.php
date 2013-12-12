@@ -14,7 +14,7 @@ if(!empty($_POST)){
 
         $password_md5 = md5($password);
 
-        $req = $bdd->prepare('SELECT prenom, nometudiant, filiere FROM etudiant WHERE codeetudiant = :codeetudiant AND pass = :pass');
+        $req = $bdd->prepare('SELECT id, prenom, nometudiant, filiere FROM etudiant WHERE codeetudiant = :codeetudiant AND pass = :pass');
         $req->execute(array(
             'codeetudiant' => $name,
             'pass' => $password_md5));
@@ -23,6 +23,7 @@ if(!empty($_POST)){
 
         if(!empty($resultat)) {
             setcookie('codeetudiant', $name, time() + 365*24*3600, '/', null,false, true);
+            $_SESSION['id'] = $resultat['id'];
             $_SESSION['prenom'] = $resultat['prenom'];
             $_SESSION['nom'] = $resultat['nometudiant'];
             $_SESSION['filiere'] = $resultat['filiere'];

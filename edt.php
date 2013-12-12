@@ -1,14 +1,15 @@
 <?php
+require_once "./include/functions.php";
 session_start();
 
 if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION['filiere']) ) {
+    $id = $_SESSION['id'];
     $prenom = $_SESSION['prenom'];
     $nom = $_SESSION['nom'] ;
     $filiere = $_SESSION['filiere'] ;
 } else {
   header('Location: index.php');
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -66,12 +67,12 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
 					       edt_display_all($year, $week, $filiere, $tp, $td); 
                 } else {
 					       edt_display($year, $week, $filiere, $tp, $td);
-				}
+				        }
                 ?>
               </tbody>
             </table>
           </div>
         </div>
-        <?php include("./include/calendriers.php"); ?>
+        <?php include "./include/calendriers.php"; ?>
     </body>
 </html>

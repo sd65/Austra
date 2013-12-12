@@ -216,84 +216,62 @@ display: none;
 strong{font-weight: 700;}
 
 #week_number{
-	width: 65%;
-	margin: 0 auto;
+width: 65%;
+margin: 0 auto;
 }
 li span.current-week{
-	border-radius: 50%;
-	background-color: #fee676;
-	display: inline-block;
-	width: 40px;
-	height: 25px;
-	text-align: center;
-	/*position: relative;
-	vertical-align: middle;*/
-	padding-top: 10px;
+border-radius: 50%;
+background-color: #fee676;
+display: inline-block;
+width: 40px;
+height: 25px;
+text-align: center;
+/*position: relative;
+vertical-align: middle;*/
+padding-top: 10px;
 }
 
 #master-planning{
-	width: 60%;
-	margin: auto;
+width: 60%;
+margin: auto;
 }
 table{
-	margin: 0 auto;
-	border-spacing: 0px;
-
+margin: 0 auto;
+border-spacing: 0px;
 }
-	table#planning thead{
-		padding: 0;
-		/*border-bottom: 1px solid #999;*/
-	}
-
-	table#planning td {
-		font-size: 0.6em;
-		text-align: center;
-
-	}
-
-	table#planning tr {
-		text-align: right;
-		height: 1em;
-	}
-	table#planning .hour.first{
-		border-left-color: white;
-	}
-	table#planning .hour{
-		border-left: 1px solid #999;
-	}
-	table#planning .half-hour{
-		width: 50px;
-		padding-left: 10px;
-		font-size: 0.8em;
-	}
-
-	table#planning td, th {
-		vertical-align: middle;
-	}
-	table#planning th.day{
-		border-bottom: 1px solid #999;
-		vertical-align: bottom;
-		height: 60px;
-		width: 85px;
-		font-size: 0.7em;
-	}	
-
-	table#planning tbody td{
-		height:70px;
-	}
-	table#planning tbody tr td.empty-hour{
-		background-color: white;
-	}
-
-
-
+table#planning thead{padding: 0;}
+table#planning td {
+font-size: 0.6em;
+text-align: center;
+}
+table#planning tr {
+text-align: right;
+height: 1em;
+}
+table#planning .hour.first{border-left-color: white;}
+table#planning .hour{border-left: 1px solid #999;}
+table#planning .half-hour{
+width: 50px;
+padding-left: 10px;
+font-size: 0.8em;
+}
+table#planning td, th {vertical-align: middle;}
+table#planning th.day{
+border-bottom: 1px solid #999;
+vertical-align: bottom;
+height: 60px;
+width: 85px;
+font-size: 0.7em;
+}
+table#planning tbody td{height:70px;}
+table#planning tbody tr td.empty-hour{background-color: white;}
 .hours{background-color: #f4f4f4;}
-
 td p{
-	text-align: left;
-	padding-left: 13px;
-	color: #fff;
-	line-height: 1.2em;}
+text-align: left;
+padding-left: 13px;
+color: #fff;
+line-height: 1.2em;
+}
 
 .TP{background-color: #00C586;}
 .TD{background-color: #4ba8f0;}
@@ -309,36 +287,50 @@ td p{
 
 /****** Modifier profil ******/ 
 aside#modifierprofil{
-	width: 170px;
-	margin: 0;
-	top: 0;
-	background: #eee;
-	height: 100%;
-	left: -170px;
-	display: none;
-	position: fixed;
-	padding: 20px;
-	color: #333;
-	z-index:8888;
+width: 170px;
+margin: 0;
+top: 0;
+background: #eee;
+height: 100%;
+position: fixed;
+padding: 20px;
+color: #333;
+z-index:8888;
 }
+aside#modifierprofil.openprofil{
+left: 200px;
+display: block;
+z-index:8888;
+}
+aside#modifierprofil.closeprofil{
+left: -170px;
+display: none;
+}
+
 aside#modifierprofil h1{font-size: 1em;}
 aside#modifierprofil label{font-size: .8em;}
 aside#modifierprofil fieldset{
-	border: none;
-	padding: 0;
-	margin: 0;
+border: none;
+padding: 0;
+margin: 0;
 }
 aside#modifierprofil input{margin-right: 20px; width: 160px;}
 aside#modifierprofil fieldset{margin-bottom: 20px;}
 aside#modifierprofil .submit input{width: 80px;margin-left: 42px;}
-
-
-
-
-
-
-
-
+aside#modifierprofil #hidepwd{display: none;}
+aside#modifierprofil .btn_pass{
+font-size: .7em; 
+padding: 5px;
+border:1px solid #e0e0e0;
+vertical-align: middle;
+background: #333;
+border-radius:5px;
+color:#fff;
+margin-top: 20px;
+display: inline-block;
+cursor: pointer;
+width: 155px;
+}
 
 
 

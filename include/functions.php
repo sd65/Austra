@@ -175,3 +175,22 @@ function trad_codetd_affichage($filiere, $td) {
 
 	return $td_affichage;
 }
+
+function verif_tel($tel){
+	if (!preg_match('/^[0-9]{10}$/',$tel)){
+    	$valid=0; //Invalid
+	}else{
+		$valid=1; //Valid
+	}
+	return $valid;
+}
+
+function verif_mail($mail){
+	$regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
+	if (!preg_match($regex,$mail)){
+    	$valid=0; //Invalid
+	}else{
+		$valid=1; //Valid
+	}
+	return $valid;
+}
