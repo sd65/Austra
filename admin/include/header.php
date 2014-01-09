@@ -15,9 +15,15 @@
 <body>
     <header>
         <a href=""><img src="../../img/logo_black@2x.png" alt="Austra" width="140" height"48"/></a>
-        <?php 
+        <?php
+        $year=date('Y');
+        if(date('m')<'08'){
+            $lastyear=$year-1;
+            $currentYearLikeRequest= "%" . $lastyear . "%" ;
+        }else{
+            $currentYearLikeRequest= "%" . $year . "%" ;
+        }
         $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
-        $currentYearLikeRequest= "%" . date('Y') . "%" ;
         $req->execute(array('annee' => $currentYearLikeRequest));
         ?>
         <ul>
@@ -25,9 +31,10 @@
             while ($menuListeFilieres = $req->fetch()):
                 $filiereActuelle = $menuListeFilieres['filiere'];
                 $filiereClass = "";
-                if($filiereActuelle == $_GET['filiere']) {
-                    $filiereClass = "pageactive";
-                }
+                if(isset($_GET['filiere'])){
+                    if($filiereActuelle == $_GET['filiere']){
+                        $filiereClass = "pageactive";
+                }}
                 echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
             endwhile ;
             ?>
