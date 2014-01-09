@@ -22,10 +22,9 @@ include "../include/header.php" ;
 
 	<tbody>
 		<?php 
-
-		$req = $bdd->prepare('SELECT DISTINCT prenom, nometudiant, email, promo, dept FROM etudiant WHERE filiere=:filiere');
-        $req->execute(array('filiere' => $_GET['filiere']));
-        ?>
+			$req = $bdd->prepare('SELECT DISTINCT prenom, nometudiant, email, promo, dept FROM etudiant WHERE filiere=:filiere');
+		    $req->execute(array('filiere' => $filiereGet));
+	    ?>
             <?php 
             while ($listeEtudiant = $req->fetch()): ?>
 				<tr>

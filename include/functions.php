@@ -74,6 +74,8 @@ function trad_tp_to_code($filiere, $tp) {
 	if ($tp == 3)
 	    $tp_code = "MMI_S1B1" ;
 
+	} else 	if ($filiere == "PUB_S3") {
+		$tp_code ="PUB_S3";
 	}
 
 	return $tp_code;
@@ -96,6 +98,14 @@ function trad_td_to_code($filiere, $td) {
 
 	if ($td == 2)
 	    $td_code = "MMI_S1B" ;
+	} else 	if ($filiere == "PUB_S3") {
+
+	if ($td == 1)
+	    $td_code = "PUB_S3A" ;
+
+	if ($td == 2)
+	    $td_code = "PUB_S3B" ;
+
 	}
 
 	return $td_code;

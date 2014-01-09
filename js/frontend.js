@@ -94,7 +94,7 @@ $(document).ready(function()
 		}
 	});
 
-	$("#selectFiliere").click(function() {
+	$("#selectFiliere").on('change', function() {
 		var filiere = $(this).val();
 		$.get("include/changePHPSession.php", {filiere: filiere},
 		function(){

@@ -9,22 +9,22 @@ include "db_connect.php";
     <li>
       <div class="select">
         <select id="selectFiliere">
-          <?php
-            $currentYearLikeRequest= "%" . $year . "%" ;
-            $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
-            $req->execute(array('annee' => $currentYearLikeRequest));
+          <option <?php if($filiere == "SRC_S3") {echo "selected";} ?> value="SRC_S3">SRC_S3</option>
+          <option <?php if($filiere == "SRC_S4") {echo "selected";} ?> value="SRC_S4">SRC_S4</option>
 
-            while ($donnees = $req->fetch())
-            { 
-                $currentFiliereOrNot = null ;
-                if($donnees['filiere'] == $filiere) {
-                  $currentFiliereOrNot = "selected" ;
-                }
-                
-                echo "<option ". $currentFiliereOrNot ." value='" . $donnees['filiere'] ."'>" . $donnees['filiere']  . "</option>";
-            }
-      	   
-      	  ?>
+          <option <?php if($filiere == "MMI_S1") {echo "selected";} ?> value="MMI_S1">MMI_S1</option>
+          <option <?php if($filiere == "MMI_S2") {echo "selected";} ?> value="MMI_S2">MMI_S2</option>
+          <!--
+          <option value="MMI_S3">MMI_S3</option>
+          <option value="MMI_S4">MMI_S4</option>
+          -->
+          <option <?php if($filiere == "PUB_S1") {echo "selected";} ?> value="PUB_S1">PUB_S1</option>
+          <option <?php if($filiere == "PUB_S2") {echo "selected";} ?> value="PUB_S2">PUB_S2</option>
+          <option <?php if($filiere == "PUB_S3") {echo "selected";} ?> value="PUB_S3">PUB_S3</option>
+          <option <?php if($filiere == "PUB_S4") {echo "selected";} ?> value="PUB_S4">PUB_S4</option>
+
+          <option <?php if($filiere == "LP_S1") {echo "selected";} ?> value="LP_S1">LP_S1</option>
+          <option <?php if($filiere == "LP_S2") {echo "selected";} ?> value="LP_S2">LP_S2</option>
 	     </select>
       </div>
     </li>

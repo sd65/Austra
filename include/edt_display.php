@@ -16,10 +16,10 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
 		$tp_code = trad_tp_to_code($filiere_code, $tp);
 		$td_code = trad_td_to_code($filiere_code, $td);	
 
-	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt
+	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
-		WHERE edt.annee= :year 
+		WHERE extract(year FROM edt.dateedt)= :year 
 		AND (groupeedt= :filiere_code OR groupeedt= :tp_code OR groupeedt= :td_code)
 		AND semaineedt= :week ORDER BY jouredt, debutedt');
 	$req->execute(array(
@@ -131,10 +131,10 @@ ini_set('display_errors', 1);
 	} 
 	$query_filiere_codes = substr($query_filiere_codes, 0, -3); // Le dernier OR est enlevé
 
-	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt
+	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
-		WHERE edt.annee= :year 
+		WHERE extract(year FROM edt.dateedt)= :year 
 		AND ('. $query_filiere_codes .')
 		AND semaineedt= :week ORDER BY jouredt, debutedt');
 	$req->execute(array(
