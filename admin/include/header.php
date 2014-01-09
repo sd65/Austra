@@ -18,7 +18,9 @@
 <body>
     <header>
         <a href=""><img src="../../img/logo_black@2x.png" alt="Austra" width="140" height"48"/></a>
-        <?php 
+
+        <?php
+
         $year=date('Y');
         if(date('m')<'08'){
             $lastyear=$year-1;
@@ -35,7 +37,13 @@
                 $filiereActuelle = $menuListeFilieres['filiere'];
                 $filiereClass = "";
                 if(isset($_GET['filiere'])){
+<<<<<<< HEAD
                     $filiereGet=$_GET['filiere'];
+=======
+                    if($filiereActuelle == $_GET['filiere']){
+                        $filiereClass = "pageactive";
+                    }                    
+>>>>>>> 4db91834021746efc1fe51025d92fd433b349c7e
                 }else{
                     $filiereGet="MMI_S1";
                 }
