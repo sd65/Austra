@@ -276,6 +276,7 @@ line-height: 1.2em;
 .TP{background-color: #00C586;}
 .TD{background-color: #4ba8f0;}
 .COURS{background-color: #f04c4b;}
+.EXAM{background-color: #f04c4b;}
 .empty{background-color: #fff; min-height: 60px;}
 .TD, .TP, .COURS{border: 1px solid white;}
 

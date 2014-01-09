@@ -155,7 +155,7 @@ function trad_codetp_affichage($filiere, $tp) {
 }
 
 function trad_codetd_affichage($filiere, $td) {
-
+	
 	if ($filiere == "SRC_S3") {
 
 	if ($td == "SRC_S3A")
@@ -163,7 +163,10 @@ function trad_codetd_affichage($filiere, $td) {
 
 	if ($td == "SRC_S3B")
 	    $td_affichage =  "TD2";
-	    
+	
+	if ($td == "SRC_S3")
+			$td_affichage = "TD Classe Entière";
+	
 	} else if ($filiere == "MMI") {
 
 	if ($td == "MMI_S1A")
