@@ -15,9 +15,15 @@ include "../include/header.php" ;
   </thead>
   <tbody>
     <?php 
-
-    $req = $bdd->prepare('SELECT DISTINCT nommatiere, dept, modulematiere, codematiere, enseignantmatiere FROM matiere');
-    $req->execute();
+   
+    if(isset($_GET['filiere'])){
+      $req = $bdd->prepare('SELECT DISTINCT nommatiere, dept, modulematiere, codematiere, enseignantmatiere FROM matiere WHERE dept=:dept');
+      $req->execute(array('dept' => $_GET['filiere']));
+    }
+      else{
+        $req = $bdd->prepare('SELECT DISTINCT nommatiere, dept , modulematiere, codematiere, enseignantmatiere FROM matiere');
+        $req->execute();        
+      }
     ?>
     <?php 
     while ($listeCours = $req->fetch()): ?>
