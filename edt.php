@@ -30,12 +30,13 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
     <body>
           
 				<?php 
-					$year = date('Y');
+					//$year = date('Y');
 					if(isset($_GET['semaine'])) {
 						$week = $_GET['semaine'] ;
 					} else {
 						$week = date('W');
 					}
+					$year = 2013;
 				?>
 				<?php 
 					include "./include/checkCookies.php";

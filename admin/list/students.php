@@ -21,7 +21,7 @@ include "../include/header.php" ;
 	</thead>
 
 	<tbody>
-		<?php 
+		<?php
 		if(isset($_GET['filiere'])){
 			$req = $bdd->prepare('SELECT DISTINCT prenom, nometudiant, email, promo, dept FROM etudiant WHERE filiere=:filiere');
 	        $req->execute(array('filiere' => $_GET['filiere']));

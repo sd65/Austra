@@ -16,10 +16,10 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
 		$tp_code = trad_tp_to_code($filiere_code, $tp);
 		$td_code = trad_td_to_code($filiere_code, $td);	
 
-	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt
+	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
-		WHERE edt.annee= :year 
+		WHERE extract(year FROM edt.dateedt)= :year 
 		AND (groupeedt= :filiere_code OR groupeedt= :tp_code OR groupeedt= :td_code)
 		AND semaineedt= :week ORDER BY jouredt, debutedt');
 	$req->execute(array(
@@ -71,17 +71,18 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
             ${$day}[$numCoursDuJour]['debutedt'] = timeedt_to_hour(${$day}[$numCoursDuJour]['debutedt']);
             ${$day}[$numCoursDuJour]['finedt']   = timeedt_to_hour(${$day}[$numCoursDuJour]['finedt']);
             
+						//detect
+						
             for ($curseur = ${$day}[$numCoursDuJour]['debutedt']; $curseur < ${$day}[$numCoursDuJour]['finedt']; $curseur++) { //Pour chaque demi heure de cours
-                ${$day . "_affichage"}[$curseur] = $numCoursDuJour;
+                ${$day . "_affichage"}[$curseur][1] = $numCoursDuJour;
             }
         }
     }
     
     $daysToProceed = array("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi",);
-    
     foreach ($daysToProceed as $day) { ?>
 		<tr>
-			<th class="day"><?php echo $day; ?></td>
+			<th class="day"><?php echo $day; ?></th>
 			
 			<?php for ($hour = 0; $hour < 24; $hour++): 
 					$typeCours = "empty-hour";
@@ -122,6 +123,7 @@ ini_set('display_errors', 1);
 		${"NbCours". $day} = 0;
 		${$day . "_affichage"} = array();
 		${$day . "_affichage"} = array_fill(0, 24, NULL);
+		${$day . "_CoursMemeHeure"} = 0;
 	}
 
 	$filiere_codes = trad_filiere_to_code_all($filiere); //RETOURNER TABLEAU AVEC LES VALEURS DES TP/TD
@@ -131,18 +133,24 @@ ini_set('display_errors', 1);
 	} 
 	$query_filiere_codes = substr($query_filiere_codes, 0, -3); // Le dernier OR est enlevé
 
-	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.annee,debutedt,finedt,salleedt
+	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
-		WHERE edt.annee= :year 
+		WHERE extract(year FROM edt.dateedt)= :year 
 		AND ('. $query_filiere_codes .')
-		AND semaineedt= :week ORDER BY jouredt, debutedt');
+		AND semaineedt= :week ORDER BY jouredt, debutedt, groupeedt');
 	$req->execute(array(
 		'year' => $year,
 		'week' => $week
 		));
-   
-    while ($data = $req->fetch()){		
+	 
+    while ($data = $req->fetch()){
+		
+		/** BUG DU 3 COURS RECUPERES A CHAQUE REQUETE **/
+		$req->fetch();
+		$req->fetch();
+		/***********************************************/
+		
 		$current_day = $data['jouredt'];
 				
 		switch ($current_day) {
@@ -198,8 +206,19 @@ ini_set('display_errors', 1);
 			if(${$day}[$numCoursDuJour]['typeenseignementedt'] == "COURS") {
 				${$day}[$numCoursDuJour]['groupeedt'] = null ;
 			}
+			//Stockage des cours dans chaque case du tableau pour l'affichage
+			
 			for ($curseur = ${$day}[$numCoursDuJour]['debutedt']; $curseur < ${$day}[$numCoursDuJour]['finedt']; $curseur++) { //Pour chaque demi heure de cours
-					${$day . "_affichage"}[$curseur] = $numCoursDuJour;
+					
+					if (!empty(${$day . "_affichage"}[$curseur])){ 
+						${$day . "_CoursMemeHeure"}++ ;
+					}
+					else {
+						${$day . "_CoursMemeHeure"} = 0;
+					}
+						${$day . "_affichage"}[$curseur][${$day . "_CoursMemeHeure"}] = $numCoursDuJour;
+					
+					
 			}
 		}
 	}
@@ -208,31 +227,60 @@ ini_set('display_errors', 1);
 	foreach ($daysToProceed as $day) { ?>
 
 		<tr>
-			<th class="day"><?php echo $day; ?></td>
+			<th class="day"><?php echo $day; ?></th>
 			
 			<?php for ($hour = 0; $hour < 24; $hour++): 
 					$typeCours = "empty-hour";
 					$duree = 1;
-					$numCoursHeure = ${$day . "_affichage"}[$hour];	
+								
+					$numCoursHeure = ${$day . "_affichage"}[$hour][0];
+	
+					$compteCoursParHeure = count(${$day . "_affichage"}[$hour]);
 					
-					if(isset($numCoursHeure)) {
-						$duree = ${$day}[$numCoursHeure]['finedt'] - ${$day}[$numCoursHeure]['debutedt'];	
-						$typeCours = ${$day}[$numCoursHeure]['typeenseignementedt']; 
-					}
+					if($compteCoursParHeure <= 1) {
+					
+						if(isset($numCoursHeure)) {
+							$duree = ${$day}[$numCoursHeure]['finedt'] - ${$day}[$numCoursHeure]['debutedt'];	
+							$typeCours = ${$day}[$numCoursHeure]['typeenseignementedt']; 
+						}		
 					?>
 					
 					<td colspan=<?php echo $duree ?> class=<?php echo $typeCours ?>>
 						<p>
-							<?php 
+							<?php
 							if(isset($numCoursHeure)) {
 								echo ${$day}[$numCoursHeure]['nommatiere'] . "<br />" . ${$day}[$numCoursHeure]['prenomenseignant'] . " " . ${$day}[$numCoursHeure]['nomenseignant'] . "<br />" . ${$day}[$numCoursHeure]['salleedt'] . "<br />" . ${$day}[$numCoursHeure]['groupeedt'];
-							$hour += $duree -1;
+								$hour += $duree -1;
 							}
 							?>
 						 </p>
 					</td>
 					
-			<?php endfor; ?>
+			<?php }
+					//Quand plusieurs cours en même temps
+					else {
+						
+						$duree = ${$day}[$numCoursHeure]['finedt'] - ${$day}[$numCoursHeure]['debutedt'];	
+						$typeCours = ${$day}[$numCoursHeure]['typeenseignementedt']; 	
+					?>
+					<td colspan=<?php echo $duree ?> class=<?php echo $typeCours ?>>
+						<?php for($i = 0; $i < $compteCoursParHeure ; $i++)  { ?>
+						<p>
+							<?php 
+							
+								echo ${$day}[$numCoursHeure + $i]['nommatiere'] . "<br />" . ${$day}[$numCoursHeure + $i]['prenomenseignant'] . " " . ${$day}[$numCoursHeure + $i]['nomenseignant'] . "<br />" . ${$day}[$numCoursHeure + $i]['salleedt'] . "<br />" . ${$day}[$numCoursHeure + $i]['groupeedt'];
+								?>
+							
+							
+							
+						 </p>
+						 <?php }
+						 $hour += $duree -1;
+							?>
+					</td>
+					<?php
+					}
+			endfor; ?>
 			
 		</tr>
 	<?php

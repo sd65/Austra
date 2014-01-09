@@ -15,7 +15,9 @@
 <body>
     <header>
         <a href=""><img src="../../img/logo_black@2x.png" alt="Austra" width="140" height"48"/></a>
+
         <?php
+
         $year=date('Y');
         if(date('m')<'08'){
             $lastyear=$year-1;
@@ -23,6 +25,7 @@
         }else{
             $currentYearLikeRequest= "%" . $year . "%" ;
         }
+
         $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
         $req->execute(array('annee' => $currentYearLikeRequest));
         ?>
@@ -35,6 +38,13 @@
                     if($filiereActuelle == $_GET['filiere']){
                         $filiereClass = "pageactive";
                 }}
+                    $filiereGet=$_GET['filiere']
+                    if($filiereActuelle == $filiereGet) {
+                        $filiereClass = "pageactive";
+                    }                    
+                }else{
+                    $filiereGet="MMI_S1";
+                }
                 echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
             endwhile ;
             ?>
