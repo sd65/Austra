@@ -37,10 +37,6 @@
                 if(isset($_GET['filiere'])){
                     if($filiereActuelle == $_GET['filiere']){
                         $filiereClass = "pageactive";
-                }}
-                    $filiereGet=$_GET['filiere']
-                    if($filiereActuelle == $filiereGet) {
-                        $filiereClass = "pageactive";
                     }                    
                 }else{
                     $filiereGet="MMI_S1";
