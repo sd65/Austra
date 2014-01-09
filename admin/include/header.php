@@ -7,10 +7,13 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="../img/favicon.png">
+    <link rel="shortcut icon" href="../../img/favicon.png">
     <link rel="stylesheet" type="text/css" href="../css/base.css">
     <link rel="stylesheet" type="text/css" href="../css/admin.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="../js/form.js"></script>
+
 </head>
 <body>
     <header>
@@ -23,7 +26,6 @@
         }else{
             $currentYearLikeRequest= "%" . $year . "%" ;
         }
-
         $req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
         $req->execute(array('annee' => $currentYearLikeRequest));
         ?>
@@ -33,19 +35,19 @@
                 $filiereActuelle = $menuListeFilieres['filiere'];
                 $filiereClass = "";
                 if(isset($_GET['filiere'])){
-                    $filiereGet=$_GET['filiere']
-                    if($filiereActuelle == $filiereGet) {
-                        $filiereClass = "pageactive";
-                    }                    
+                    $filiereGet=$_GET['filiere'];
                 }else{
                     $filiereGet="MMI_S1";
+                }
+                if($filiereActuelle == $filiereGet) {
+                    $filiereClass = "pageactive";
                 }
                 echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
             endwhile ;
             ?>
         </ul>
         <input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
-        <a class="boutonright" href="">Ajouter un élève</a> 
+        <a class="boutonright" href="">Ajouter un <?=$metier?></a> 
     </header>
 
     <aside>

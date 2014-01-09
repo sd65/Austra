@@ -20,7 +20,7 @@ border-radius:3px;
 color:#6c6c6c;
 padding:10px;
 position:absolute;
-right: -5px;
+right: 15px;
 top:35px;
 }
 header a.boutonright:hover {color:#3c3c3c;}
@@ -41,7 +41,7 @@ table {
 border-collapse:collapse;
 margin-left:174px;
 margin-top:20px;
-width:calc(100% - 174px);
+width: calc(100% - 194px);
 }
 table thead tr td{background:#808080 ;color: #ffffff;}
 /*table thead td.options {text-align: center;}*/

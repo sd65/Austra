@@ -61,8 +61,8 @@ margin: 0 0 0 5px;
 
 .select{
 margin: 0px 0 0px 12px;
-background: url(../img/arrow.png) no-repeat  90% 50%  #fff;
-background: -webkit-image-set(url(../img/arrow.png) 1x, url(../img/arrow@2x.png) 2x) no-repeat  90% 50%  #fff;
+background: url(../../img/arrow.png) no-repeat  90% 50%  #fff;
+background: -webkit-image-set(url(../../img/arrow.png) 1x, url(../../img/arrow@2x.png) 2x) no-repeat  90% 50%  #fff;
 border: 1px solid #808080;
 padding: 3px 0;
 margin-top: 4px;
