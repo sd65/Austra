@@ -197,7 +197,14 @@ function verif_tel($tel){
 	}
 	return $valid;
 }
-
+function verif_cp($cp){
+	if (!preg_match('/^[0-9]{5}$/',$cp)){
+    	$valid=0; //Invalid
+	}else{
+		$valid=1; //Valid
+	}
+	return $valid;
+}
 function verif_mail($mail){
 	$regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
 	if (!preg_match($regex,$mail)){

@@ -17,9 +17,8 @@ include "../include/header.php" ;
 
 
 	<tbody>
-		<?php 
-
-		$req = $bdd->prepare('SELECT DISTINCT prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant');
+		<?php
+		$req = $bdd->prepare('SELECT DISTINCT id, prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant');
 		$req->execute();
 		?>
 		<?php 
@@ -30,7 +29,7 @@ include "../include/header.php" ;
 			<td class="department"><?=$listeEnseignants['departementenseignant']?></td>
 			<td class="status"><?=$listeEnseignants['statutenseignant']?></td>
 			<td class=""><?=$listeEnseignants['emailenseignant']?></td>
-			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
+			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_teacher?id=<?=$listeEnseignants['id']?>"></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 		</tr>

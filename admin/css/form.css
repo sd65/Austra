@@ -35,6 +35,8 @@ input[type="radio"]{display: none;}
 input[type="radio"]+label{cursor:pointer; display: inline-block; text-align: right; float: right; margin: 5px; text-decoration: underline; margin: 10px 15px 0 0;}
 input[type="radio"]:checked+label{border: 1px solid #808080; background: #808080; color: white; text-decoration: none;}
 
+.autre{float: right; margin-left: 0 !important; margin-right: 20px;}
+label#autrelab{margin-right: 0 !important;}
 
 .smaller{width: 12.3%}
 .small{width: 30%}
@@ -68,11 +70,16 @@ padding: 3px 0;
 margin-top: 4px;
 padding-top: 0;
 }
-
-button{
+#buttons{text-align: right;}
+button.submit, a.delete{
 	border: none;
 	color: white;
 	padding: 7px;
+	font-size: .7em;
+	cursor: pointer;
 }
-button.delete{background: #f04c4b; float: right;}
-button.submit{background: #00C586; float: right;}
+a.delete{background: #f04c4b; display: inline-block; font-weight: bold;}
+button.submit{background: #00C586; display: inline-block;}
+
+.error{border: 1px solid red;}
+.mention{font-size: .6em !important; margin-left: 1%;}

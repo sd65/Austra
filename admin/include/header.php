@@ -37,13 +37,10 @@
                 $filiereActuelle = $menuListeFilieres['filiere'];
                 $filiereClass = "";
                 if(isset($_GET['filiere'])){
-<<<<<<< HEAD
                     $filiereGet=$_GET['filiere'];
-=======
                     if($filiereActuelle == $_GET['filiere']){
                         $filiereClass = "pageactive";
                     }                    
->>>>>>> 4db91834021746efc1fe51025d92fd433b349c7e
                 }else{
                     $filiereGet="MMI_S1";
                 }
@@ -64,10 +61,18 @@
             if($metier==""){
 
             }
-        ?>
-        <li><a <?php if($metier == "cours"){echo 'class="pageactive"';} ?> href="courses.php">Cours</a></li>  
-        <li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="students.php">Élèves</a></li>  
-        <li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="teachers.php">Enseignants</a></li>  
-        <li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="rooms.php">Salles</a></li>  
+
+            // Récupère dossier parent pour lien...
+            $dossierParent = array_pop(explode(DIRECTORY_SEPARATOR, dirname($_SERVER["PHP_SELF"])));
+            if($dossierParent=="form"){
+                $lien="../list/";
+            }else if($dossierParent=="list"){
+                $lien="./";
+            }
+         ?>
+        <li><a <?php if($metier == "cours"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php">Cours</a></li>  
+        <li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php">Élèves</a></li>  
+        <li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>teachers.php">Enseignants</a></li>  
+        <li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>rooms.php">Salles</a></li>  
       </ul>
     </aside>
