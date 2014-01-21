@@ -1,26 +1,25 @@
 <?php
+ob_start();
 session_start();
 
 include "include/db_connect.php";
 
 if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION['filiere']) ) {
-  header('Location: edt.php');
+    header('Location: edt.php');
+} else if(!empty($_SESSION['prenomenseignant']) && !empty($_SESSION['nomenseignant'])  && !empty($_SESSION['departementenseignant']) ) {
+    header('Location: edt_teacher.php');
 }
 
 if(!empty($_POST)){
     if(!empty($_POST['name']) && !empty($_POST['password'])) {
         $name = $_POST['name'] ;
         $password = $_POST['password'] ;
-
         $password_md5 = md5($password);
-
         $req = $bdd->prepare('SELECT id, prenom, nometudiant, filiere FROM etudiant WHERE codeetudiant = :codeetudiant AND pass = :pass');
         $req->execute(array(
             'codeetudiant' => $name,
             'pass' => $password_md5));
         $resultat = $req->fetch();
-
-
         if(!empty($resultat)) {
             setcookie('codeetudiant', $name, time() + 365*24*3600, '/', null,false, true);
             $_SESSION['id'] = $resultat['id'];
@@ -29,14 +28,28 @@ if(!empty($_POST)){
             $_SESSION['filiere'] = $resultat['filiere'];
             header('Location: edt.php');
         } else {
-            $errorMessage = "Mauvais login/mot de passe !" ;
+        $reqEnseignant = $bdd->prepare('SELECT id, nomenseignant, prenomenseignant, departementenseignant FROM enseignant WHERE codeenseignant = :codeenseignant AND motpasseenseignant = :pass');
+        $reqEnseignant->execute(array(
+            'codeenseignant' => $name,
+            'pass' => $password_md5));
+        $resultatEnseignant = $reqEnseignant->fetch();
+        if(!empty($resultatEnseignant)) {
+            setcookie('codeenseignant', $name, time() + 365*24*3600, '/', null,false, true);
+            $_SESSION['idenseignant'] = $resultatEnseignant['id'];
+            $_SESSION['prenomenseignant'] = $resultatEnseignant['prenomenseignant'];
+            $_SESSION['nomenseignant'] = $resultatEnseignant['nomenseignant'];
+            $_SESSION['departementenseignant'] = $resultatEnseignant['departementenseignant'];
+            header('Location: edt_teacher.php');
+        } else {
+					$errorMessage = "Mauvais login/mot de passe !" ;
+				}
         }
+
 
     }
     else {
         $errorMessage = "Veuillez remplir tous les champs." ;
     }
-    
 }
 ?>
 
@@ -63,16 +76,21 @@ if(!empty($_POST)){
         ?>
         <form method="post" action="index.php">
             <fieldset>
-                <?php if (empty($_COOKIE['codeetudiant'])) {  ?>
-                    <label for="name"></label>
-                    <input autofocus type="text" id="name" name="name" value="" tabindex="1" placeholder="Nom d'utilisateur"/>
-                    <label for="password"></label>
-                    <input type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
-                <?php } else { ?>
+                <?php if (!empty($_COOKIE['codeetudiant'])) {  ?>
                     <label for="name"></label>
                     <input type="text" id="name" name="name" tabindex="1" value="<?php echo $_COOKIE['codeetudiant'] ?>" placeholder="<?php echo $_COOKIE['codeetudiant'] ?>"/>
                     <label for="password"></label>
                     <input autofocus type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
+                <?php } else if (!empty($_COOKIE['codeenseignant'])) { ?>
+                    <label for="name"></label>
+                    <input type="text" id="name" name="name" tabindex="1" value="<?php echo $_COOKIE['codeenseignant'] ?>" placeholder="<?php echo $_COOKIE['codeenseignant'] ?>"/>
+                    <label for="password"></label>
+                    <input autofocus type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
+                <?php } else { ?>
+                    <label for="name"></label>
+                    <input autofocus type="text" id="name" name="name" value="" tabindex="1" placeholder="Nom d'utilisateur"/>
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" value="" tabindex="2" placeholder="Mot de passe" />
                 <?php } ?>
                 
             </fieldset>

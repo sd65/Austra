@@ -285,4 +285,8 @@ ini_set('display_errors', 1);
 		</tr>
 	<?php
     }
+
+    function edt_display_enseignant ($year, $week, $codeenseignant, $bdd) {
+    	//TODO: Fill
+    }
 }
