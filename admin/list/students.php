@@ -1,5 +1,5 @@
 <?php
-$metier = "étudiant";
+$metier = "élève";
 include_once "../../include/db_connect.php";
 include "../include/header.php" ;
 ?>
