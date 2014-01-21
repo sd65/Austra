@@ -87,7 +87,7 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
 			<?php for ($hour = 0; $hour < 24; $hour++): 
 					$typeCours = "empty-hour";
 					$duree = 1;
-					$numCoursHeure = ${$day . "_affichage"}[$hour];	
+					$numCoursHeure = ${$day . "_affichage"}[$hour][1];	
 					
 					if(isset($numCoursHeure)) {
 						$duree = ${$day}[$numCoursHeure]['finedt'] - ${$day}[$numCoursHeure]['debutedt'];

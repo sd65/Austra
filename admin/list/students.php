@@ -1,5 +1,5 @@
 <?php
-$metier = "étudiant";
+$metier = "élève";
 include_once "../../include/db_connect.php";
 include "../include/header.php" ;
 ?>
@@ -30,9 +30,6 @@ include "../include/header.php" ;
             <?php 
             while ($listeEtudiant = $req->fetch()): ?>
 				<tr>
-<<<<<<< HEAD
-					<td class="name"><?=$listeEtudiant['nometudiant'];?></td><td class="surname"><?=$listeEtudiant['prenom'];?></td><td class="course"><?=$listeEtudiant['dept'];?></td><td class="year"><?=$listeEtudiant['promo'];?></td><td>TD1</td><td>TP1</td><td>Chinois</td><td class="mail"><?=$listeEtudiant['email'];?></td>
-=======
 					<td class="name"><?=$listeEtudiant['nometudiant'];?></td>
 					<td class="surname"><?=$listeEtudiant['prenom'];?></td>
 					<td class="course"><?=$listeEtudiant['dept'];?></td>
@@ -41,7 +38,7 @@ include "../include/header.php" ;
 					<td>TP1</td>
 					<td>Chinois</td>
 					<td class="mail"><?=$listeEtudiant['email'];?></td>
->>>>>>> 4db91834021746efc1fe51025d92fd433b349c7e
+
 					<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 					<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 					<td class="options"><a class="show" href=""></a><a class="edit" href=""></a><a class="delete" href=""></a></td>

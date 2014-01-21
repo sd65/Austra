@@ -37,16 +37,14 @@
                 $filiereActuelle = $menuListeFilieres['filiere'];
                 $filiereClass = "";
                 if(isset($_GET['filiere'])){
-<<<<<<< HEAD
-                    $filiereGet=$_GET['filiere'];
-=======
                     if($filiereActuelle == $_GET['filiere']){
                         $filiereClass = "pageactive";
-                    }                    
->>>>>>> 4db91834021746efc1fe51025d92fd433b349c7e
+                    }
+                    $filiereGet=$_GET['filiere'];
                 }else{
                     $filiereGet="MMI_S1";
                 }
+
                 if($filiereActuelle == $filiereGet) {
                     $filiereClass = "pageactive";
                 }
