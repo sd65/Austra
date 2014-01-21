@@ -44,6 +44,7 @@
                 }else{
                     $filiereGet="MMI_S1";
                 }
+
                 if($filiereActuelle == $filiereGet) {
                     $filiereClass = "pageactive";
                 }

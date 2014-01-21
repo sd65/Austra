@@ -87,7 +87,7 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
 			<?php for ($hour = 0; $hour < 24; $hour++): 
 					$typeCours = "empty-hour";
 					$duree = 1;
-					$numCoursHeure = ${$day . "_affichage"}[$hour];	
+					$numCoursHeure = ${$day . "_affichage"}[$hour][1];	
 					
 					if(isset($numCoursHeure)) {
 						$duree = ${$day}[$numCoursHeure]['finedt'] - ${$day}[$numCoursHeure]['debutedt'];
@@ -284,5 +284,9 @@ ini_set('display_errors', 1);
 			
 		</tr>
 	<?php
+    }
+
+    function edt_display_enseignant ($year, $week, $codeenseignant, $bdd) {
+    	//TODO: Fill
     }
 }
