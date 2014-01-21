@@ -40,7 +40,7 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
 				?>
 				<?php 
 					include "./include/checkCookies.php";
-					include "./include/menu.php"; 
+					include "./include/menu_teacher.php"; 
 					include "./include/nav.php"; 
 					include "./include/edt_display.php";
 				?>
