@@ -6,156 +6,32 @@ include "../include/header.php" ;
 	<table>
 		<thead>
 			<tr>
-				<td>Code</td>
 				<td>Salle</td>
+				<td>Code</td>
 				<td>Capacité</td>
-				<td>Dpt Principal</td>
-				<td class="options">Disponibilité</td>
-				<td class="options">Mémo</td>
-				<td class="options">Contraintes</td>
+				<td>Dpt Propriétaire</td>
+				<td class="options">Paramètres</td>
+				<td class="options">Partage</td>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="code">221</td>
-				<td class="name">221</td>
-				<td class="name">40</td>
-				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">224</td>
-				<td class="name">224</td>
-				<td class="name">30</td>
-				<td class="department">PUB</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-			
-			<tr>
-				<td class="code">227</td>
-				<td class="name">227</td>
-				<td class="name">30</td>
-				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">229</td>
-				<td class="name">229</td>
-				<td class="name">25</td>
-				<td class="department">MP</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">230</td>
-				<td class="name">230</td>
-				<td class="name">10</td>
-				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">231</td>
-				<td class="name">231</td>
-				<td class="name">10</td>
-				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-
-			<tr>
-				<td class="code">232</td>
-				<td class="name">232</td>
-				<td class="name">25</td>
-				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">255</td>
-				<td class="name">255</td>
-				<td class="name">60</td>
-				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">251</td>
-				<td class="name">251 - Salle TP</td>
-				<td class="name">20</td>
-				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">252</td>
-				<td class="name">252 - Salle TP</td>
-				<td class="name">20</td>
-				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">253</td>
-				<td class="name">253 - Salle TP</td>
-				<td class="name">20</td>
-				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">Plateau_TV</td>
-				<td class="name">Plateau TV</td>
-				<td class="name">300</td>
-				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">Studio_ITW</td>
-				<td class="name">Studio Interview</td>
-				<td class="name">22x</td>
-				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
-
-			<tr>
-				<td class="code">Studio_Rad</td>
-				<td class="name">Studio Radio</td>
-				<td class="name">22x</td>
-				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			</tr>
+		<?php
+		$req = $bdd->prepare('SELECT DISTINCT id, codesalle, nomsalle, capacitesalle, sallecommune, memosalle, affichagememosalle, deptproprietaire, codesite FROM salle');
+		$req->execute();
+		?>
+		<?php 
+		while ($listeSalles = $req->fetch()): ?>
+		<tr>
+			<td class="nomsalle"><?=$listeSalles['nomsalle']?></td>
+			<td class="codesalle"><?=$listeSalles['codesalle']?></td>
+			<td class="capacitesalle"><?=$listeSalles['capacitesalle']?></td>
+			<td class="deptproprietaire"><?=$listeSalles['deptproprietaire']?></td>
+			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_room?id=<?=$listeSalles['id']?>"></td>
+			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
+		</tr>
+		<?php
+		endwhile;
+		?>
 		</tbody>
 	</table>
 </body>
