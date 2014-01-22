@@ -27,8 +27,7 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
 		'week' => $week,
 		'filiere_code' => $filiere_code,
 		'tp_code' => $tp_code,
-		'td_code' => $td_code
-		));
+		'td_code' => $td_code));
    
     while ($data = $req->fetch()) {		
         $current_day = $data['jouredt'];
@@ -69,9 +68,7 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
     foreach ($days as $day) {
         for ($numCoursDuJour = 0; $numCoursDuJour < ${"NbCours" . $day}; $numCoursDuJour++) { // Pour chaque cours
             ${$day}[$numCoursDuJour]['debutedt'] = timeedt_to_hour(${$day}[$numCoursDuJour]['debutedt']);
-            ${$day}[$numCoursDuJour]['finedt']   = timeedt_to_hour(${$day}[$numCoursDuJour]['finedt']);
-            
-						//detect
+            ${$day}[$numCoursDuJour]['finedt']   = timeedt_to_hour(${$day}[$numCoursDuJour]['finedt']);            
 						
             for ($curseur = ${$day}[$numCoursDuJour]['debutedt']; $curseur < ${$day}[$numCoursDuJour]['finedt']; $curseur++) { //Pour chaque demi heure de cours
                 ${$day . "_affichage"}[$curseur][1] = $numCoursDuJour;
@@ -142,11 +139,7 @@ ini_set('display_errors', 1);
 		
 		/** BUG DU 3 COURS RECUPERES A CHAQUE REQUETE **/
 		/** BUG PRESENT UNIQUEMENT SUR LA FILIERE SRC_S3 **/
-<<<<<<< HEAD
-		if ($filiere == "SRC_S3" || $filiere = "LP-CP") {
-=======
-		if ($filiere == "SRC_S3") {
->>>>>>> 85f0cb7e8a20df843c5115432c26a6131967255d
+		if ($filiere == "SRC_S3" || $filiere == "PUB_S3") {
 			$req->fetch();
 			$req->fetch();
 		}
