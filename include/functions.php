@@ -189,6 +189,10 @@ function trad_codetd_affichage($filiere, $td) {
 		$td_affichage = "TD Classe Entière";
 	}
 
+	if ($filiere == "LP-CP") {
+		$td_affichage = "LP-CP";
+	}
+
 	return $td_affichage;
 }
 

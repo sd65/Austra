@@ -125,7 +125,7 @@ ini_set('display_errors', 1);
 		${$day . "_affichage"} = array_fill(0, 24, NULL);
 		${$day . "_CoursMemeHeure"} = 0;
 	}
-
+	
 	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
@@ -142,7 +142,11 @@ ini_set('display_errors', 1);
 		
 		/** BUG DU 3 COURS RECUPERES A CHAQUE REQUETE **/
 		/** BUG PRESENT UNIQUEMENT SUR LA FILIERE SRC_S3 **/
+<<<<<<< HEAD
+		if ($filiere == "SRC_S3" || $filiere = "LP-CP") {
+=======
 		if ($filiere == "SRC_S3") {
+>>>>>>> 85f0cb7e8a20df843c5115432c26a6131967255d
 			$req->fetch();
 			$req->fetch();
 		}
