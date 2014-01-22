@@ -126,29 +126,26 @@ ini_set('display_errors', 1);
 		${$day . "_CoursMemeHeure"} = 0;
 	}
 
-	$filiere_codes = trad_filiere_to_code_all($filiere); //RETOURNER TABLEAU AVEC LES VALEURS DES TP/TD
-	$query_filiere_codes = "";
-	foreach ($filiere_codes as $code) {
-		 $query_filiere_codes = $query_filiere_codes.' groupeedt="'.$code.'" OR'; 
-	} 
-	$query_filiere_codes = substr($query_filiere_codes, 0, -3); // Le dernier OR est enlevé
-
 	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
 		WHERE extract(year FROM edt.dateedt)= :year 
-		AND ('. $query_filiere_codes .')
+		AND groupeedt LIKE :filiere
 		AND semaineedt= :week ORDER BY jouredt, debutedt, groupeedt');
 	$req->execute(array(
 		'year' => $year,
-		'week' => $week
+		'week' => $week,
+		'filiere' => $filiere . "%"
 		));
 	 
     while ($data = $req->fetch()){
 		
 		/** BUG DU 3 COURS RECUPERES A CHAQUE REQUETE **/
-		$req->fetch();
-		$req->fetch();
+		/** BUG PRESENT UNIQUEMENT SUR LA FILIERE SRC_S3 **/
+		if ($filiere == "SRC_S3") {
+			$req->fetch();
+			$req->fetch();
+		}
 		/***********************************************/
 		
 		$current_day = $data['jouredt'];
@@ -195,6 +192,7 @@ ini_set('display_errors', 1);
 			
 			// Affichage du type de cours
 			if(${$day}[$numCoursDuJour]['typeenseignementedt'] == "TP") {
+				
 				${$day}[$numCoursDuJour]['groupeedt'] = trad_codetp_affichage($filiere, ${$day}[$numCoursDuJour]['groupeedt']) ;
 			}
 			if(${$day}[$numCoursDuJour]['typeenseignementedt'] == "TD") {
@@ -284,9 +282,5 @@ ini_set('display_errors', 1);
 			
 		</tr>
 	<?php
-    }
-
-    function edt_display_enseignant ($year, $week, $codeenseignant, $bdd) {
-    	//TODO: Fill
     }
 }

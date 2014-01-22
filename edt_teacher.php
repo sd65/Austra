@@ -42,6 +42,7 @@ if(!empty($_SESSION['prenomenseignant']) && !empty($_SESSION['nomenseignant'])  
 					include "./include/menu_teacher.php"; 
 					include "./include/nav.php"; 
 					include "./include/edt_display_teacher.php";
+          include "./include/edt_display.php";
 				?>
          <div id="master-planning">
             <table id="planning">
@@ -66,7 +67,10 @@ if(!empty($_SESSION['prenomenseignant']) && !empty($_SESSION['nomenseignant'])  
               <tbody>
                 <?php 
                 //EDT DISPLAY
-                edt_display_teacher_self($year, $week, $_COOKIE['codeenseignant'], $bdd);
+                $filiere = "SRC_S3";
+                edt_display_all($year, $week, $filiere, $bdd);
+                //edt_display_teacher_self_filiere ($year, $week, $_COOKIE['codeenseignant'], $filiere, $bdd);
+                //edt_display_teacher_self($year, $week, $_COOKIE['codeenseignant'], $bdd);
                 ?>
               </tbody>
             </table>
