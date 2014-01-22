@@ -52,8 +52,20 @@
             endwhile ;
             ?>
         </ul>
-        <input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
-        <a class="boutonright" href="">Ajouter un <?=$metier?></a> 
+        <?php
+            switch ($metier) {
+                case "enseignant":
+                $link="../form/create_teacher.php";
+                $feminin="";
+                    break;
+                case "salle":
+                $link="../form/create_room.php";
+                $feminin="e";
+                    break;
+            }
+        ?>
+        <input type="search" name="cours" placeholder="Rechercher un<?=$feminin?> <?=$metier?>">
+        <a class="boutonright" href="<?=$link?>">Ajouter un<?=$feminin?> <?=$metier?></a> 
     </header>
 
     <aside>

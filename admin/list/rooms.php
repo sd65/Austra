@@ -11,7 +11,6 @@ include "../include/header.php" ;
 				<td>Capacité</td>
 				<td>Dpt Principal</td>
 				<td class="options">Disponibilité</td>
-				<td class="options">Mémo</td>
 				<td class="options">Contraintes</td>
 			</tr>
 		</thead>
@@ -23,7 +22,6 @@ include "../include/header.php" ;
 				<td class="department">MMI</td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
 
 			<tr>
@@ -31,7 +29,6 @@ include "../include/header.php" ;
 				<td class="name">224</td>
 				<td class="name">30</td>
 				<td class="department">PUB</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
@@ -43,7 +40,6 @@ include "../include/header.php" ;
 				<td class="department">MMI</td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
 
 			<tr>
@@ -51,7 +47,6 @@ include "../include/header.php" ;
 				<td class="name">229</td>
 				<td class="name">25</td>
 				<td class="department">MP</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
@@ -63,7 +58,6 @@ include "../include/header.php" ;
 				<td class="department"></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
 
 			<tr>
@@ -71,7 +65,6 @@ include "../include/header.php" ;
 				<td class="name">231</td>
 				<td class="name">10</td>
 				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
@@ -84,7 +77,6 @@ include "../include/header.php" ;
 				<td class="department"></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
 
 			<tr>
@@ -92,7 +84,6 @@ include "../include/header.php" ;
 				<td class="name">255</td>
 				<td class="name">60</td>
 				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
@@ -104,7 +95,6 @@ include "../include/header.php" ;
 				<td class="department">MMI</td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
 
 			<tr>
@@ -112,7 +102,6 @@ include "../include/header.php" ;
 				<td class="name">252 - Salle TP</td>
 				<td class="name">20</td>
 				<td class="department">MMI</td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
@@ -124,7 +113,6 @@ include "../include/header.php" ;
 				<td class="department">MMI</td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
 
 			<tr>
@@ -132,7 +120,6 @@ include "../include/header.php" ;
 				<td class="name">Plateau TV</td>
 				<td class="name">300</td>
 				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
@@ -144,7 +131,6 @@ include "../include/header.php" ;
 				<td class="department"></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
 
 			<tr>
@@ -152,7 +138,6 @@ include "../include/header.php" ;
 				<td class="name">Studio Radio</td>
 				<td class="name">22x</td>
 				<td class="department"></td>
-				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 				<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			</tr>
