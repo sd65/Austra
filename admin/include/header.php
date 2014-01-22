@@ -64,11 +64,16 @@
             }
 
             // Récupère dossier parent pour lien...
-            $dossierParent = array_pop(explode(DIRECTORY_SEPARATOR, dirname($_SERVER["PHP_SELF"])));
+            $dirname=dirname($_SERVER["PHP_SELF"]);
+            $direxplode = explode(DIRECTORY_SEPARATOR, $dirname);
+            $dossierParent = array_pop($direxplode);
             if($dossierParent=="form"){
                 $lien="../list/";
             }else if($dossierParent=="list"){
                 $lien="./";
+            }
+            else {
+                $lien = "";
             }
          ?>
         <li><a <?php if($metier == "cours"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php">Cours</a></li>  

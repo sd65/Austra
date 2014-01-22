@@ -148,7 +148,7 @@ function trad_codetp_affichage($filiere, $tp) {
 	if ($tp == "SRC_S3B1")
 	    $tp_affichage = "TP3" ;
 
-	} else if ($filiere == "MMI") {
+	} else if ($filiere == "MMI_S1") {
 
 	if ($tp == "MMI_S1A1")
 	    $tp_affichage = "TP1" ;
@@ -177,13 +177,19 @@ function trad_codetd_affichage($filiere, $td) {
 	if ($td == "SRC_S3")
 			$td_affichage = "TD Classe Entière";
 	
-	} else if ($filiere == "MMI") {
+	} else if ($filiere == "MMI_S1") {
 
 	if ($td == "MMI_S1A")
 	    $td_affichage =  "TD1";
 
 	if ($td == "MMI_S1B")
 	    $td_affichage =  "TD2";
+	}
+	if ($td == "MMI_S1") {
+		$td_affichage = "TD Classe Entière";
+	}
+	if ($filiere == "LP-CP") {
+		$td_affichage = "LP-CP";
 	}
 
 	return $td_affichage;
