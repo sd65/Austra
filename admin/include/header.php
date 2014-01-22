@@ -87,5 +87,6 @@
         <li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php">Élèves</a></li>  
         <li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>teachers.php">Enseignants</a></li>  
         <li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>rooms.php">Salles</a></li>  
+        <li><a <?php if($metier == "absence"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>absence.php">Absences</a></li>  
       </ul>
     </aside>

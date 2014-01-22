@@ -30,19 +30,18 @@ if(!empty($_SESSION['prenomenseignant']) && !empty($_SESSION['nomenseignant'])  
     <body>
           
 				<?php 
-					//$year = date('Y');
+					$year = date('Y');
 					if(isset($_GET['semaine'])) {
 						$week = $_GET['semaine'] ;
 					} else {
 						$week = date('W');
 					}
-					$year = 2013;
 				?>
 				<?php 
 					include "./include/checkCookies.php";
 					include "./include/menu_teacher.php"; 
 					include "./include/nav.php"; 
-					include "./include/edt_display.php";
+					include "./include/edt_display_teacher.php";
 				?>
          <div id="master-planning">
             <table id="planning">
@@ -66,11 +65,8 @@ if(!empty($_SESSION['prenomenseignant']) && !empty($_SESSION['nomenseignant'])  
               </thead>
               <tbody>
                 <?php 
-                if($vue_globale == 1) {
-					       edt_display_all($year, $week, $filiere, $bdd); 
-                } else {
-					       edt_display($year, $week, $filiere, $tp, $td, $bdd);
-				        }
+                //EDT DISPLAY
+                edt_display_teacher_self($year, $week, $_COOKIE['codeenseignant'], $bdd);
                 ?>
               </tbody>
             </table>
