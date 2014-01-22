@@ -33,23 +33,35 @@
         ?>
         <ul>
             <?php 
-            while ($menuListeFilieres = $req->fetch()):
-                $filiereActuelle = $menuListeFilieres['filiere'];
-                $filiereClass = "";
-                if(isset($_GET['filiere'])){
-                    $filiereGet=$_GET['filiere'];
-                    if($filiereActuelle == $_GET['filiere']){
-                        $filiereClass = "pageactive";
-                    }                    
-                }else{
-                    $filiereGet="MMI_S1";
-                }
+            if(!isset($_GET['filiere'])){
+                echo "<li><a class='pageactive' href='?filiere=all'>Toutes</a></li>";
+                $filiereGet="all";
+            } 
+            if(isset($_GET['filiere']) || isset($filiereGet)){
+                $filiereGet=$_GET['filiere'];
 
-                if($filiereActuelle == $filiereGet) {
-                    $filiereClass = "pageactive";
+                if($filiereGet == "all") {
+                        echo "<li><a class='pageactive' href='?filiere=all'>Toutes</a></li>";
+                } 
+                else {
+                    echo "<li><a href='?filiere=all'>Toutes</a></li>";
                 }
-                echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
-            endwhile ;
+                while ($menuListeFilieres = $req->fetch()):
+
+                    $filiereActuelle = $menuListeFilieres['filiere'];
+                    $filiereClass = "";
+
+                    if(isset($_GET['filiere'])){
+                        $filiereGet=$_GET['filiere'];
+                        if($filiereActuelle == $_GET['filiere']){
+                            $filiereClass = "pageactive";
+                        }                    
+                    } else {
+                        $filiereGet="all";
+                    }
+                    echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
+                endwhile ;
+            }
             ?>
         </ul>
         <?php
@@ -76,7 +88,8 @@
             }
 
             // Récupère dossier parent pour lien...
-            $dossierParent = array_pop(explode(DIRECTORY_SEPARATOR, dirname($_SERVER["PHP_SELF"])));
+            $explodeDirName = explode(DIRECTORY_SEPARATOR, dirname($_SERVER["PHP_SELF"]));
+            $dossierParent = array_pop($explodeDirName);
             if($dossierParent=="form"){
                 $lien="../list/";
             }else if($dossierParent=="list"){
@@ -84,7 +97,7 @@
             }
          ?>
         <li><a <?php if($metier == "cours"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php">Cours</a></li>  
-        <li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php">Élèves</a></li>  
+        <li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php?filiere=all">Élèves</a></li>  
         <li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>teachers.php">Enseignants</a></li>  
         <li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>rooms.php">Salles</a></li>  
         <li><a <?php if($metier == "absence"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>absence.php">Absences</a></li>  
