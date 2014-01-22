@@ -188,6 +188,7 @@ function trad_codetd_affichage($filiere, $td) {
 	if ($td == "MMI_S1") {
 		$td_affichage = "TD Classe Entière";
 	}
+
 	if ($filiere == "LP-CP") {
 		$td_affichage = "LP-CP";
 	}
