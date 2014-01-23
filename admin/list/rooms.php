@@ -11,7 +11,7 @@ include "../include/aside.php" ;
 		if(isset($_GET['dpt'])){
 
 			$dptGet=$_GET['dpt'];
-		
+			
 			if($dptGet == "all") {
 				echo "<li><a class='pageactive' href='?dpt=all'>Tous</a></li>";
 			}
@@ -23,21 +23,25 @@ include "../include/aside.php" ;
 			while ($menuListeDpts = $req->fetch()):
 				
 				$dptActuel = $menuListeDpts['deptproprietaire'];
-				$dptClass = "";
+			$dptClass = "";
 
-				if(isset($_GET['dpt'])){
-					$dptGet=$_GET['dpt'];
-					if($dptActuel == $_GET['dpt']){
-						$dptClass = "pageactive";
-					}                    
-				} else {
-					$dptGet="all";
-				}
-				echo '<li><a class="' . $dptClass . '" href="?dpt=' . $dptActuel . '" >' . str_replace("_"," ",$dptActuel) . '</a></li>';
+			if(isset($_GET['dpt'])){
+				$dptGet=$_GET['dpt'];
+				if($dptActuel == $_GET['dpt']){
+					$dptClass = "pageactive";
+				}                    
+			} else {
+				$dptGet="all";
+			}
+			echo '<li><a class="' . $dptClass . '" href="?dpt=' . $dptActuel . '" >' . str_replace("_"," ",$dptActuel) . '</a></li>';
 			endwhile ;
-	}
+		}
 		?>
 	</ul>
+
+	<input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
+	<a class="boutonright" href="">Ajouter un <?=$metier?></a> 
+	
 </header>
 
 <table>

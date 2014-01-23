@@ -36,24 +36,26 @@ include "../include/aside.php" ;
 			while ($menuListeFilieres = $req->fetch()):
 
 				$filiereActuelle = $menuListeFilieres['filiere'];
-				$filiereClass = "";
+			$filiereClass = "";
 
-				if(isset($_GET['filiere'])){
-					$filiereGet=$_GET['filiere'];
-					if($filiereActuelle == $_GET['filiere']){
-						$filiereClass = "pageactive";
-					}                    
-				}
-				else {
-					$filiereGet="all";
-				}
+			if(isset($_GET['filiere'])){
+				$filiereGet=$_GET['filiere'];
+				if($filiereActuelle == $_GET['filiere']){
+					$filiereClass = "pageactive";
+				}                    
+			}
+			else {
+				$filiereGet="all";
+			}
 			echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
 			endwhile ;
 		}
 		?>
 	</ul>
+
 	<input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
 	<a class="boutonright" href="">Ajouter un <?=$metier?></a> 
+	
 </header>
 
 <table>

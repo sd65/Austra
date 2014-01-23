@@ -36,6 +36,7 @@
 			<li><a <?php if($metier == "matiere"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php?dpt=all">Matières</a></li>  
 			<li><a <?php if($metier == "élève"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php?filiere=all">Élèves</a></li>  
 			<li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>teachers.php?dpt=all">Enseignants</a></li>  
-			<li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>rooms.php?dpt=all">Salles</a></li>  
+			<li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>rooms.php?dpt=all">Salles</a></li>
+			<li><a <?php if($metier == "absence"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>absences.php?dpt=all">Absences</a></li>  
 		</ul>
 	</aside>
