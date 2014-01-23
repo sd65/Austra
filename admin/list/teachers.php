@@ -8,41 +8,42 @@ include "../include/aside.php" ;
 	<ul>
 		<?php 
 		$req = $bdd->prepare('SELECT DISTINCT departementenseignant FROM enseignant');
+		
+		if(isset($_GET['dpt'])){
 
-		if(!isset($_GET['dpt'])){
-			echo "<li><a class='pageactive' href='?dep=all'>Tous</a></li>";
-			$dptGet="all";
-		} 
-		
-		if(isset($_GET['dpt']) || isset($dptGet)){
 			$dptGet=$_GET['dpt'];
-		
+
 			if($dptGet == "all") {
 				echo "<li><a class='pageactive' href='?dpt=all'>Tous</a></li>";
 			}
 			else {
 				echo "<li><a href='?dpt=all'>Tous</a></li>";
 			}
+			$req->execute(array());
+
 			while ($menuListeDpts = $req->fetch()):
-
+				
 				$dptActuel = $menuListeDpts['departementenseignant'];
-				$dptClass = "";
+			$dptClass = "";
 
-				if(isset($_GET['dpt'])){
-					$dptGet=$_GET['dpt'];
-					if($dptActuel == $_GET['dpt']){
-						$dptClass = "pageactive";
-					}                    
-				} else {
-					$dptGet="all";
-				}
-				echo '<li><a class="' . $dptClass . '" href="?dpt=' . $dptActuel . '" >' . str_replace("_"," ",$dptActuel) . '</a></li>';
+			if(isset($_GET['dpt'])){
+				$dptGet=$_GET['dpt'];
+				if($dptActuel == $_GET['dpt']){
+					$dptClass = "pageactive";
+				}                    
+			} else {
+				$dptGet="all";
+			}
+			echo '<li><a class="' . $dptClass . '" href="?dpt=' . $dptActuel . '" >' . str_replace("_"," ",$dptActuel) . '</a></li>';
 			endwhile ;
-	}
+		}
 		?>
 	</ul>
-</header>
 
+	<input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
+	<a class="boutonright" href="">Ajouter un <?=$metier?></a> 
+
+</header>
 
 <table>
 	<thead>
@@ -59,17 +60,16 @@ include "../include/aside.php" ;
 	<tbody>
 
 		<?php
-		if(isset($filiereGet)){
-			if($filiereGet == "all") {
+		if(isset($dptGet)){
+			if($dptGet == "all") {
 				$req = $bdd->prepare('SELECT DISTINCT id, prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant');
 				$req->execute(array());
 			}
 			else {
-				$req = $bdd->prepare('SELECT DISTINCT id, prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant WHERE filiere=:filiere');
-				$req->execute(array('filiere' => $_GET['filiere']));
+				$req = $bdd->prepare('SELECT DISTINCT id, prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant WHERE departementenseignant=:dpt');
+				$req->execute(array('dpt' => $dptGet));
 			}
 		}
-
 		while ($listeEnseignants = $req->fetch()): ?>
 		<tr>
 			<td class="name"><?=$listeEnseignants['prenomenseignant']?></td>
