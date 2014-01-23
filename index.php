@@ -28,7 +28,9 @@ if(!empty($_POST)){
             $_SESSION['filiere'] = $resultat['filiere'];
             header('Location: edt.php');
         } else {
-        $reqEnseignant = $bdd->prepare('SELECT id, nomenseignant, prenomenseignant, departementenseignant FROM enseignant WHERE codeenseignant = :codeenseignant AND motpasseenseignant = :pass');
+        $reqEnseignant = $bdd->prepare('SELECT enseignant.id, nomenseignant, prenomenseignant, departementenseignant 
+                                        FROM enseignant INNER JOIN admin ON enseignant.codeenseignant = admin.users
+                                        WHERE codeenseignant = :codeenseignant AND admin.pass = :pass');
         $reqEnseignant->execute(array(
             'codeenseignant' => $name,
             'pass' => $password_md5));
