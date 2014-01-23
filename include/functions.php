@@ -46,6 +46,11 @@ function trad_filiere_to_code($filiere) {
 	else if ($filiere == "MMI_S1") {
 		$filiere_code = "MMI_S1";
 	}
+
+
+	else {
+		$filiere_code = $filiere;
+	}
 	
 	return $filiere_code;
 }
@@ -76,7 +81,12 @@ function trad_tp_to_code($filiere, $tp) {
 
 	} else 	if ($filiere == "PUB_S3") {
 		$tp_code ="PUB_S3";
-	}
+	} 
+
+	else {
+		$tp_code = $filiere;
+	} 
+
 
 	return $tp_code;
 }
@@ -106,6 +116,10 @@ function trad_td_to_code($filiere, $td) {
 	if ($td == 2)
 	    $td_code = "PUB_S3B" ;
 
+	}
+
+	else {
+		$td_code = $filiere;
 	}
 
 	return $td_code;
@@ -160,6 +174,9 @@ function trad_codetp_affichage($filiere, $tp) {
 	    $tp_affichage = "TP3" ;
 
 	}
+	if ($filiere == "LP_S1") {
+		$tp_affichage = "Cours";
+	}
 
 	return $tp_affichage;
 }
@@ -182,15 +199,20 @@ function trad_codetd_affichage($filiere, $td) {
 	if ($td == "MMI_S1A")
 	    $td_affichage =  "TD1";
 
-	if ($td == "MMI_S1B")
-	    $td_affichage =  "TD2";
-	}
-	if ($td == "MMI_S1") {
-		$td_affichage = "TD Classe EntiÃ¨re";
+	} else if ($filiere == "MMI_S1") {
+		if ($td == "MMI_S1A") {
+		    $td_affichage =  "TD1";
+		}
+		if ($td == "MMI_S1B") {
+		    $td_affichage =  "TD2";
+		}
+		if ($td == "MMI_S1") {
+			$td_affichage = "TD Classe Entière";
+		}
 	}
 
-	if ($filiere == "LP-CP") {
-		$td_affichage = "LP-CP";
+	else if ($filiere == "LP_S1") {
+		$td_affichage = "Cours";
 	}
 
 	return $td_affichage;
