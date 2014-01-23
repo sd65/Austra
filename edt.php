@@ -50,29 +50,22 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
             <?php
             $semaineAffich = 10; // Affiche 10 semaines avant et après la date de référence
             
-            $occurence=$semaineAffich;
             for ($z=$week-$semaineAffich ; $z < $week ; $z++) { //Boucle pour avoir les numéros de semaines précédentes
               $numeroSemaine=addZero($z);
-
-              if ($z<0) {
-                for ($i=52-$occurence; $i <= 52; $i++) { 
-                  if(($z==$week-1) OR ($z==$week-2)){
+              if ($z<1){
+                    $newWeek=52+$z;
+                if(($z==$week-1) OR ($z==$week-2)){
                     if($z==$week-1){$class='4';}else{$class='5';}
-                    echo "<a class='".$class."' href='?semaine=".$i."'><li class='week'>".$numeroSemaine."</li></a>";
-                  }else{
-                    echo "<a class='noDisplay' href='?semaine=".$i."'><li class='week'>".$numeroSemaine."</li></a>";
-                  }
-                  
+                    echo "<a class='".$class."' href='?semaine=".$newWeek."'><li class='week'>".$newWeek."</li></a>";
                 }
               }else if ($z>0) {
                 if(($z==$week-1) OR ($z==$week-2)){
                     if($z==$week-1){$class='4';}else{$class='5';}
                     echo "<a class='".$class."' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
                 }else{
-                  //  echo "<a class='noDisplay' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
+                    echo "<a class='noDisplay' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
                 }
               }
-              $occurence--;
             }
             ?>
 

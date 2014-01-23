@@ -103,7 +103,11 @@ $(document).ready(function()
 		
 	});
 	
+	var clicdroit=8;
+	var clicgauche=8;
+
 	$(".arrowright").click(function(){
+		clicdroit--;
 		$("a.5").addClass("noDisplay");
 		$("a.5").removeClass("5");
 
@@ -121,10 +125,17 @@ $(document).ready(function()
 
 		$("a.2").next().addClass("1");
 		$("a.2").next().removeClass("noDisplay");
+
+		if(clicdroit==0){
+			$(".arrowright").hide();
+			clicgauche=15;
+		}
+		$(".arrowleft").show();
+		
 	});
 
-
 	$(".arrowleft").click(function(){
+		clicgauche--;
 		$("a.1").addClass("noDisplay");
 		$("a.1").removeClass("1");
 
@@ -142,6 +153,12 @@ $(document).ready(function()
 
 		$("a.4").prev().addClass("5");
 		$("a.4").prev().removeClass("noDisplay");
+
+		if(clicgauche==0){
+			$(".arrowleft").hide();
+			clicdroit=15;
+		}
+		$(".arrowright").show();
 	});
 
 });

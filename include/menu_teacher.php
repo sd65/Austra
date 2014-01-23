@@ -94,4 +94,4 @@ include "db_connect.php";
 
 </aside>
 
-<?php include "include/modifier_profil.php"; ?>
+<?php include "include/modifier_profil_teacher.php"; ?>
