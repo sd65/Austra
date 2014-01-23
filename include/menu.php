@@ -23,7 +23,8 @@ include "db_connect.php";
           <option <?php if($filiere == "PUB_S3") {echo "selected";} ?> value="PUB_S3">PUB_S3</option>
           <option <?php if($filiere == "PUB_S4") {echo "selected";} ?> value="PUB_S4">PUB_S4</option>
 
-          <option <?php if($filiere == "LP-CP") {echo "selected";} ?> value="LP-CP">LP-CP</option>
+          <option <?php if($filiere == "LP_S1") {echo "selected";} ?> value="LP_S1">LP_S1</option>
+          <option <?php if($filiere == "LP_S2") {echo "selected";} ?> value="LP_S2">LP_S2</option>
 	     </select>
       </div>
     </li>
