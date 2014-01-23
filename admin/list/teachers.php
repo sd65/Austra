@@ -8,13 +8,9 @@ include "../include/aside.php" ;
 	<ul>
 		<?php 
 		$req = $bdd->prepare('SELECT DISTINCT departementenseignant FROM enseignant');
-
-		if(!isset($_GET['dpt'])){
-			echo "<li><a class='pageactive' href='?dep=all'>Tous</a></li>";
-			$dptGet="all";
-		} 
 		
-		if(isset($_GET['dpt']) || isset($dptGet)){
+		if(isset($_GET['dpt'])){
+
 			$dptGet=$_GET['dpt'];
 		
 			if($dptGet == "all") {
@@ -23,8 +19,10 @@ include "../include/aside.php" ;
 			else {
 				echo "<li><a href='?dpt=all'>Tous</a></li>";
 			}
-			while ($menuListeDpts = $req->fetch()):
+			$req->execute(array());
 
+			while ($menuListeDpts = $req->fetch()):
+				
 				$dptActuel = $menuListeDpts['departementenseignant'];
 				$dptClass = "";
 
@@ -59,17 +57,16 @@ include "../include/aside.php" ;
 	<tbody>
 
 		<?php
-		if(isset($filiereGet)){
-			if($filiereGet == "all") {
+		if(isset($dptGet)){
+			if($dptGet == "all") {
 				$req = $bdd->prepare('SELECT DISTINCT id, prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant');
 				$req->execute(array());
 			}
 			else {
-				$req = $bdd->prepare('SELECT DISTINCT id, prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant WHERE filiere=:filiere');
-				$req->execute(array('filiere' => $_GET['filiere']));
+				$req = $bdd->prepare('SELECT DISTINCT id, prenomenseignant, nomenseignant, emailenseignant, departementenseignant, statutenseignant FROM enseignant WHERE departementenseignant=:dpt');
+				$req->execute(array('dpt' => $dptGet));
 			}
 		}
-
 		while ($listeEnseignants = $req->fetch()): ?>
 		<tr>
 			<td class="name"><?=$listeEnseignants['prenomenseignant']?></td>

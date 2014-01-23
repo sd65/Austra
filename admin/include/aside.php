@@ -33,8 +33,8 @@
 				$lien="./";
 			}
 			?>
-			<li><a <?php if($metier == "matière"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php?dpt=all">Matière</a></li>  
-			<li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php?filiere=all">Élèves</a></li>  
+			<li><a <?php if($metier == "matiere"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php?dpt=all">Matières</a></li>  
+			<li><a <?php if($metier == "élève"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php?filiere=all">Élèves</a></li>  
 			<li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>teachers.php?dpt=all">Enseignants</a></li>  
 			<li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>rooms.php?dpt=all">Salles</a></li>  
 		</ul>
