@@ -216,7 +216,7 @@ if(isset($_POST['id'])){
 	<?php
 	if (isset($_GET['id'])) {
 	?>
-	<a href="create_teacher.php?delete=<?php echo $_GET['id']; ?>" onclick="return confirm('Etes vous sûre de vouloir supprimer cet enseignant ?');" class="delete">Supprimer</a>
+	<a href="create_teacher.php?delete=<?php echo $_GET['id']; ?>" onclick="return confirm('Etes vous sûr(e) de vouloir supprimer cet enseignant ?');" class="delete">Supprimer</a>
 	<?php
 	}
 	?>

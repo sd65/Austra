@@ -21,7 +21,7 @@ color:#6c6c6c;
 padding:10px;
 position:absolute;
 right: 15px;
-top:35px;
+top:20px;
 }
 header a.boutonright:hover {color:#3c3c3c;}
 
@@ -79,5 +79,5 @@ input[type="search"]{
 width: 200px;
 position: absolute;
 right: 220px;
-top:45px;
+top:15px;
 }

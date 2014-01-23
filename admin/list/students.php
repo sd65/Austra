@@ -1,8 +1,61 @@
 <?php
 $metier = "élève";
 include_once "../../include/db_connect.php";
-include "../include/header.php" ;
+include "../include/aside.php" ;
 ?>
+<header>
+
+	<?php
+
+	$year=date('Y');
+	if(date('m')<'08'){
+		$lastyear=$year-1;
+		$currentYearLikeRequest= "%" . $lastyear . "%" ;
+	}else{
+		$currentYearLikeRequest= "%" . $year . "%" ;
+	}
+	$req = $bdd->prepare('SELECT DISTINCT filiere FROM etudiant WHERE promo LIKE :annee');
+	$req->execute(array('annee' => $currentYearLikeRequest));
+	?>
+	<ul>
+		<?php 
+		if(!isset($_GET['filiere'])){
+			echo "<li><a class='pageactive' href='?filiere=all'>Toutes</a></li>";
+			$filiereGet="all";
+		}
+
+		if(isset($_GET['filiere']) || isset($filiereGet)){
+			$filiereGet=$_GET['filiere'];
+
+			if($filiereGet == "all") {
+				echo "<li><a class='pageactive' href='?filiere=all'>Toutes</a></li>";
+			} 
+			else {
+				echo "<li><a href='?filiere=all'>Toutes</a></li>";
+			}
+			while ($menuListeFilieres = $req->fetch()):
+
+				$filiereActuelle = $menuListeFilieres['filiere'];
+				$filiereClass = "";
+
+				if(isset($_GET['filiere'])){
+					$filiereGet=$_GET['filiere'];
+					if($filiereActuelle == $_GET['filiere']){
+						$filiereClass = "pageactive";
+					}                    
+				}
+				else {
+					$filiereGet="all";
+				}
+			echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
+			endwhile ;
+		}
+		?>
+	</ul>
+	<input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
+	<a class="boutonright" href="">Ajouter un <?=$metier?></a> 
+</header>
+
 <table>
 	<thead>
 		<tr>
@@ -32,7 +85,6 @@ include "../include/header.php" ;
 				$req->execute(array('filiere' => $_GET['filiere']));
 			}
 		}
-
 		while ($listeEtudiant = $req->fetch()): ?>
 		<tr>
 			<td class="name"><?=$listeEtudiant['nometudiant'];?></td>

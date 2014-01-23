@@ -122,7 +122,7 @@ ini_set('display_errors', 1);
 		${$day . "_affichage"} = array_fill(0, 24, NULL);
 		${$day . "_CoursMemeHeure"} = 0;
 	}
-	
+
 	if ($filiere == "PUB_S1") {
 
 		$filiereunder = str_replace("_", "-", $filiere);
@@ -140,7 +140,6 @@ ini_set('display_errors', 1);
 			'filiereunder' => $filiereunder . "%"
 		));
 	} else {
-
 	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
