@@ -2,6 +2,8 @@
 require_once "./include/functions.php";
 require_once "./include/db_connect.php";
 
+include "./include/checkCookies.php";
+
 session_start();
 
 if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION['filiere']) ) {
@@ -38,12 +40,72 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
 					}
 				?>
 				<?php 
-					include "./include/checkCookies.php";
 					include "./include/menu.php"; 
 					include "./include/nav.php"; 
 					include "./include/edt_display.php";
 				?>
          <div id="master-planning">
+         <ul class="selectweek">
+            <li class="arrowleft"><img src="img/arrowleft.png" width="16" /></li>
+            <?php
+            $semaineAffich = 10; // Affiche 10 semaines avant et après la date de référence
+            
+            $occurence=$semaineAffich;
+            for ($z=$week-$semaineAffich ; $z < $week ; $z++) { //Boucle pour avoir les numéros de semaines précédentes
+              $numeroSemaine=addZero($z);
+
+              if ($z<0) {
+                for ($i=52-$occurence; $i <= 52; $i++) { 
+                  if(($z==$week-1) OR ($z==$week-2)){
+                    if($z==$week-1){$class='4';}else{$class='5';}
+                    echo "<a class='".$class."' href='?semaine=".$i."'><li class='week'>".$numeroSemaine."</li></a>";
+                  }else{
+                    echo "<a class='noDisplay' href='?semaine=".$i."'><li class='week'>".$numeroSemaine."</li></a>";
+                  }
+                  
+                }
+              }else if ($z>0) {
+                if(($z==$week-1) OR ($z==$week-2)){
+                    if($z==$week-1){$class='4';}else{$class='5';}
+                    echo "<a class='".$class."' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
+                }else{
+                  //  echo "<a class='noDisplay' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
+                }
+              }
+              $occurence--;
+            }
+            ?>
+
+            <a class="3"><li class="active week mainweek"><?php echo $week ?></li></a> <!-- Semaine de référence -->
+            
+            <?php
+            $occurence=$semaineAffich;
+            for ($z=$week+1; $z <= $week+$semaineAffich; $z++) { //Boucle pour avoir les numéros de semaines précédentes
+              $numeroSemaine=addZero($z);
+              if ($z>52) {
+                for ($i=1; $i <=$occurence ; $i++) {
+                  $numeroSemaine=addZero($i);
+                  if($week==52){$week=0;}elseif ($week==51){$week=-1;} 
+                  if(($i==$week+1) OR ($i==$week+2)){
+                    if($i==$week+1){$class='2';}else{$class='1';}
+                    echo "<a class='".$class."' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
+                  }else{
+                    echo "<a class='noDisplay' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
+                  }
+                }
+                break;
+              }
+              if(($z==$week+1) OR ($z==$week+2)){
+                if($z==$week+1){$class='2';}else{$class='1';}
+                echo "<a class='".$class."' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
+              }else{
+                echo "<a class='noDisplay' href='?semaine=".$numeroSemaine."'><li class='week'>".$numeroSemaine."</li></a>";
+              }
+              $occurence--;
+            }
+            ?>
+            <li class="arrowright"><img src="img/arrowright.png" width="16" /></li>
+          </ul>
             <table id="planning">
               <thead>
                 <tr class="hours">

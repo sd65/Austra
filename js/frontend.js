@@ -103,5 +103,45 @@ $(document).ready(function()
 		
 	});
 	
-});
+	$(".arrowright").click(function(){
+		$("a.5").addClass("noDisplay");
+		$("a.5").removeClass("5");
 
+		$("a.4").addClass("5");
+		$("a.4").removeClass("4");
+
+		$("a.3").addClass("4");
+		$("a.3").removeClass("3");
+
+		$("a.2").addClass("3");
+		$("a.2").removeClass("2");
+
+		$("a.1").addClass("2");
+		$("a.1").removeClass("1");
+
+		$("a.2").next().addClass("1");
+		$("a.2").next().removeClass("noDisplay");
+	});
+
+
+	$(".arrowleft").click(function(){
+		$("a.1").addClass("noDisplay");
+		$("a.1").removeClass("1");
+
+		$("a.2").addClass("1");
+		$("a.2").removeClass("2");
+
+		$("a.3").addClass("2");
+		$("a.3").removeClass("3");
+
+		$("a.4").addClass("3");
+		$("a.4").removeClass("4");
+
+		$("a.5").addClass("4");
+		$("a.5").removeClass("5");
+
+		$("a.4").prev().addClass("5");
+		$("a.4").prev().removeClass("noDisplay");
+	});
+
+});

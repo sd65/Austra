@@ -333,6 +333,28 @@ cursor: pointer;
 width: 155px;
 }
 
-
-
-
+.selectweek {
+font-family: Montserrat, sans-serif;
+font-size: 1em;
+text-align: center;
+color: #333;
+}
+.selectweek a{color: #333;}
+.selectweek li{
+display: inline-block;
+margin: 0 2% 30px 2%;
+border-radius: 50%;
+padding: 10px 12px;
+opacity: 0.5;
+cursor: pointer;
+}
+.selectweek li.active{
+background: #ffe988;
+opacity: 1;
+cursor: default;
+}
+.selectweek li:hover{opacity: 1;}
+.arrowright, .arrowleft{width: 64px; height: 64px;}
+.arrowright{text-align: right;}
+.arrowleft{text-align: left;}
+.noDisplay{display: none;}

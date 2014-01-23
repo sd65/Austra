@@ -175,7 +175,7 @@ function trad_codetd_affichage($filiere, $td) {
 	    $td_affichage =  "TD2";
 	
 	if ($td == "SRC_S3")
-			$td_affichage = "TD Classe Entière";
+			$td_affichage = "TD Classe EntiÃ¨re";
 	
 	} else if ($filiere == "MMI_S1") {
 
@@ -186,7 +186,7 @@ function trad_codetd_affichage($filiere, $td) {
 	    $td_affichage =  "TD2";
 	}
 	if ($td == "MMI_S1") {
-		$td_affichage = "TD Classe Entière";
+		$td_affichage = "TD Classe EntiÃ¨re";
 	}
 
 	if ($filiere == "LP-CP") {
@@ -220,4 +220,9 @@ function verif_mail($mail){
 		$valid=1; //Valid
 	}
 	return $valid;
+}
+
+function addZero($z){
+	if($z < 10){ $numeroSemaine = '0'.$z;}else{ $numeroSemaine = $z;}
+	return $numeroSemaine;
 }
