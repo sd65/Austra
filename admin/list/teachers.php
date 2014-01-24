@@ -106,7 +106,7 @@ include "../include/aside.php" ;
 				}
 			?>
 			</td>
-			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_teacher?id=<?=$listeEnseignants['id']?>"></td>
+			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_teacher.php?id=<?=$listeEnseignants['id']?>"></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 		</tr>
