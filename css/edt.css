@@ -174,7 +174,7 @@ a.user, a.closecalendars{color: #808080; text-decoration: none;}
 a:hover.user, a:hover.closecalendars {color:#70cfe7;}
 
 a.user {
-background:url(../img/picto_nerd.png) no-repeat;
+background:url(../img/picto_user.png) no-repeat;
 padding-left:35px;
 padding-bottom: 8px;
 height: 26px;
