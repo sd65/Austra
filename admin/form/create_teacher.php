@@ -144,28 +144,30 @@ if(isset($_POST['id'])){
 	<?php } ?>
 	<fieldset>
 		<span class="select"><select name="genre" id="genre">
-			<option value="Mme" <?php if(isset($_POST['id'])){ if($_POST['genre']=="Mme"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['titreenseignant']=="Mme"){ echo "selected"; } } ?>>Mme</option>
-			<option value="M" <?php if(isset($_POST['id'])){ if($_POST['genre']=="M"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['titreenseignant']=="M"){ echo "selected"; } } ?>>M.</option>
-		</select></span>
-		<input name="prenom" type="text" class="middle <?php echo $errorprenom; ?>" value="<?php if(isset($_POST['id'])){ echo $_POST['prenom']; } else if(isset($_GET['id'])){ echo $enseignant['prenomenseignant']; } ?>" placeholder="Prénom *">
-		<input name="nom" type="text" class="middle <?php echo $errornom; ?>" value="<?php if(isset($_POST['id'])){ echo $_POST['nom']; } else if(isset($_GET['id'])){ echo $enseignant['nomenseignant']; } ?>" placeholder="Nom *">
-		<label>Département principal :</label>
-		<span class="select"><select name="departement">
-			<option value="PUB" <?php if(isset($_POST['id'])){ if($_POST['departement']=="PUB"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="PUB"){ echo "selected"; } } ?>>PUB</option>
-			<option value="MMI" <?php if(isset($_POST['id'])){ if($_POST['departement']=="MMI"){ echo "selected"; } }else if(isset($_GET['id'])){ if(($enseignant['departementenseignant']=="MMI") OR ($enseignant['departementenseignant']=="SRC")){ echo "selected"; } } ?>>MMI</option>
-			<option value="LP" <?php if(isset($_POST['id'])){ if($_POST['departement']=="LP"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="LP"){ echo "selected"; } } ?>>LP</option>
-			<option value="CS" <?php if(isset($_POST['id'])){ if($_POST['departement']=="CS"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="CS"){ echo "selected"; } } ?>>CS</option>
-			<option value="ADMIN" <?php if(isset($_POST['id'])){ if($_POST['departement']=="ADMIN"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="ADMIN"){ echo "selected"; } } ?>>ADMIN</option>
-		</select></span><br />
-		<span>
+
+				<option value="Mme" <?php if(isset($_POST['id'])){ if($_POST['genre']=="Mme"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['titreenseignant']=="Mme"){ echo "selected"; } } ?>>Mme</option>
+				<option value="M" <?php if(isset($_POST['id'])){ if($_POST['genre']=="M"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['titreenseignant']=="M"){ echo "selected"; } } ?>>M.</option>
+			</select></span>
+			<input name="prenom" type="text" class="middle <?php echo $errorprenom; ?>" value="<?php if(isset($_POST['id'])){ echo $_POST['prenom']; } else if(isset($_GET['id'])){ echo $enseignant['prenomenseignant']; } ?>" placeholder="Prénom *">
+			<input name="nom" type="text" class="middle <?php echo $errornom; ?>" value="<?php if(isset($_POST['id'])){ echo $_POST['nom']; } else if(isset($_GET['id'])){ echo $enseignant['nomenseignant']; } ?>" placeholder="Nom *">
+			<label>Département principal :</label>
+			<span class="select"><select name="departement">
+				<option value="IC" <?php if(isset($_POST['id'])){ if($_POST['departement']=="IC"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="IC"){ echo "selected"; } } ?>>PUB</option>
+				<option value="SRC" <?php if(isset($_POST['id'])){ if($_POST['departement']=="SRC"){ echo "selected"; } }else if(isset($_GET['id'])){ if(($enseignant['departementenseignant']=="SRC") OR ($enseignant['departementenseignant']=="SRC")){ echo "selected"; } } ?>>MMI</option>
+				<option value="LP" <?php if(isset($_POST['id'])){ if($_POST['departement']=="LP"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="LP"){ echo "selected"; } } ?>>LP</option>
+				<option value="CS" <?php if(isset($_POST['id'])){ if($_POST['departement']=="CS"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="CS"){ echo "selected"; } } ?>>CS</option>
+				<option value="ADMIN" <?php if(isset($_POST['id'])){ if($_POST['departement']=="ADMIN"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['departementenseignant']=="ADMIN"){ echo "selected"; } } ?>>ADMIN</option>
+			</select></span><br />
+			<span>
 			
 			<input name="statut" type="text" class="smaller autre" value="<?php if(isset($_POST['id'])){ echo $_POST['statut']; } else if((isset($_GET['id'])) AND (($enseignant['statutenseignant']!="BIATOS") AND ($enseignant['statutenseignant']!="VACNF") AND ($enseignant['statutenseignant']!="PRCE_PRAG") AND ($enseignant['statutenseignant']!="PRCE/PRAG") AND ($enseignant['statutenseignant']!="VAC"))){ echo $enseignant['statutenseignant']; } ?>" id="autreinput" placeholder="Autre *">
 			<input type="radio" name="autreval" value="autre" id="autre" <?php if((isset($_GET['id'])) AND (($enseignant['statutenseignant']!="BIATOS") AND ($enseignant['statutenseignant']!="VACNF") AND ($enseignant['statutenseignant']!="PRCE_PRAG") AND ($enseignant['statutenseignant']!="PRCE/PRAG") AND ($enseignant['statutenseignant']!="VAC"))){ echo 'checked'; } ?>><label id="autrelab" for="autre">Autre</label>
 			
-			<input type="radio" name="statut" value="BIATOS" id="personnel-administratif" <?php if(isset($_POST['id'])){ if($_POST['statut']=="BIATOS"){ echo "checked"; } }else if(isset($_GET['id'])){ if($enseignant['statutenseignant']=="BIATOS"){ echo "checked"; } } ?>><label for="personnel-administratif">Personnel Administratif (BIATOS)</label>
-			<input type="radio" name="statut" value="VACNF" id="invernant" <?php if(isset($_POST['id'])){ if($_POST['statut']=="VACNF"){ echo "checked"; } }else if(isset($_GET['id'])){ if($enseignant['statutenseignant']=="VACNF"){ echo "checked"; } } ?>><label for="invernant">Intervenant (VACNF)</label>
-			<input type="radio" name="statut" value="PRCE_PRAG" id="department_chief" <?php if(isset($_POST['id'])){ if($_POST['statut']=="PRCE_PRAG"){ echo "checked"; } }else if(isset($_GET['id'])){ if(($enseignant['statutenseignant']=="PRCE_PRAG") OR ($enseignant['statutenseignant']=="PRCE/PRAG")){ echo "checked"; } } ?>><label for="department_chief">Chef de Département (PRCE_PRAG)</label>
-			<input type="radio" name="statut" value="VAC" id="Enseignant" <?php if(isset($_POST['id'])){ if($_POST['statut']=="VAC"){ echo "checked"; } }else if(isset($_GET['id'])){ if($enseignant['statutenseignant']=="VAC"){ echo "checked"; } }else{ echo "checked"; } ?>><label for="Enseignant">Enseignant (VAC)</label></span>
+			<input type="radio" name="statut" value="BIATOS" id="personnel-administratif" <?php if(isset($_POST['id'])){ if($_POST['statut']=="BIATOS"){ echo "checked"; } }else if(isset($_GET['id'])){ if($enseignant['statutenseignant']=="BIATOS"){ echo "checked"; } } ?>><label for="personnel-administratif">BIATOS</label>
+			<input type="radio" name="statut" value="MCF" id="mcf" <?php if(isset($_POST['id'])){ if($_POST['statut']=="MCF"){ echo "checked"; } }else if(isset($_GET['id'])){ if($enseignant['statutenseignant']=="MCF"){ echo "checked"; } } ?>><label for="mcf">MCF</label>
+			<input type="radio" name="statut" value="VACNF" id="invernant" <?php if(isset($_POST['id'])){ if($_POST['statut']=="VACNF"){ echo "checked"; } }else if(isset($_GET['id'])){ if($enseignant['statutenseignant']=="VACNF"){ echo "checked"; } } ?>><label for="invernant">VACNF</label>
+			<input type="radio" name="statut" value="VAC" id="Enseignant" <?php if(isset($_POST['id'])){ if($_POST['statut']=="VAC"){ echo "checked"; } }else if(isset($_GET['id'])){ if($enseignant['statutenseignant']=="VAC"){ echo "checked"; } }else{ echo "checked"; } ?>><label for="Enseignant">VAC</label></span>
+			<input type="radio" name="statut" value="PRCE_PRAG" id="department_chief" <?php if(isset($_POST['id'])){ if($_POST['statut']=="PRCE_PRAG"){ echo "checked"; } }else if(isset($_GET['id'])){ if(($enseignant['statutenseignant']=="PRCE_PRAG") OR ($enseignant['statutenseignant']=="PRCE/PRAG")){ echo "checked"; } } ?>><label for="department_chief">PRCE_PRAG</label>
 			<input type="hidden" name="id" value="<?php if(isset($_GET['id'])) { echo $_GET['id']; }else{ echo "A"; } ?>">
 		</fieldset>
 
