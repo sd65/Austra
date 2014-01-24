@@ -19,9 +19,11 @@ function edt_display($year, $week, $filiere, $tp, $td, $bdd) {
 	$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 		FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 		LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
+		LEFT JOIN edtvalide ON edt.filiereedt = edtvalide.codefiliere
 		WHERE extract(year FROM edt.dateedt)= :year 
 		AND (groupeedt= :filiere_code OR groupeedt= :tp_code OR groupeedt= :td_code)
-		AND semaineedt= :week ORDER BY jouredt, debutedt');
+		AND semaineedt= :week ORDER BY jouredt, debutedt
+		AND edtvalide.valide = 16');
 	$req->execute(array(
 		'year' => $year,
 		'week' => $week,
@@ -130,9 +132,11 @@ ini_set('display_errors', 1);
 		$req=$bdd->prepare('SELECT nommatiere, nomenseignant, prenomenseignant,typeenseignementedt,groupeedt,jouredt,semaineedt,edt.dateedt,debutedt,finedt,salleedt
 			FROM edt LEFT JOIN enseignant ON edt.enseignantedt=enseignant.codeenseignant
 			LEFT JOIN matiere ON edt.matiereedt = matiere.codematiere
+			LEFT JOIN edtvalide ON edt.filiereedt = edtvalide.codefiliere
 			WHERE extract(year FROM edt.dateedt)= :year 
-			AND (groupeedt LIKE :filiere OR groupeedt LIKE :filiereunder )
-			AND semaineedt= :week ORDER BY jouredt, debutedt, groupeedt');
+			AND (groupeedt LIKE :filiere OR groupeedt LIKE :filiereunder)
+			AND semaineedt= :week ORDER BY jouredt, debutedt, groupeedt
+			AND edtvalide.valide = 16');
 		$req->execute(array(
 			'year' => $year,
 			'week' => $week,
