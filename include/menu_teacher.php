@@ -89,7 +89,9 @@ include "db_connect.php";
     <p>Paramètres</p>
     <li><a class="modifprofil" href="javascript:;">Modifier mon profil</a></li>
     <li class="logout"><a href="include/logout.php">Déconnexion</a></li>
+    <?php if ($_SESSION['niveauacces'] < 50){ ?>
     <li><a href="admin/" target="_blank">Accéder à l'Administration</a></li>
+    <?php } ?>
   </ul>
 
 </aside>

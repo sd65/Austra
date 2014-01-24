@@ -2,23 +2,24 @@
 require_once "../../include/functions.php";
 include_once "../../include/db_connect.php";
 $metier = "enseignant";
-include "../include/header.php" ;
+$valid = "";
+include "../include/aside.php" ;
 
 if(isset($_GET['id'])) { // Si un ID est passé en GET c'est une édition
-	$id=$_GET['id'];
-    $req = $bdd->prepare('SELECT * FROM enseignant WHERE id = :id');
-    $req->execute(array(
-        'id' => $id));
-    $enseignant = $req->fetch();
+$id=$_GET['id'];
+$req = $bdd->prepare('SELECT * FROM enseignant WHERE id = :id');
+$req->execute(array(
+	'id' => $id));
+$enseignant = $req->fetch();
 }
 if(isset($_GET['delete'])) { // Si un ID est passé en GET c'est une édition
-	$id=$_GET['delete'];
-    $req = $bdd->prepare('DELETE FROM enseignant WHERE id = :id');
-    $req->execute(array(
-        'id' => $id));
+$id=$_GET['delete'];
+$req = $bdd->prepare('DELETE FROM enseignant WHERE id = :id');
+$req->execute(array(
+	'id' => $id));
 
-    echo "<form>L'enseignant à bien été supprimé</form></body></html>";
-    exit();
+echo "<form>L'enseignant à bien été supprimé</form></body></html>";
+exit();
 }
 if(isset($_POST['id'])){ 
 	if (!empty($_POST['prenom'])){
@@ -86,7 +87,7 @@ if(isset($_POST['id'])){
 
 		if ($_POST['id']=="A") { //Creation nouvel enseignant
 			$req = $bdd->prepare('INSERT INTO enseignant(codeenseignant, statutenseignant, departementenseignant, titreenseignant, nomenseignant, prenomenseignant, emailenseignant, adresse1enseignant, adresse2enseignant, codepostalenseignant, villeenseignant, telephoneportable, fonctionenseignant, nomentreprise, memoenseignant) VALUES(:codeenseignant, :statutenseignant, :departementenseignant, :titreenseignant, :nomenseignant, :prenomenseignant, :emailenseignant, :adresse1enseignant, :adresse2enseignant, :codepostalenseignant,
-				 :villeenseignant, :telephoneportable, :fonctionenseignant, :nomentreprise, :memoenseignant)');
+				:villeenseignant, :telephoneportable, :fonctionenseignant, :nomentreprise, :memoenseignant)');
 			$req->execute(array(
 				'codeenseignant' => $codeenseignant,
 				'statutenseignant' => $statut,
@@ -135,14 +136,15 @@ if(isset($_POST['id'])){
 	}
 }
 ?>
-	<form method="post">
-		<?php if(isset($_GET['id'])) { // Si un ID est passé en GET c'est une édition ?>
-		<legend>Modifier l'enseignant <b><?php echo $enseignant['prenomenseignant'].' '.$enseignant['nomenseignant']; ?></b><?php echo $valid; ?></legend>
-		<?php }else{  ?>
-		<legend>Nouvel enseignant<?php echo $valid; ?></legend>
-		<?php } ?>
-		<fieldset>
+<form method="post">
+	<?php if(isset($_GET['id'])) { // Si un ID est passé en GET c'est une édition ?>
+	<legend>Modifier l'enseignant <b><?php echo $enseignant['prenomenseignant'].' '.$enseignant['nomenseignant']; ?></b><?php echo $valid; ?></legend>
+	<?php }else{  ?>
+	<legend>Nouvel enseignant<?php if(isset($valid)) {echo $valid;} ?></legend>
+	<?php } ?>
+	<fieldset>
 		<span class="select"><select name="genre" id="genre">
+
 				<option value="Mme" <?php if(isset($_POST['id'])){ if($_POST['genre']=="Mme"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['titreenseignant']=="Mme"){ echo "selected"; } } ?>>Mme</option>
 				<option value="M" <?php if(isset($_POST['id'])){ if($_POST['genre']=="M"){ echo "selected"; } }else if(isset($_GET['id'])){ if($enseignant['titreenseignant']=="M"){ echo "selected"; } } ?>>M.</option>
 			</select></span>
@@ -185,18 +187,18 @@ if(isset($_POST['id'])){
 			</fieldset>
 		</fieldset>
 
-	<fieldset>
-		<label>Du</label>
+		<fieldset>
+			<label>Du</label>
 			<span class="select"><select name="" id="">
-			<option>Lundi</option>
-			<option>Mardi</option>
-			<option>Mercredi</option>
-			<option>Jeudi</option>
-			<option>Vendredi</option>
-		</select></span>
-		<label>à</label><span class="select"><select name="" id=""><option>8h</option><option>9h</option>
-<option>10h</option><option>11h</option><option>12h</option><option>13h</option><option>14h</option><option>15h</option><option>16h</option><option>17h</option><option>18h</option><option>19h</option></select></span>
-		<label>au</label><span class="select"><select name="" id=""> 
+				<option>Lundi</option>
+				<option>Mardi</option>
+				<option>Mercredi</option>
+				<option>Jeudi</option>
+				<option>Vendredi</option>
+			</select></span>
+			<label>à</label><span class="select"><select name="" id=""><option>8h</option><option>9h</option>
+			<option>10h</option><option>11h</option><option>12h</option><option>13h</option><option>14h</option><option>15h</option><option>16h</option><option>17h</option><option>18h</option><option>19h</option></select></span>
+			<label>au</label><span class="select"><select name="" id=""> 
 			<option>Lundi</option>
 			<option>Mardi</option>
 			<option>Mercredi</option>
@@ -204,7 +206,7 @@ if(isset($_POST['id'])){
 			<option>Vendredi</option>
 		</select></span>
 		<label>à</label><span class="select"><select name="" id=""><option>9h</option>
-<option>10h</option><option>11h</option><option>12h</option><option>13h</option><option>14h</option><option>15h</option><option>16h</option><option>17h</option><option>18h</option><option>19h</option><option>20h</option>
+		<option>10h</option><option>11h</option><option>12h</option><option>13h</option><option>14h</option><option>15h</option><option>16h</option><option>17h</option><option>18h</option><option>19h</option><option>20h</option>
 	</select></span>
 	<button type="button">Ajouter</button>
 </fieldset>
@@ -216,9 +218,9 @@ if(isset($_POST['id'])){
 	<button type="submit" class="submit">Valider</button>
 	<?php
 	if (isset($_GET['id'])) {
-	?>
-	<a href="create_teacher.php?delete=<?php echo $_GET['id']; ?>" onclick="return confirm('Etes vous sûr(e) de vouloir supprimer cet enseignant ?');" class="delete">Supprimer</a>
-	<?php
+		?>
+		<a href="create_teacher.php?delete=<?php echo $_GET['id']; ?>" onclick="return confirm('Etes vous sûr(e) de vouloir supprimer cet enseignant ?');" class="delete">Supprimer</a>
+		<?php
 	}
 	?>
 </div>

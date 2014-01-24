@@ -1,5 +1,7 @@
 <!-- HEADER SUBJECT = TRI PAR FILIERE -->
+<?php session_start();
 
+if(empty($_SESSION['prenomenseignant']) || empty($_SESSION['nomenseignant'])  || empty($_SESSION['departementenseignant']) || (!$_SESSION['niveauacces'] < 50)) {header('Location: ../index.php');} ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,18 +22,28 @@
 <body>
 	<aside>
 		<ul>
-			<li><a href=""><img src="../../img/logo_black@2x.png" alt="Austra" width="140" height"48"/></a></li>
 			<?php 
-			if($metier==""){
-			}
 						// Récupère dossier parent pour lien...
 			$explodeDirName = explode(DIRECTORY_SEPARATOR, dirname($_SERVER["PHP_SELF"]));
 			$dossierParent = array_pop($explodeDirName);
 			if($dossierParent=="form"){
 				$lien="../list/";
+				$lienlogo="../../";
 			}else if($dossierParent=="list"){
+				$lienlogo="../../";
 				$lien="./";
+			}else{
+				$lien="./list/";
+				$lienlogo="./../";
 			}
+			 ?>
+			<li><a href=""><img src="<?=$lienlogo?>img/logo_black@2x.png" alt="Austra" width="140" height"48"/></a></li>
+			<?php 
+			if(!isset($metier)){
+				$metier="home";
+			}
+			
+
 			?>
 			<li><a <?php if($metier == "matiere"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php?dpt=all">Matières</a></li>  
 			<li><a <?php if($metier == "élève"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php?filiere=all">Élèves</a></li>  

@@ -3,13 +3,13 @@ $metier = "enseignant";
 include_once "../../include/db_connect.php";
 include "../include/aside.php" ;
 ?>
-
 <header>
 	<ul>
 		<?php 		
 		if(isset($_GET['dpt'])){
 			$dptGet=$_GET['dpt'];
 		}else{
+
 			$dptGet="all";
 		}
 
@@ -37,6 +37,7 @@ include "../include/aside.php" ;
 			
 			echo '<li><a class="'.$dptClass.'" href="?dpt='.$dptActuel.'" >'.str_replace("_"," ",$dptActuel).'</a></li>';
 		}
+		
 		?>
 	</ul>
 	<!-- Fonction non-prioritaire cf. tableur projet tut
@@ -85,6 +86,7 @@ include "../include/aside.php" ;
 			<td class="surname"><?=$listeEnseignants['nomenseignant']?></td>
 			<td class="department"><?=$listeEnseignants['departementenseignant']?></td>
 			<td class="status"><?=$listeEnseignants['statutenseignant']?></td>
+
 			<td class="options"><?=$listeEnseignants['heuresstatutaires']?></td>
 			<td class="options">
 			<?php 
@@ -104,7 +106,7 @@ include "../include/aside.php" ;
 				}
 			?>
 			</td>
-			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_teacher?id=<?=$listeEnseignants['id']?>"></td>
+			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_teacher.php?id=<?=$listeEnseignants['id']?>"></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 		</tr>

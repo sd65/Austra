@@ -1,9 +1,12 @@
 <?php
-$req = $bdd->prepare('SELECT telephoneportable, emailenseignant, motpasseenseignant FROM enseignant WHERE id LIKE :id');
+$req = $bdd->prepare('SELECT telephoneportable, emailenseignant, admin.pass
+					FROM enseignant
+					INNER JOIN admin ON enseignant.codeenseignant = admin.users
+					WHERE enseignant.id LIKE :id');
 $req->execute(array('id' => $id));
 $donnees = $req->fetch();
-$email = $donnees['email'];
-$tel = $donnees['tel'];
+$email = $donnees['emailenseignant'];
+$tel = $donnees['telephoneportable'];
 $pass = $donnees['pass'];
 
 if(empty($_POST['id'])){ //Si l'id n'est pas passé, c'est qu'on a pas envoyé de form
@@ -23,7 +26,7 @@ if(empty($_POST['id'])){ //Si l'id n'est pas passé, c'est qu'on a pas envoyé d
 		$tel = $_POST['telport'];
 		$email = $_POST['mail'];
 		
-		echo"Mail et telephone enregistree";		
+		echo"Mail et telephone enregistrés";		
 	}else{
 		if(verif_tel($_POST['telport'])==0){ // Verif
 			echo'<p class="error">Telephone incorrect</p>';
@@ -38,12 +41,12 @@ if(empty($_POST['id'])){ //Si l'id n'est pas passé, c'est qu'on a pas envoyé d
 		if(md5($_POST['passwordactuel'])==$pass){ // Si la personne ne s'est pas trompé dans le mot de passe actuel
 			if($_POST['passwordnew']==$_POST['passwordnewconfirm']){ //Si le nouveau mdp et la confirm sont identique
 
-				$req = $bdd->prepare('UPDATE enseignant SET motpasseenseignant = :nvpass WHERE id = :nid');
+				$req = $bdd->prepare('UPDATE admin SET pass = :nvpass WHERE id = :nid');
 				$req->execute(array(
 					'nvpass' => md5($_POST['passwordnew']),
 					'nid' => $_POST['id']
 					));
-				echo"Nouveau mot de passe enregistree";		
+				echo "<p>Nouveau mot de passe enregistré</p>";		
 			}else{
 				echo'<p class="error">Nouveau mot de passe et confirmation non identique</p>';
 			}
@@ -61,7 +64,7 @@ if(empty($_POST['id'])){ //Si l'id n'est pas passé, c'est qu'on a pas envoyé d
 		<label for="langue">Langue :</label><input disabled="disable" type="text" id="langue" name="langue" value="" tabindex="1" placeholder="Chinois"/>
 		<input type="hidden"  name="id"  value="<?php echo $id; ?>">
 	</fieldset>
-
+	
 	<fieldset class="enable">
 		<label for="mail">Mail :</label><input type="text" id="mail" name="mail" tabindex="1" value="<?php echo $email; ?>"/><br />
  		<label for="telport">Telephone portable :</label><input type="text" id="telport" name="telport" tabindex="1" value="<?php echo $tel; ?>"/>

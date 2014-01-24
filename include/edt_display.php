@@ -291,9 +291,6 @@ ini_set('display_errors', 1);
 							
 								echo ${$day}[$numCoursHeure + $i]['nommatiere'] . "<br />" . ${$day}[$numCoursHeure + $i]['prenomenseignant'] . " " . ${$day}[$numCoursHeure + $i]['nomenseignant'] . "<br />" . ${$day}[$numCoursHeure + $i]['salleedt'] . "<br />" . ${$day}[$numCoursHeure + $i]['groupeedt'];
 								?>
-							
-							
-							
 						 </p>
 						 <?php }
 						 $hour += $duree -1;
