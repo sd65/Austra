@@ -1,8 +1,11 @@
 <?php
-$req = $bdd->prepare('SELECT telephoneportable, emailenseignant, motpasseenseignant FROM enseignant WHERE id LIKE :id');
+$req = $bdd->prepare('SELECT telephoneportable, emailenseignant, admin.pass
+					FROM enseignant
+					INNER JOIN admin ON enseignant.codeenseignant = admin.users
+					WHERE id LIKE :id');
 $req->execute(array('id' => $id));
 $donnees = $req->fetch();
-$email = $donnees['email'];
+$email = $donnees['emailenseignant'];
 $tel = $donnees['tel'];
 $pass = $donnees['pass'];
 
