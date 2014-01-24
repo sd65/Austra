@@ -40,7 +40,7 @@ include "../include/aside.php" ;
 	</ul>
 
 	<input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
-	<a class="boutonright" href="">Ajouter un <?=$metier?></a> 
+	<a class="boutonright" href="../form/create_room.php">Ajouter un <?=$metier?></a> 
 	
 </header>
 
@@ -74,7 +74,7 @@ include "../include/aside.php" ;
 			<td class="codesalle"><?=$listeSalles['codesalle']?></td>
 			<td class="capacitesalle"><?=$listeSalles['capacitesalle']?></td>
 			<td class="deptproprietaire"><?=$listeSalles['deptproprietaire']?></td>
-			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_room?id=<?=$listeSalles['id']?>"></td>
+			<td class="options"><a class="show" href=""><a class="edit" href="../form/create_room.php?id=<?=$listeSalles['id']?>"></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 		</tr>
 		<?php

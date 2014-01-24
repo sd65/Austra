@@ -41,7 +41,7 @@
                 $filiereGet=$_GET['filiere'];
 
                 if($filiereGet == "all") {
-                        echo "<li><a class='pageactive' href='?filiere=all'>Toutes</a></li>";
+                    echo "<li><a class='pageactive' href='?filiere=all'>Toutes</a></li>";
                 } 
                 else {
                     echo "<li><a href='?filiere=all'>Toutes</a></li>";
@@ -49,32 +49,44 @@
                 while ($menuListeFilieres = $req->fetch()):
 
                     $filiereActuelle = $menuListeFilieres['filiere'];
-                    $filiereClass = "";
+                $filiereClass = "";
 
-                    if(isset($_GET['filiere'])){
-                        $filiereGet=$_GET['filiere'];
-                        if($filiereActuelle == $_GET['filiere']){
-                            $filiereClass = "pageactive";
-                        }                    
-                    } else {
-                        $filiereGet="all";
-                    }
-                    echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
+                if(isset($_GET['filiere'])){
+                    $filiereGet=$_GET['filiere'];
+                    if($filiereActuelle == $_GET['filiere']){
+                        $filiereClass = "pageactive";
+                    }                    
+                } else {
+                    $filiereGet="all";
+                }
+                echo '<li><a class="' . $filiereClass . '" href="?filiere=' . $filiereActuelle . '" >' . str_replace("_"," ",$filiereActuelle) . '</a></li>';
                 endwhile ;
             }
             ?>
         </ul>
         <?php
-            switch ($metier) {
-                case "enseignant":
-                $link="../form/create_teacher.php";
-                $feminin="";
-                    break;
-                case "salle":
-                $link="../form/create_room.php";
-                $feminin="e";
-                    break;
-            }
+        switch ($metier) {
+            case "matiere":
+            $link="../form/create_course.php";
+            $feminin="e";
+            break;
+            case "eleve":
+            $link="../form/create_student.php";
+            $feminin="e";
+            break;
+            case "enseignant":
+            $link="../form/create_teacher.php";
+            $feminin="";
+            break;
+            case "salle":
+            $link="../form/create_room.php";
+            $feminin="e";
+            break;
+            case "absence":
+            $link="../form/create_absence.php";
+            $feminin="e";
+            break;
+        }
         ?>
         <input type="search" name="cours" placeholder="Rechercher un<?=$feminin?> <?=$metier?>">
         <a class="boutonright" href="<?=$link?>">Ajouter un<?=$feminin?> <?=$metier?></a> 
@@ -83,27 +95,27 @@
     <aside>
       <ul>
         <?php 
-            if($metier==""){
+        if($metier==""){
 
-            }
+        }
 
             // Récupère dossier parent pour lien...
-            $dirname=dirname($_SERVER["PHP_SELF"]);
-            $direxplode = explode(DIRECTORY_SEPARATOR, $dirname);
-            $dossierParent = array_pop($direxplode);
-            if($dossierParent=="form"){
-                $lien="../list/";
-            }else if($dossierParent=="list"){
-                $lien="./";
-            }
-            else {
-                $lien = "";
-            }
-         ?>
+        $dirname=dirname($_SERVER["PHP_SELF"]);
+        $direxplode = explode(DIRECTORY_SEPARATOR, $dirname);
+        $dossierParent = array_pop($direxplode);
+        if($dossierParent=="form"){
+            $lien="../list/";
+        }else if($dossierParent=="list"){
+            $lien="./";
+        }
+        else {
+            $lien = "";
+        }
+        ?>
         <li><a <?php if($metier == "cours"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>courses.php">Cours</a></li>  
         <li><a <?php if($metier == "étudiant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>students.php?filiere=all">Élèves</a></li>  
         <li><a <?php if($metier == "enseignant"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>teachers.php">Enseignants</a></li>  
         <li><a <?php if($metier == "salle"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>rooms.php">Salles</a></li>  
         <li><a <?php if($metier == "absence"){echo 'class="pageactive"';} ?> href="<?php echo $lien; ?>absence.php">Absences</a></li>  
-      </ul>
-    </aside>
+    </ul>
+</aside>

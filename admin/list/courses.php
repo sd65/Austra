@@ -21,7 +21,7 @@ include "../include/aside.php" ;
       $req->execute(array());
 
       while ($menuListeDpts = $req->fetch()):
-        
+
         $dptActuel = $menuListeDpts['dept'];
       $dptClass = "";
 
@@ -40,7 +40,7 @@ include "../include/aside.php" ;
   </ul>
 
   <input type="search" name="cours" placeholder="Rechercher une <?=$metier?>">
-  <a class="boutonright" href="">Ajouter un <?=$metier?></a>
+  <a class="boutonright" href="../form/create_course.php">Ajouter un <?=$metier?></a>
   
 </header>
 
@@ -59,11 +59,11 @@ include "../include/aside.php" ;
     <?php 
     if(isset($dptGet)){
       if($dptGet == "all") {
-        $req = $bdd->prepare('SELECT DISTINCT nommatiere, dept, modulematiere, codematiere, enseignantmatiere FROM matiere');
+        $req = $bdd->prepare('SELECT DISTINCT id, nommatiere, dept, modulematiere, codematiere, enseignantmatiere FROM matiere');
         $req->execute(array());
       }
       else{
-        $req = $bdd->prepare('SELECT DISTINCT nommatiere, dept , modulematiere, codematiere, enseignantmatiere FROM matiere WHERE dept=:dpt');
+        $req = $bdd->prepare('SELECT DISTINCT id, nommatiere, dept , modulematiere, codematiere, enseignantmatiere FROM matiere WHERE dept=:dpt');
         $req->execute(array('dpt' => $dptGet));
       }
     }
@@ -77,7 +77,7 @@ include "../include/aside.php" ;
       </td><td class="module"><?=$listeCours['codematiere']?></td>
     </td><td class="enseignant"><?=$listeCours['enseignantmatiere']?></td>
     <!-- <td class="memo">Mémo</td> -->
-    <td><a class="edit hover" href=""></a><a class="delete hover" href=""></a></td>
+    <td><a class="edit hover" href="../form/create_course.php?id=<?=$listeCours['id']?>"></a><a class="delete hover" href=""></a></td> 
   </tr>
   <?php
   endwhile;

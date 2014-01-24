@@ -54,7 +54,7 @@ include "../include/aside.php" ;
 	</ul>
 
 	<input type="search" name="cours" placeholder="Rechercher un <?=$metier?>">
-	<a class="boutonright" href="">Ajouter un <?=$metier?></a> 
+	<a class="boutonright" href="../form/create_student.php">Ajouter un <?=$metier?></a> 
 	
 </header>
 
@@ -99,7 +99,9 @@ include "../include/aside.php" ;
 			<td class="mail"><?=$listeEtudiant['email'];?></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
 			<td class="options"><a class="show" href=""><a class="edit" href=""></td>
-			<td class="options"><a class="show" href=""></a><a class="edit" href=""></a><a class="delete" href=""></a></td>
+			<td class="options"><a class="show" href=""></a>
+				<a class="edit" href="../form/create_student.php?id=<?=$listeEtudiant['id']?>"></a>
+				<a class="delete" href=""></a></td>
 		</tr>
 		<?php
 		endwhile;

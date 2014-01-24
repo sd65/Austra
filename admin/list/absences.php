@@ -60,7 +60,7 @@ include "../include/aside.php" ;
 		<td>Année</td>
 		<td>Style</td>
 		<td>ID EDT</td>
-		<td>Edit</td>
+		<td>Options</td>
 		
 		<!-- <td class="options">Coordonnées</td>
 		<td class="options">Contraintes</td>
