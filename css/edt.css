@@ -358,3 +358,8 @@ cursor: default;
 .arrowright{text-align: right;}
 .arrowleft{text-align: left;}
 .noDisplay{display: none;}
+
+.checkbox {	vertical-align: bottom !important;}
+.copy, .paste{padding: 5px; background: #eee; margin: 5px; cursor: pointer; display: inline-block;}
+.copy:hover, .paste:hover{background: #ddd}
+.actif{background: green;}

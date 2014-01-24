@@ -4,7 +4,7 @@ include "db_connect.php";
 
 <aside id="menu" class="<?php echo $ouverturemenu;?>">
   <ul>
-    <li><img src="img/logo_white@2x.png" width="140" /></li>
+    <li><img src="<?=dirname(__FILE__)?>/../img/logo_white@2x.png" width="140" /></li>
     <p>Affichage</p>
     <li>
       <div class="select">
@@ -64,4 +64,6 @@ include "db_connect.php";
     <li class="logout"><a href="include/logout.php">Déconnexion</a></li>
   </ul>
 </aside>
-<?php include "include/modifier_profil.php"; ?>
+<?php 
+
+include dirname(__FILE__)."/modifier_profil.php"; ?>
