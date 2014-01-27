@@ -1,8 +1,8 @@
 <?php
-require_once "../../include/functions.php";
+require_once "../include/functions.php";
 require_once "../../include/db_connect.php";
 
-include "./include/checkCookies.php";
+include "../../include/checkCookies.php";
 
 session_start();
 
@@ -23,11 +23,12 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
         <meta name="description" content="" />
         <meta charset="UTF-8" />
         <link rel="icon" type="image/png" href="img/favicon.png" />
-        <link rel="stylesheet" type="text/css" href="./css/base.css" />
-        <link rel="stylesheet" type="text/css" href="./css/edt.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/base.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/edt.css" />
         <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script> -->
-        <script type="text/javascript" src="./js/jquery-1.9.1.js"></script>
-        <script type="text/javascript" src="./js/frontend.js"></script>
+        <script type="text/javascript" src="../../js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="../../js/frontend.js"></script>
+        <script type="text/javascript" src="../js/edt_edit.js"></script>
     </head>
     <body>
           
@@ -40,13 +41,13 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
 					}
 				?>
 				<?php 
-					include "./include/menu.php"; 
-					include "./include/nav.php"; 
-					include "./include/edt_display.php";
+					include "../../include/menu.php"; 
+					include "../../include/nav.php"; 
+					include "../../include/edt_display.php";
 				?>
          <div id="master-planning">
          <ul class="selectweek">
-            <li class="arrowleft"><img src="img/arrowleft.png" width="16" /></li>
+            <li class="arrowleft"><img src="../../img/arrowleft.png" width="16" /></li>
             <?php
             $semaineAffich = 10; // Affiche 10 semaines avant et après la date de référence
             
@@ -97,12 +98,13 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
               $occurence--;
             }
             ?>
-            <li class="arrowright"><img src="img/arrowright.png" width="16" /></li>
+            <li class="arrowright"><img src="../../img/arrowright.png" width="16" /></li>
           </ul>
             <table id="planning">
               <thead>
                 <tr class="hours">
                   <td class="origin"></td>
+                  <td class="checkboxes">Outils</td>
                   <td class="empty-hour">8h</td><td class="half-hour" colspan="0.5"></td>
                   <td class="hour">9h</td><td class="half-hour"></td>
                   <td class="hour">10h</td><td class="half-hour"></td>
@@ -120,16 +122,12 @@ if(!empty($_SESSION['prenom']) && !empty($_SESSION['nom'])  && !empty($_SESSION[
               </thead>
               <tbody>
                 <?php 
-                if($vue_globale == 1) {
-					       edt_display_all($year, $week, $filiere, $bdd); 
-                } else {
-					       edt_display($year, $week, $filiere, $tp, $td, $bdd);
-				        }
+					       edt_display_edit($year, $week, $filiere, $bdd); 
                 ?>
               </tbody>
             </table>
           </div>
         </div>
-        <?php include "./include/calendriers.php"; ?>
+        <?php include "../../include/calendriers.php"; ?>
     </body>
 </html>

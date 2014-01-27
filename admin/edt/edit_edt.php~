@@ -1,6 +1,6 @@
 <?php
-require_once "../../include/functions.php";
-require_once "../../include/db_connect.php";
+require_once "../include/functions.php";
+require_once "../include/db_connect.php";
 
 include "./include/checkCookies.php";
 

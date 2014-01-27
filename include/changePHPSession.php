@@ -5,7 +5,7 @@ if (isset($_GET['filiere'])) {
 	$_SESSION['filiere']=$_GET['filiere'];
 }
 
-if(isset($_GET['date']){
-	$_SESSION['fromDate']=$_GET['date'];
+if(isset($_GET['fromDate'])){
+	$_SESSION['fromDate']=$_GET['fromDate'];
 	$_SESSION['filiere']=$_GET['filiere'];
 }
